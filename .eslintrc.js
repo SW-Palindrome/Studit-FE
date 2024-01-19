@@ -1,4 +1,9 @@
 module.exports = {
+  settings: {
+    react: {
+      version: "detect", // React 버전을 자동으로 감지하도록 설정
+    },
+  },
   env: {
     browser: true,
     es2021: true,
