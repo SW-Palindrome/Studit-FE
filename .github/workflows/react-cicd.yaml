@@ -1,0 +1,53 @@
+name: React CI/CD
+
+on:
+  pull_request:
+    paths:
+      - '**/*.js'
+      - '**/*.jsx'
+
+jobs:
+  react-cicd:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Cache Node Modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Lint
+        run: npm run lint
+          npm test
+
+      - name: Run Test
+        run: npm test
+
+      - name: Build React App
+        run: npm run build
+
+      - name: Deploy to S3
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.IAM_S3_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.IAM_S3_ACCESS_PWD }}
+          aws-region: ap-northeast-2
+
+      - name: Upload /build to S3
+        env:
+          BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME}}
+        run: |
+          aws s3 cp --recursive --region ap-northeast-2 build s3://$BUCKET_NAME
