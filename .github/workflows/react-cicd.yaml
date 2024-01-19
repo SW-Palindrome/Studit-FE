@@ -1,10 +1,9 @@
 name: React CI/CD
 
 on:
-  pull_request:
-    paths:
-      - '**/*.js'
-      - '**/*.jsx'
+  push:
+    branches:
+      - main
 
 jobs:
   react-cicd:
