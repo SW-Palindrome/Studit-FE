@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 
-import Home from "./pages/home/home";
-import Splash from "./pages/splash/splash";
-import Calendar from "./pages/calendar/calendar";
-import Mystudy from "./pages/mystudy/mystudy";
-import Settings from "./pages/settings/settings";
+import Home from "./pages/Home/Home";
+import Splash from "./pages/Splash/Splash";
+import Calendar from "./pages/Calendar/Calendar";
+import Mystudy from "./pages/Mystudy/Mystudy";
+import Settings from "./pages/Settings/Settings";
 
 function App() {
   return (
