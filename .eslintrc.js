@@ -32,6 +32,12 @@ module.exports = {
   plugins: ["react", "prettier"],
   rules: {
     "react/react-in-jsx-scope": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        endOfLine: "auto",
+      },
+    ],
     // 다른 규칙들...
   },
 };
