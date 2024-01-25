@@ -3,7 +3,7 @@ import styled from "styled-components";
 const StyledSentence = styled.div`
   display: flex;
   flex-direction: column;
-  margin: auto 0;
+  margin: 10rem 0 auto 0;
   background-color: #000000;
   font-family: "SBAggroB";
   text-align: center;
