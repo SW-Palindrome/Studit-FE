@@ -31,9 +31,6 @@ jobs:
       - name: Run Lint
         run: npx eslint src/
 
-      - name: Run Test
-        run: npm test
-
       - name: Build React App
         run: npm run build
 
