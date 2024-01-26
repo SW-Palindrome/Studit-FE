@@ -78,8 +78,13 @@ const StyledBottomButton = styled.button`
 
 function Modal({ setSigninClicked, setSignupClicked, isSignin }) {
   return (
-    <StyledModalOverlay>
-      <StyledModal>
+    <StyledModalOverlay
+      onClick={function () {
+        setSigninClicked(false);
+        setSignupClicked(false);
+      }}
+    >
+      <StyledModal onClick={(e) => e.stopPropagation()}>
         <StyledCloseButtonContainer>
           <StyledCloseButton
             onClick={function () {
