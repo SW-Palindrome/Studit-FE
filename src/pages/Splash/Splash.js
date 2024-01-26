@@ -18,13 +18,25 @@ function Splash() {
   return (
     <StyledSplash>
       <Header
-        signinTrue={() => setSigninClicked(true)}
-        signupTrue={() => setSignupClicked(true)}
+        setSigninClicked={setSigninClicked}
+        setSignupClicked={setSignupClicked}
       />
       <Sentence />
       <Footer />
-      {signinClicked && <Modal />}
-      {signupClicked && <Modal />}
+      {signinClicked && (
+        <Modal
+          setSigninClicked={setSigninClicked}
+          setSignupClicked={setSignupClicked}
+          isSignin={true}
+        />
+      )}
+      {signupClicked && (
+        <Modal
+          setSigninClicked={setSigninClicked}
+          setSignupClicked={setSignupClicked}
+          isSignin={false}
+        />
+      )}
     </StyledSplash>
   );
 }

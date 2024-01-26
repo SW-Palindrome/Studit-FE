@@ -42,15 +42,21 @@ const StyledSignUp = styled.button`
   background-color: #000000;
 `;
 
-function Header({ signinTrue, signupTrue }) {
+function Header({ setSigninClicked, setSignupClicked }) {
   return (
     <StyledHeader>
       <StyledLogo src={require("../../../assets/logo.png")} alt="logo" />
       <StyledButtonRow>
-        <StyledSignin className="signin-btn" onClick={signinTrue}>
+        <StyledSignin
+          className="signin-btn"
+          onClick={() => setSigninClicked(true)}
+        >
           Sign In
         </StyledSignin>
-        <StyledSignUp className="signup-btn" onClick={signupTrue}>
+        <StyledSignUp
+          className="signup-btn"
+          onClick={() => setSignupClicked(true)}
+        >
           Sign Up
         </StyledSignUp>
       </StyledButtonRow>

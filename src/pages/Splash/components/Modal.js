@@ -46,6 +46,7 @@ const StyledModalTitle = styled.p`
 
 const StyledActionButton = styled.img`
   cursor: pointer;
+  width: 23.3125rem;
   display: block;
   margin-bottom: 1rem;
 `;
@@ -75,24 +76,43 @@ const StyledBottomButton = styled.button`
   padding: 0.5rem 1rem;
 `;
 
-function Modal() {
+function Modal({ setSigninClicked, setSignupClicked, isSignin }) {
   return (
     <StyledModalOverlay>
       <StyledModal>
         <StyledCloseButtonContainer>
           <StyledCloseButton
-            onClick={() => console.log("닫기")}
+            onClick={function () {
+              setSigninClicked(false);
+              setSignupClicked(false);
+            }}
             src={require("../../../assets/cancel.png")}
           />
         </StyledCloseButtonContainer>
         <StyledMainContainer>
-          <StyledModalTitle>회원가입</StyledModalTitle>
+          <StyledModalTitle>
+            {isSignin ? "로그인" : "회원가입"}
+          </StyledModalTitle>
           <StyledActionButton src={require("../../../assets/google.png")} />
           <StyledActionButton src={require("../../../assets/github.png")} />
         </StyledMainContainer>
         <StyledBottomContainer>
-          <StyledBottomInquery>이미 계정이 있으신가요?</StyledBottomInquery>
-          <StyledBottomButton>Sign In</StyledBottomButton>
+          <StyledBottomInquery>
+            {isSignin ? "이미 계정이 있으신가요?" : "아직 회원이 아니신가요?"}
+          </StyledBottomInquery>
+          <StyledBottomButton
+            onClick={function () {
+              if (isSignin) {
+                setSigninClicked(false);
+                setSignupClicked(true);
+              } else {
+                setSigninClicked(true);
+                setSignupClicked(false);
+              }
+            }}
+          >
+            {isSignin ? "Sign In" : "Sign Up"}
+          </StyledBottomButton>
         </StyledBottomContainer>
       </StyledModal>
     </StyledModalOverlay>
