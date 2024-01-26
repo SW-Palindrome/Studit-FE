@@ -38,6 +38,8 @@ module.exports = {
         endOfLine: "auto",
       },
     ],
+    "react/prop-types": "off",
+
     // 다른 규칙들...
   },
 };

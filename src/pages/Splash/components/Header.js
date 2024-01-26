@@ -20,6 +20,7 @@ const StyledButtonRow = styled.div`
 `;
 
 const StyledSignin = styled.button`
+  cursor: pointer;
   padding: 0.8rem 1.5rem;
   margin-right: 1rem;
   font-family: "SBAggroB";
@@ -31,6 +32,7 @@ const StyledSignin = styled.button`
 `;
 
 const StyledSignUp = styled.button`
+  cursor: pointer;
   padding: 0.8rem 1.5rem;
   font-family: "SBAggroB";
   color: #ffffff;
@@ -40,13 +42,17 @@ const StyledSignUp = styled.button`
   background-color: #000000;
 `;
 
-function Header() {
+function Header({ signinTrue, signupTrue }) {
   return (
     <StyledHeader>
       <StyledLogo src={require("../../../assets/logo.png")} alt="logo" />
       <StyledButtonRow>
-        <StyledSignin>Sign In</StyledSignin>
-        <StyledSignUp>Sign Up</StyledSignUp>
+        <StyledSignin className="signin-btn" onClick={signinTrue}>
+          Sign In
+        </StyledSignin>
+        <StyledSignUp className="signup-btn" onClick={signupTrue}>
+          Sign Up
+        </StyledSignUp>
       </StyledButtonRow>
     </StyledHeader>
   );
