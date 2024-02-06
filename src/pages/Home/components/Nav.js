@@ -66,12 +66,49 @@ const StyledMenuItemIcon = styled.img`
 `;
 
 const StyledMenuItemText = styled.div`
-  color: ${(props) => (props.isSelect ? "#ffffff" : "#adb3be")};
+  color: ${(props) => (props.isMenuSelected ? "#ffffff" : "#adb3be")};
   font-family: roboto;
   font-size: 1.25rem;
 `;
 
-function Nav({ imageUrl, name, email, selectedMenu }) {
+const StyledMenuFooter = styled.div`
+  margin-top: auto;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: space-between;
+`;
+
+const StyledDarkLightModeContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+const StyledDarkLightModeBackground = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  background-color: ${(props) =>
+    props.isModeSelected ? "#353B4B" : "transparent"};
+`;
+
+const StyledDarkLightMode = styled.img`
+  width: 1.5rem;
+  height: 1.5rem;
+`;
+
+const StyledHelp = styled.img`
+  margin-left: auto;
+  width: 2rem;
+  height: 2rem;
+`;
+
+function Nav({ imageUrl, name, email, selectedMenu, isDarkMode }) {
   return (
     <StyledNav>
       <StyledLogo src={require("../../../assets/logo.png")} alt="logo" />
@@ -90,21 +127,20 @@ function Nav({ imageUrl, name, email, selectedMenu }) {
             }
             alt="home"
           />
-          <StyledMenuItemText isSelect={selectedMenu == "home"}>
+          <StyledMenuItemText isMenuSelected={selectedMenu == "home"}>
             Home
           </StyledMenuItemText>
         </StyledMenuItem>
         <StyledMenuItem>
           <StyledMenuItemIcon
             src={
-              selectedMenu == "canlendar"
-                ? require("../../../assets/canlendar-select.png")
-                : require("../../../assets/canlendar-unselect.png")
+              selectedMenu == "calendar"
+                ? require("../../../assets/calendar-select.png")
+                : require("../../../assets/calendar-unselect.png")
             }
             alt="home"
           />
-          <StyledMenuItemText isSelect={selectedMenu == "calendar"}>
-            {" "}
+          <StyledMenuItemText isMenuSelected={selectedMenu == "calendar"}>
             Calendar
           </StyledMenuItemText>
         </StyledMenuItem>
@@ -117,8 +153,7 @@ function Nav({ imageUrl, name, email, selectedMenu }) {
             }
             alt="home"
           />
-          <StyledMenuItemText isSelect={selectedMenu == "mystudies"}>
-            {" "}
+          <StyledMenuItemText isMenuSelected={selectedMenu == "mystudies"}>
             My Studies
           </StyledMenuItemText>
         </StyledMenuItem>
@@ -131,11 +166,34 @@ function Nav({ imageUrl, name, email, selectedMenu }) {
             }
             alt="home"
           />
-          <StyledMenuItemText isSelect={selectedMenu == "settings"}>
+          <StyledMenuItemText isMenuSelected={selectedMenu == "settings"}>
             Settings
           </StyledMenuItemText>
         </StyledMenuItem>
       </StyledMenu>
+      <StyledMenuFooter>
+        <StyledDarkLightModeContainer>
+          <StyledDarkLightModeBackground isModeSelected={isDarkMode == false}>
+            <StyledDarkLightMode
+              src={
+                isDarkMode
+                  ? require("../../../assets/light-unselect.png")
+                  : require("../../../assets/light-select.png")
+              }
+            />
+          </StyledDarkLightModeBackground>
+          <StyledDarkLightModeBackground isModeSelected={isDarkMode == true}>
+            <StyledDarkLightMode
+              src={
+                isDarkMode
+                  ? require("../../../assets/dark-select.png")
+                  : require("../../../assets/dark-unselect.png")
+              }
+            />
+          </StyledDarkLightModeBackground>
+        </StyledDarkLightModeContainer>
+        <StyledHelp src={require("../../../assets/help.png")} />
+      </StyledMenuFooter>
     </StyledNav>
   );
 }
