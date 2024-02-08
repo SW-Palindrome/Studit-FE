@@ -76,7 +76,7 @@ const StyledMenuFooter = styled.div`
   margin-bottom: 2rem;
   display: flex;
   flex-direction: row;
-  align-items: space-between;
+  width: 12rem;
 `;
 
 const StyledDarkLightModeContainer = styled.div`
