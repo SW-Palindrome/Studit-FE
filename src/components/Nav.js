@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const StyledNav = styled.div`
   display: flex;
@@ -118,58 +119,66 @@ function Nav({ imageUrl, name, email, selectedMenu, isDarkMode }) {
         <StlyedProfileEmail>{email}</StlyedProfileEmail>
       </StyledProfile>
       <StyledMenu>
-        <StyledMenuItem>
-          <StyledMenuItemIcon
-            src={
-              selectedMenu == "home"
-                ? require("../assets/home-select.png")
-                : require("../assets/home-unselect.png")
-            }
-            alt="home"
-          />
-          <StyledMenuItemText isMenuSelected={selectedMenu == "home"}>
-            Home
-          </StyledMenuItemText>
-        </StyledMenuItem>
-        <StyledMenuItem>
-          <StyledMenuItemIcon
-            src={
-              selectedMenu == "calendar"
-                ? require("../assets/calendar-select.png")
-                : require("../assets/calendar-unselect.png")
-            }
-            alt="home"
-          />
-          <StyledMenuItemText isMenuSelected={selectedMenu == "calendar"}>
-            Calendar
-          </StyledMenuItemText>
-        </StyledMenuItem>
-        <StyledMenuItem>
-          <StyledMenuItemIcon
-            src={
-              selectedMenu == "mystudies"
-                ? require("../assets/mystudies-select.png")
-                : require("../assets/mystudies-unselect.png")
-            }
-            alt="home"
-          />
-          <StyledMenuItemText isMenuSelected={selectedMenu == "mystudies"}>
-            My Studies
-          </StyledMenuItemText>
-        </StyledMenuItem>
-        <StyledMenuItem>
-          <StyledMenuItemIcon
-            src={
-              selectedMenu == "settings"
-                ? require("../assets/settings-select.png")
-                : require("../assets/settings-unselect.png")
-            }
-            alt="home"
-          />
-          <StyledMenuItemText isMenuSelected={selectedMenu == "settings"}>
-            Settings
-          </StyledMenuItemText>
-        </StyledMenuItem>
+        <Link to="/home" style={{ textDecoration: "none" }}>
+          <StyledMenuItem>
+            <StyledMenuItemIcon
+              src={
+                selectedMenu == "home"
+                  ? require("../assets/home-select.png")
+                  : require("../assets/home-unselect.png")
+              }
+              alt="home"
+            />
+            <StyledMenuItemText isMenuSelected={selectedMenu == "home"}>
+              Home
+            </StyledMenuItemText>
+          </StyledMenuItem>
+        </Link>
+        <Link to="/calendar" style={{ textDecoration: "none" }}>
+          <StyledMenuItem>
+            <StyledMenuItemIcon
+              src={
+                selectedMenu == "calendar"
+                  ? require("../assets/calendar-select.png")
+                  : require("../assets/calendar-unselect.png")
+              }
+              alt="home"
+            />
+            <StyledMenuItemText isMenuSelected={selectedMenu == "calendar"}>
+              Calendar
+            </StyledMenuItemText>
+          </StyledMenuItem>
+        </Link>
+        <Link to="/mystudies" style={{ textDecoration: "none" }}>
+          <StyledMenuItem>
+            <StyledMenuItemIcon
+              src={
+                selectedMenu == "mystudies"
+                  ? require("../assets/mystudies-select.png")
+                  : require("../assets/mystudies-unselect.png")
+              }
+              alt="home"
+            />
+            <StyledMenuItemText isMenuSelected={selectedMenu == "mystudies"}>
+              My Studies
+            </StyledMenuItemText>
+          </StyledMenuItem>
+        </Link>
+        <Link to="/settings" style={{ textDecoration: "none" }}>
+          <StyledMenuItem>
+            <StyledMenuItemIcon
+              src={
+                selectedMenu == "settings"
+                  ? require("../assets/settings-select.png")
+                  : require("../assets/settings-unselect.png")
+              }
+              alt="home"
+            />
+            <StyledMenuItemText isMenuSelected={selectedMenu == "settings"}>
+              Settings
+            </StyledMenuItemText>
+          </StyledMenuItem>
+        </Link>
       </StyledMenu>
       <StyledMenuFooter>
         <StyledDarkLightModeContainer>

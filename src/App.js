@@ -10,8 +10,8 @@ import Settings from "./pages/Settings/Settings";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/splash" element={<Splash />} />
+      <Route path="/" element={<Splash />} />
+      <Route path="/home" element={<Home />} />
       <Route path="/calendar" element={<Calendar />} />
       <Route path="/mystudies" element={<Mystudies />} />
       <Route path="/settings" element={<Settings />} />
