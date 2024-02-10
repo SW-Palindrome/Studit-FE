@@ -4,7 +4,7 @@ import "./App.css";
 import Home from "./pages/Home/Home";
 import Splash from "./pages/Splash/Splash";
 import Calendar from "./pages/Calendar/Calendar";
-import Mystudy from "./pages/Mystudy/Mystudy";
+import Mystudies from "./pages/Mystudies/Mystudies";
 import Settings from "./pages/Settings/Settings";
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/splash" element={<Splash />} />
       <Route path="/calendar" element={<Calendar />} />
-      <Route path="/mystudy" element={<Mystudy />} />
+      <Route path="/mystudies" element={<Mystudies />} />
       <Route path="/settings" element={<Settings />} />
     </Routes>
   );
