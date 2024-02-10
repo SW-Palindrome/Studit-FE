@@ -111,7 +111,7 @@ const StyledHelp = styled.img`
 function Nav({ imageUrl, name, email, selectedMenu, isDarkMode }) {
   return (
     <StyledNav>
-      <StyledLogo src={require("../../../assets/logo.png")} alt="logo" />
+      <StyledLogo src={require("../assets/logo.png")} alt="logo" />
       <StyledProfile>
         <StyledProfileImage src={imageUrl} alt="profile" />
         <StyledProfileName>{name}</StyledProfileName>
@@ -122,8 +122,8 @@ function Nav({ imageUrl, name, email, selectedMenu, isDarkMode }) {
           <StyledMenuItemIcon
             src={
               selectedMenu == "home"
-                ? require("../../../assets/home-select.png")
-                : require("../../../assets/home-unselect.png")
+                ? require("../assets/home-select.png")
+                : require("../assets/home-unselect.png")
             }
             alt="home"
           />
@@ -135,8 +135,8 @@ function Nav({ imageUrl, name, email, selectedMenu, isDarkMode }) {
           <StyledMenuItemIcon
             src={
               selectedMenu == "calendar"
-                ? require("../../../assets/calendar-select.png")
-                : require("../../../assets/calendar-unselect.png")
+                ? require("../assets/calendar-select.png")
+                : require("../assets/calendar-unselect.png")
             }
             alt="home"
           />
@@ -148,8 +148,8 @@ function Nav({ imageUrl, name, email, selectedMenu, isDarkMode }) {
           <StyledMenuItemIcon
             src={
               selectedMenu == "mystudies"
-                ? require("../../../assets/mystudies-select.png")
-                : require("../../../assets/mystudies-unselect.png")
+                ? require("../assets/mystudies-select.png")
+                : require("../assets/mystudies-unselect.png")
             }
             alt="home"
           />
@@ -161,8 +161,8 @@ function Nav({ imageUrl, name, email, selectedMenu, isDarkMode }) {
           <StyledMenuItemIcon
             src={
               selectedMenu == "settings"
-                ? require("../../../assets/settings-select.png")
-                : require("../../../assets/settings-unselect.png")
+                ? require("../assets/settings-select.png")
+                : require("../assets/settings-unselect.png")
             }
             alt="home"
           />
@@ -177,8 +177,8 @@ function Nav({ imageUrl, name, email, selectedMenu, isDarkMode }) {
             <StyledDarkLightMode
               src={
                 isDarkMode
-                  ? require("../../../assets/light-unselect.png")
-                  : require("../../../assets/light-select.png")
+                  ? require("../assets/light-unselect.png")
+                  : require("../assets/light-select.png")
               }
             />
           </StyledDarkLightModeBackground>
@@ -186,13 +186,13 @@ function Nav({ imageUrl, name, email, selectedMenu, isDarkMode }) {
             <StyledDarkLightMode
               src={
                 isDarkMode
-                  ? require("../../../assets/dark-select.png")
-                  : require("../../../assets/dark-unselect.png")
+                  ? require("../assets/dark-select.png")
+                  : require("../assets/dark-unselect.png")
               }
             />
           </StyledDarkLightModeBackground>
         </StyledDarkLightModeContainer>
-        <StyledHelp src={require("../../../assets/help.png")} />
+        <StyledHelp src={require("../assets/help.png")} />
       </StyledMenuFooter>
     </StyledNav>
   );
