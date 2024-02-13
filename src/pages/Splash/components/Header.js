@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledHeader = styled.header`
@@ -7,10 +8,12 @@ const StyledHeader = styled.header`
   padding: 2rem 1rem;
   background-color: #000000;
 `;
+
 const StyledLogo = styled.img`
   position: absolute;
   left: 50%;
-  transform: translate(-50%, 0);
+  top: 2rem;
+  transform: translateX(-50%);
   width: 10rem;
 `;
 
@@ -45,7 +48,9 @@ const StyledSignUp = styled.button`
 function Header({ setSigninClicked, setSignupClicked }) {
   return (
     <StyledHeader>
-      <StyledLogo src={require("../../../assets/logo.png")} alt="logo" />
+      <Link to="/home">
+        <StyledLogo src={require("../../../assets/logo.png")} alt="logo" />
+      </Link>
       <StyledButtonRow>
         <StyledSignin
           className="signin-btn"
