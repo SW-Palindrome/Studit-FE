@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { navData } from "../recoil/navData";
 
 const StyledNav = styled.div`
   display: flex;
@@ -109,14 +111,30 @@ const StyledHelp = styled.img`
   height: 1.5rem;
 `;
 
-function Nav({ imageUrl, name, email, selectedMenu, isDarkMode }) {
+function Nav({ selectedMenu }) {
+  const [navState, setNavState] = useRecoilState(navData);
+
+  const changeDarkMode = () => {
+    setNavState((prevState) => ({
+      ...prevState,
+      isDarkMode: true,
+    }));
+  };
+
+  const changeLightMode = () => {
+    setNavState((prevState) => ({
+      ...prevState,
+      isDarkMode: false,
+    }));
+  };
+
   return (
     <StyledNav>
       <StyledLogo src={require("../assets/logo.png")} alt="logo" />
       <StyledProfile>
-        <StyledProfileImage src={imageUrl} alt="profile" />
-        <StyledProfileName>{name}</StyledProfileName>
-        <StlyedProfileEmail>{email}</StlyedProfileEmail>
+        <StyledProfileImage src={navState.imageUrl} alt="profile" />
+        <StyledProfileName>{navState.name}</StyledProfileName>
+        <StlyedProfileEmail>{navState.email}</StlyedProfileEmail>
       </StyledProfile>
       <StyledMenu>
         <Link to="/home" style={{ textDecoration: "none" }}>
@@ -182,19 +200,25 @@ function Nav({ imageUrl, name, email, selectedMenu, isDarkMode }) {
       </StyledMenu>
       <StyledMenuFooter>
         <StyledDarkLightModeContainer>
-          <StyledDarkLightModeBackground isModeSelected={isDarkMode == false}>
+          <StyledDarkLightModeBackground
+            isModeSelected={navState.isDarkMode == false}
+            onClick={changeLightMode}
+          >
             <StyledDarkLightMode
               src={
-                isDarkMode
+                navState.isDarkMode
                   ? require("../assets/light-unselect.png")
                   : require("../assets/light-select.png")
               }
             />
           </StyledDarkLightModeBackground>
-          <StyledDarkLightModeBackground isModeSelected={isDarkMode == true}>
+          <StyledDarkLightModeBackground
+            isModeSelected={navState.isDarkMode == true}
+            onClick={changeDarkMode}
+          >
             <StyledDarkLightMode
               src={
-                isDarkMode
+                navState.isDarkMode
                   ? require("../assets/dark-select.png")
                   : require("../assets/dark-unselect.png")
               }
