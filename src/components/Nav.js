@@ -24,8 +24,8 @@ const StyledProfile = styled.div`
 `;
 
 const StyledProfileImage = styled.img`
-  width: 8rem;
-  height: 8rem;
+  width: 5rem;
+  height: 5rem;
   border-radius: 50%;
   margin-bottom: 1rem;
 `;
@@ -43,7 +43,7 @@ const StlyedProfileEmail = styled.div`
   font-family: roboto;
   font-size: 0.75rem;
   font-weight: 500;
-  margin-bottom: 0.5rem;
+  margin-bottom: 3rem;
 `;
 
 const StyledMenu = styled.div`
@@ -90,8 +90,8 @@ const StyledDarkLightModeBackground = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 2rem;
-  height: 2rem;
+  width: 1.5rem;
+  height: 1.5rem;
   border-radius: 50%;
   margin-right: 0.5rem;
   background-color: ${(props) =>
@@ -99,14 +99,14 @@ const StyledDarkLightModeBackground = styled.div`
 `;
 
 const StyledDarkLightMode = styled.img`
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.2rem;
+  height: 1.2rem;
 `;
 
 const StyledHelp = styled.img`
   margin-left: auto;
-  width: 2rem;
-  height: 2rem;
+  width: 1.5rem;
+  height: 1.5rem;
 `;
 
 function Nav({ imageUrl, name, email, selectedMenu, isDarkMode }) {
