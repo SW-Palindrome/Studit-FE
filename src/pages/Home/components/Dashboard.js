@@ -149,66 +149,89 @@ const StyledTaskStatus = styled.div`
   padding: 0.5rem 0;
 `;
 
+const StyledNotaskContainer = styled.div`
+  height: 37vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledNotask1 = styled.div`
+  color: white;
+  font-family: roboto;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+`;
+
+const StyledNotask2 = styled.div`
+  color: #e66330;
+  font-family: roboto;
+  font-size: 2.5rem;
+  text-align: center;
+`;
+
 function Dashboard() {
   //false면 내림차순, true면 오름차순
   const [sortStudygroup, setSortStudygroup] = useState(false);
   const [sortStatus, setSortStatus] = useState(false);
 
   const contents = [
-    {
-      name: "velog 글 작성하기(1)",
-      dueDate: "2023.12.24 Sun",
-      studyGroup: "3 velog 작성",
-      status: "Completed",
-    },
-    {
-      name: "velog 글 작성하기(2)",
-      dueDate: "2023.12.24 Sun",
-      studyGroup: "코테 문풀 스터디",
-      status: "Incomplete",
-    },
-    {
-      name: "velog 글 작성하기(2)",
-      dueDate: "2023.12.24 Sun",
-      studyGroup: "코테 문풀 스터디",
-      status: "Incomplete",
-    },
-    {
-      name: "velog 글 작성하기(2)",
-      dueDate: "2023.12.24 Sun",
-      studyGroup: "코테 문풀 스터디",
-      status: "Incomplete",
-    },
-    {
-      name: "velog 글 작성하기(2)",
-      dueDate: "2023.12.24 Sun",
-      studyGroup: "코테 문풀 스터디",
-      status: "Incomplete",
-    },
-    {
-      name: "velog 글 작성하기(2)",
-      dueDate: "2023.12.24 Sun",
-      studyGroup: "코테 문풀 스터디",
-      status: "Incomplete",
-    },
-    {
-      name: "velog 글 작성하기(3)",
-      dueDate: "2023.12.24 Sun",
-      studyGroup: "3 velog 작성",
-      status: "Incomplete",
-    },
-    {
-      name: "velog 글 작성하기(4)",
-      dueDate: "2023.12.24 Sun",
-      studyGroup: "3 velog 작성",
-      status: "Completed",
-    },
-    {
-      name: "velog 글 작성하기(5)",
-      dueDate: "2023.12.24 Sun",
-      studyGroup: "3 velog 작성",
-      status: "Completed",
-    },
+    //   {
+    //     name: "velog 글 작성하기(1)",
+    //     dueDate: "2023.12.24 Sun",
+    //     studyGroup: "3 velog 작성",
+    //     status: "Completed",
+    //   },
+    //   {
+    //     name: "velog 글 작성하기(2)",
+    //     dueDate: "2023.12.24 Sun",
+    //     studyGroup: "코테 문풀 스터디",
+    //     status: "Incomplete",
+    //   },
+    //   {
+    //     name: "velog 글 작성하기(2)",
+    //     dueDate: "2023.12.24 Sun",
+    //     studyGroup: "코테 문풀 스터디",
+    //     status: "Incomplete",
+    //   },
+    //   {
+    //     name: "velog 글 작성하기(2)",
+    //     dueDate: "2023.12.24 Sun",
+    //     studyGroup: "코테 문풀 스터디",
+    //     status: "Incomplete",
+    //   },
+    //   {
+    //     name: "velog 글 작성하기(2)",
+    //     dueDate: "2023.12.24 Sun",
+    //     studyGroup: "코테 문풀 스터디",
+    //     status: "Incomplete",
+    //   },
+    //   {
+    //     name: "velog 글 작성하기(2)",
+    //     dueDate: "2023.12.24 Sun",
+    //     studyGroup: "코테 문풀 스터디",
+    //     status: "Incomplete",
+    //   },
+    //   {
+    //     name: "velog 글 작성하기(3)",
+    //     dueDate: "2023.12.24 Sun",
+    //     studyGroup: "3 velog 작성",
+    //     status: "Incomplete",
+    //   },
+    //   {
+    //     name: "velog 글 작성하기(4)",
+    //     dueDate: "2023.12.24 Sun",
+    //     studyGroup: "3 velog 작성",
+    //     status: "Completed",
+    //   },
+    //   {
+    //     name: "velog 글 작성하기(5)",
+    //     dueDate: "2023.12.24 Sun",
+    //     studyGroup: "3 velog 작성",
+    //     status: "Completed",
+    //   },
   ];
   return (
     <StyledDashboard>
@@ -261,20 +284,27 @@ function Dashboard() {
             <StyledTaskAttribute flex={1}>Status</StyledTaskAttribute>
           </StyledTaskTableContainer>
           <StyledTaskTableScrollContainer>
-            {contents.map((task, index) => (
-              <StyledTaskTableContainer key={index}>
-                <StyledTaskContent flex={2.5}>{task.name}</StyledTaskContent>
-                <StyledTaskContent flex={1.25}>
-                  {task.dueDate}
-                </StyledTaskContent>
-                <StyledTaskContent flex={1}>
-                  {task.studyGroup}
-                </StyledTaskContent>
-                <StyledTaskStatus flex={1} status={task.status}>
-                  {task.status}
-                </StyledTaskStatus>
-              </StyledTaskTableContainer>
-            ))}
+            {contents.length > 0 ? (
+              contents.map((task, index) => (
+                <StyledTaskTableContainer key={index}>
+                  <StyledTaskContent flex={2.5}>{task.name}</StyledTaskContent>
+                  <StyledTaskContent flex={1.25}>
+                    {task.dueDate}
+                  </StyledTaskContent>
+                  <StyledTaskContent flex={1}>
+                    {task.studyGroup}
+                  </StyledTaskContent>
+                  <StyledTaskStatus flex={1} status={task.status}>
+                    {task.status}
+                  </StyledTaskStatus>
+                </StyledTaskTableContainer>
+              ))
+            ) : (
+              <StyledNotaskContainer>
+                <StyledNotask1>No tasks this week</StyledNotask1>
+                <StyledNotask2>Explore Studies</StyledNotask2>
+              </StyledNotaskContainer>
+            )}
           </StyledTaskTableScrollContainer>
         </StyledTaskBody>
       </StyledTaskContainer>
