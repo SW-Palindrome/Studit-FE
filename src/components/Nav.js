@@ -9,7 +9,8 @@ const StyledNav = styled.div`
   align-items: center;
   width: 13.375rem;
   height: 100vh;
-  background-color: #000000;
+  border-right: 1px solid #6b6d6f;
+  background-color: #16191c;
 `;
 
 const StyledLogo = styled.img`
