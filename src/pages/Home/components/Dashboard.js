@@ -52,7 +52,6 @@ const StyledTaskContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 1rem 2rem;
-  min-height: 50vh;
 `;
 
 const StyledTaskHeader = styled.div`
@@ -111,6 +110,14 @@ const StyledTaskTableContainer = styled.div`
   margin-top: 1.25rem;
 `;
 
+const StyledTaskTableScrollContainer = styled.div`
+  height: 37vh;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
 const StyledTaskAttribute = styled.div`
   flex: ${(props) => props.flex};
   color: #ffffff;
@@ -153,6 +160,30 @@ function Dashboard() {
       dueDate: "2023.12.24 Sun",
       studyGroup: "3 velog 작성",
       status: "Completed",
+    },
+    {
+      name: "velog 글 작성하기(2)",
+      dueDate: "2023.12.24 Sun",
+      studyGroup: "코테 문풀 스터디",
+      status: "Incomplete",
+    },
+    {
+      name: "velog 글 작성하기(2)",
+      dueDate: "2023.12.24 Sun",
+      studyGroup: "코테 문풀 스터디",
+      status: "Incomplete",
+    },
+    {
+      name: "velog 글 작성하기(2)",
+      dueDate: "2023.12.24 Sun",
+      studyGroup: "코테 문풀 스터디",
+      status: "Incomplete",
+    },
+    {
+      name: "velog 글 작성하기(2)",
+      dueDate: "2023.12.24 Sun",
+      studyGroup: "코테 문풀 스터디",
+      status: "Incomplete",
     },
     {
       name: "velog 글 작성하기(2)",
@@ -229,16 +260,22 @@ function Dashboard() {
             <StyledTaskAttribute flex={1}>Study Group</StyledTaskAttribute>
             <StyledTaskAttribute flex={1}>Status</StyledTaskAttribute>
           </StyledTaskTableContainer>
-          {contents.map((task, index) => (
-            <StyledTaskTableContainer key={index}>
-              <StyledTaskContent flex={2.5}>{task.name}</StyledTaskContent>
-              <StyledTaskContent flex={1.25}>{task.dueDate}</StyledTaskContent>
-              <StyledTaskContent flex={1}>{task.studyGroup}</StyledTaskContent>
-              <StyledTaskStatus flex={1} status={task.status}>
-                {task.status}
-              </StyledTaskStatus>
-            </StyledTaskTableContainer>
-          ))}
+          <StyledTaskTableScrollContainer>
+            {contents.map((task, index) => (
+              <StyledTaskTableContainer key={index}>
+                <StyledTaskContent flex={2.5}>{task.name}</StyledTaskContent>
+                <StyledTaskContent flex={1.25}>
+                  {task.dueDate}
+                </StyledTaskContent>
+                <StyledTaskContent flex={1}>
+                  {task.studyGroup}
+                </StyledTaskContent>
+                <StyledTaskStatus flex={1} status={task.status}>
+                  {task.status}
+                </StyledTaskStatus>
+              </StyledTaskTableContainer>
+            ))}
+          </StyledTaskTableScrollContainer>
         </StyledTaskBody>
       </StyledTaskContainer>
     </StyledDashboard>
