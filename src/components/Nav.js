@@ -7,7 +7,7 @@ const StyledNav = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 13.375rem;
+  width: 15rem;
   height: 100vh;
   border-right: 1px solid #6b6d6f;
   background-color: #16191c;
@@ -80,7 +80,7 @@ const StyledMenuFooter = styled.div`
   margin-bottom: 2rem;
   display: flex;
   flex-direction: row;
-  width: 12rem;
+  width: 8rem;
 `;
 
 const StyledDarkLightModeContainer = styled.div`

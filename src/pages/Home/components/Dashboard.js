@@ -4,22 +4,22 @@ const StyledDashboard = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #16191c;
-  padding: 2.25rem;
-  width: 100vh;
+  padding: 2rem;
+  width: 75rem;
 `;
 
 const StyledTitle = styled.h1`
   color: white;
   font-family: roboto;
   font-size: 2.5rem;
-  margin: 2rem 0 3rem 0;
+  margin: 1rem 0 2rem 0;
 `;
 
 const StyledTotalContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 3.125rem;
+  margin-bottom: 2rem;
 `;
 
 const StyledTotalMenu = styled.div`
@@ -28,7 +28,8 @@ const StyledTotalMenu = styled.div`
   justify-content: flex-start;
   padding: 1rem;
   background-color: #1f2327;
-  width: 16rem;
+  width: 15rem;
+  margin-right: ${(props) => (props.last == true ? "0rem" : "1rem")};
   border-radius: 0.75rem;
 `;
 
@@ -43,7 +44,6 @@ const StyledTotailCount = styled.div`
   color: white;
   font-family: roboto;
   font-size: 4rem;
-  margin-bottom: 1rem;
 `;
 
 const StyledTaskContainer = styled.div`
@@ -136,17 +136,22 @@ const StyledTaskContent = styled.div`
   text-align: center;
 `;
 
-const StyledTaskStatus = styled.div`
+const StyledTaskStatusWrapper = styled.div`
+  display: flex;
   flex: ${(props) => props.flex};
+  justify-content: center;
+`;
+
+const StyledTaskStatus = styled.div`
   color: ${(props) => (props.status === "Completed" ? "#249636" : "#E66633")};
   background-color: ${(props) =>
     props.status === "Completed" ? "#CBDAC4" : "#F0D1C4"};
   font-family: roboto;
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 700;
   text-align: center;
-  border-radius: 1000px;
-  padding: 0.5rem 0;
+  border-radius: 100rem;
+  padding: 0.5rem 1rem;
 `;
 
 const StyledNotaskContainer = styled.div`
@@ -176,63 +181,95 @@ function Dashboard() {
   //false면 내림차순, true면 오름차순
   const [sortStudygroup, setSortStudygroup] = useState(false);
   const [sortStatus, setSortStatus] = useState(false);
+  const [contents, setContents] = useState([
+    {
+      name: "velog 글 작성하기(1)",
+      dueDate: "2023.12.24 Sun",
+      studyGroup: "3 velog 작성",
+      status: "Completed",
+    },
+    {
+      name: "velog 글 작성하기(2)",
+      dueDate: "2023.12.24 Sun",
+      studyGroup: "코테 문풀 스터디",
+      status: "Incomplete",
+    },
+    {
+      name: "velog 글 작성하기(2)",
+      dueDate: "2023.12.24 Sun",
+      studyGroup: "코테 문풀 스터디",
+      status: "Incomplete",
+    },
+    {
+      name: "velog 글 작성하기(2)",
+      dueDate: "2023.12.24 Sun",
+      studyGroup: "코테 문풀 스터디",
+      status: "Incomplete",
+    },
+    {
+      name: "velog 글 작성하기(2)",
+      dueDate: "2023.12.24 Sun",
+      studyGroup: "코테 문풀 스터디",
+      status: "Incomplete",
+    },
+    {
+      name: "velog 글 작성하기(2)",
+      dueDate: "2023.12.24 Sun",
+      studyGroup: "코테 문풀 스터디",
+      status: "Incomplete",
+    },
+    {
+      name: "velog 글 작성하기(3)",
+      dueDate: "2023.12.24 Sun",
+      studyGroup: "3 velog 작성",
+      status: "Incomplete",
+    },
+    {
+      name: "velog 글 작성하기(4)",
+      dueDate: "2023.12.24 Sun",
+      studyGroup: "3 velog 작성",
+      status: "Completed",
+    },
+    {
+      name: "velog 글 작성하기(5)",
+      dueDate: "2023.12.24 Sun",
+      studyGroup: "3 velog 작성",
+      status: "Completed",
+    },
+  ]);
 
-  const contents = [
-    //   {
-    //     name: "velog 글 작성하기(1)",
-    //     dueDate: "2023.12.24 Sun",
-    //     studyGroup: "3 velog 작성",
-    //     status: "Completed",
-    //   },
-    //   {
-    //     name: "velog 글 작성하기(2)",
-    //     dueDate: "2023.12.24 Sun",
-    //     studyGroup: "코테 문풀 스터디",
-    //     status: "Incomplete",
-    //   },
-    //   {
-    //     name: "velog 글 작성하기(2)",
-    //     dueDate: "2023.12.24 Sun",
-    //     studyGroup: "코테 문풀 스터디",
-    //     status: "Incomplete",
-    //   },
-    //   {
-    //     name: "velog 글 작성하기(2)",
-    //     dueDate: "2023.12.24 Sun",
-    //     studyGroup: "코테 문풀 스터디",
-    //     status: "Incomplete",
-    //   },
-    //   {
-    //     name: "velog 글 작성하기(2)",
-    //     dueDate: "2023.12.24 Sun",
-    //     studyGroup: "코테 문풀 스터디",
-    //     status: "Incomplete",
-    //   },
-    //   {
-    //     name: "velog 글 작성하기(2)",
-    //     dueDate: "2023.12.24 Sun",
-    //     studyGroup: "코테 문풀 스터디",
-    //     status: "Incomplete",
-    //   },
-    //   {
-    //     name: "velog 글 작성하기(3)",
-    //     dueDate: "2023.12.24 Sun",
-    //     studyGroup: "3 velog 작성",
-    //     status: "Incomplete",
-    //   },
-    //   {
-    //     name: "velog 글 작성하기(4)",
-    //     dueDate: "2023.12.24 Sun",
-    //     studyGroup: "3 velog 작성",
-    //     status: "Completed",
-    //   },
-    //   {
-    //     name: "velog 글 작성하기(5)",
-    //     dueDate: "2023.12.24 Sun",
-    //     studyGroup: "3 velog 작성",
-    //     status: "Completed",
-    //   },
-  ];
+  // studyGroup 기준으로 오름차순 정렬
+  const sortByStudyGroupAscending = () => {
+    setContents((prevContents) =>
+      prevContents
+        .slice()
+        .sort((a, b) => a.studyGroup.localeCompare(b.studyGroup)),
+    );
+  };
+
+  // studyGroup 기준으로 내림차순 정렬
+  const sortByStudyGroupDescending = () => {
+    setContents((prevContents) =>
+      prevContents
+        .slice()
+        .sort((a, b) => b.studyGroup.localeCompare(a.studyGroup)),
+    );
+  };
+
+  // status 기준으로 오름차순 정렬
+  const sortByStatusAscending = () => {
+    setContents((prevContents) =>
+      prevContents.slice().sort((a, b) => a.status.localeCompare(b.status)),
+    );
+  };
+
+  // status 기준으로 내림차순 정렬
+  const sortByStatusDescending = () => {
+    setContents((prevContents) =>
+      prevContents.slice().sort((a, b) => b.status.localeCompare(a.status)),
+    );
+  };
+
   return (
     <StyledDashboard>
       <StyledTitle>Dashboard</StyledTitle>
@@ -245,7 +282,7 @@ function Dashboard() {
           <StyledTotalTitle>Total Completed Tasks</StyledTotalTitle>
           <StyledTotailCount>0</StyledTotailCount>
         </StyledTotalMenu>
-        <StyledTotalMenu>
+        <StyledTotalMenu last={true}>
           <StyledTotalTitle>Incomplete Tasks for this week</StyledTotalTitle>
           <StyledTotailCount>0</StyledTotailCount>
         </StyledTotalMenu>
@@ -255,7 +292,14 @@ function Dashboard() {
           <StyledTaskTitle>Tasks for this week</StyledTaskTitle>
           <StyledTaskSortContainer>
             <StyledTaskSortWrapper
-              onClick={() => setSortStudygroup(!sortStudygroup)}
+              onClick={function () {
+                setSortStudygroup(!sortStudygroup);
+                if (sortStudygroup) {
+                  sortByStudyGroupAscending();
+                } else {
+                  sortByStudyGroupDescending();
+                }
+              }}
             >
               <StyledTaskSortText>Study Group</StyledTaskSortText>
               <StyledTaskSortLogo
@@ -265,7 +309,16 @@ function Dashboard() {
                 }}
               />
             </StyledTaskSortWrapper>
-            <StyledTaskSortWrapper onClick={() => setSortStatus(!sortStatus)}>
+            <StyledTaskSortWrapper
+              onClick={function () {
+                setSortStatus(!sortStatus);
+                if (sortStatus) {
+                  sortByStatusAscending();
+                } else {
+                  sortByStatusDescending();
+                }
+              }}
+            >
               <StyledTaskSortText>Status</StyledTaskSortText>
               <StyledTaskSortLogo
                 src={require("../../../assets/down.png")}
@@ -294,9 +347,11 @@ function Dashboard() {
                   <StyledTaskContent flex={1}>
                     {task.studyGroup}
                   </StyledTaskContent>
-                  <StyledTaskStatus flex={1} status={task.status}>
-                    {task.status}
-                  </StyledTaskStatus>
+                  <StyledTaskStatusWrapper flex={1}>
+                    <StyledTaskStatus status={task.status}>
+                      {task.status}
+                    </StyledTaskStatus>
+                  </StyledTaskStatusWrapper>
                 </StyledTaskTableContainer>
               ))
             ) : (
