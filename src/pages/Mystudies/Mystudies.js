@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Nav from "../../components/Nav";
 
-const StyledSettings = styled.div`
+const StyledMystudies = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -10,9 +10,9 @@ const StyledSettings = styled.div`
 
 function Mystudies() {
   return (
-    <StyledSettings>
-      <Nav selectedMenu="settings" />
-    </StyledSettings>
+    <StyledMystudies>
+      <Nav selectedMenu="mystudies" />
+    </StyledMystudies>
   );
 }
 
