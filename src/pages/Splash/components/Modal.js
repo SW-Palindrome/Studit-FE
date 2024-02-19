@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledModalOverlay = styled.div`
@@ -77,6 +79,26 @@ const StyledBottomButton = styled.button`
 `;
 
 function Modal({ setSigninClicked, setSignupClicked, isSignin }) {
+  const location = useLocation();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const accessToken = params.get("access_token");
+
+    if (accessToken) {
+      // 액세스 토큰을 쿠키나 브라우저 저장소에 저장하거나 필요한 작업을 수행합니다.
+      // 쿠키에 저장
+      document.cookie = `studitAccessToken=${accessToken}`;
+    }
+  }, [location.search]);
+
+  function requestGithubLogin() {
+    window.open(
+      " http://13.124.72.126:8080/oauth2/authorization/github?redirect_uri=http://localhost:3000",
+      "_self",
+    );
+  }
+
   return (
     <StyledModalOverlay
       onClick={function () {
@@ -99,7 +121,12 @@ function Modal({ setSigninClicked, setSignupClicked, isSignin }) {
             {isSignin ? "로그인" : "회원가입"}
           </StyledModalTitle>
           <StyledActionButton src={require("../../../assets/google.png")} />
-          <StyledActionButton src={require("../../../assets/github.png")} />
+          <StyledActionButton
+            src={require("../../../assets/github.png")}
+            onClick={function () {
+              requestGithubLogin();
+            }}
+          />
         </StyledMainContainer>
         <StyledBottomContainer>
           <StyledBottomInquery>
