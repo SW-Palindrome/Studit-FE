@@ -6,7 +6,11 @@ export default function PrivateRoute({ authentication }) {
    * 로그인 했을 경우 : true 라는 텍스트 반환
    * 로그인 안했을 경우 : null or false(로그아웃 버튼 눌렀을경우 false로 설정) 반환
    */
-  const isAuthenticated = sessionStorage.getItem("isAuthenticated");
+
+  // studitAccessToken이 있으면 로그인 한 상태
+  const isAuthenticated = document.cookie
+    .split(";")
+    .some((item) => item.trim().startsWith("studitAccessToken="));
 
   if (authentication) {
     // 인증이 반드시 필요한 페이지
