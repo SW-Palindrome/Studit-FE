@@ -22,21 +22,10 @@ const StyledButtonRow = styled.div`
   flex-direction: row;
 `;
 
-const StyledSignin = styled.button`
+const StyledButton = styled.button`
   cursor: pointer;
   padding: 0.8rem 1.5rem;
-  margin-right: 1rem;
-  font-family: "SBAggroB";
-  color: #ffffff;
-  font-size: 1rem;
-  border: 2px solid #ffffff;
-  border-radius: 0.75rem;
-  background-color: #000000;
-`;
-
-const StyledSignUp = styled.button`
-  cursor: pointer;
-  padding: 0.8rem 1.5rem;
+  margin-right: ${(props) => (props.marginRight ? "1rem" : "0")};
   font-family: "SBAggroB";
   color: #ffffff;
   font-size: 1rem;
@@ -46,24 +35,44 @@ const StyledSignUp = styled.button`
 `;
 
 function Header({ setSigninClicked, setSignupClicked }) {
+  function logout() {
+    document.cookie =
+      "studitAccessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie =
+      "studitRefreshToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    window.location.href = "/";
+  }
+
+  const isLoggedIn = document.cookie.includes("studitAccessToken");
+
   return (
     <StyledHeader>
       <Link to="/home">
         <StyledLogo src={require("../../../assets/logo.png")} alt="logo" />
       </Link>
       <StyledButtonRow>
-        <StyledSignin
-          className="signin-btn"
-          onClick={() => setSigninClicked(true)}
-        >
-          Sign In
-        </StyledSignin>
-        <StyledSignUp
-          className="signup-btn"
-          onClick={() => setSignupClicked(true)}
-        >
-          Sign Up
-        </StyledSignUp>
+        {!isLoggedIn && (
+          <StyledButton
+            className="signin-btn"
+            marginRight={true}
+            onClick={() => setSigninClicked(true)}
+          >
+            Sign In
+          </StyledButton>
+        )}
+        {!isLoggedIn && (
+          <StyledButton
+            className="signup-btn"
+            onClick={() => setSignupClicked(true)}
+          >
+            Sign Up
+          </StyledButton>
+        )}
+        {isLoggedIn && (
+          <StyledButton className="logout-btn" onClick={() => logout()}>
+            Log Out
+          </StyledButton>
+        )}
       </StyledButtonRow>
     </StyledHeader>
   );
