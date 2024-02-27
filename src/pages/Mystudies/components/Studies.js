@@ -218,14 +218,20 @@ const StyledListAttributeSort = styled.img`
 `;
 
 const StyledListBody = styled.div`
-  margin-top: 1rem;
+  height: 60vh;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const StyledListRow = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
+  padding: 0.5rem 0;
 `;
 
 const StyledListRowText = styled.p`
@@ -641,17 +647,21 @@ function Studies() {
             </StyledListAttribute>
           </StyledListHeader>
           <StyledListBody>
-            <StyledListRow>
-              <StyledListRowText flex={3}>name</StyledListRowText>
-              <StyledListRowText flex={1.4}>duration</StyledListRowText>
-              <StyledListRowText flex={1.4}>mission</StyledListRowText>
-              <StyledListRowText flex={1}>participants</StyledListRowText>
-              <StyledListRowStatus flex={1}>
-                <StyledListRowStatusText status="In Progress">
-                  In Progress
-                </StyledListRowStatusText>
-              </StyledListRowStatus>
-            </StyledListRow>
+            {studies.map((study, index) => (
+              <StyledListRow key={index}>
+                <StyledListRowText flex={3}>{study.title}</StyledListRowText>
+                <StyledListRowText flex={1.4}>{study.period}</StyledListRowText>
+                <StyledListRowText flex={1.4}>mission</StyledListRowText>
+                <StyledListRowText flex={1}>
+                  {study.participants}
+                </StyledListRowText>
+                <StyledListRowStatus flex={1}>
+                  <StyledListRowStatusText status={study.status}>
+                    {study.status}
+                  </StyledListRowStatusText>
+                </StyledListRowStatus>
+              </StyledListRow>
+            ))}
           </StyledListBody>
         </StyledListContainer>
       )}
