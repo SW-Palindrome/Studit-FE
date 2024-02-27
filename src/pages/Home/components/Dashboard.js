@@ -59,6 +59,8 @@ const StyledTaskHeader = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #000000;
 `;
 
 const StyledTaskTitle = styled.h1`
@@ -84,6 +86,7 @@ const StyledTaskSortWrapper = styled.div`
   border-radius: 1.7rem;
   margin-left: 1rem;
   padding: 0.5rem 1rem;
+  cursor: pointer;
 `;
 
 const StyledTaskSortText = styled.div`
@@ -125,7 +128,6 @@ const StyledTaskAttribute = styled.div`
   font-size: 1.5rem;
   text-align: center;
   padding-bottom: 0.5rem;
-  border-bottom: 3px solid #000000;
 `;
 
 const StyledTaskContent = styled.div`
