@@ -64,12 +64,19 @@ const StyledActionText = styled.div`
 
 const StyledGridContainer = styled.div`
   display: grid;
-  grid-auto-flow: column;
-  grid-template-rows: repeat(3, auto);
+  grid-auto-flow: row;
+  grid-template-columns: repeat(3, auto);
   gap: 1.5rem;
-  overflow-x: scroll;
+  overflow-y: scroll;
   &::-webkit-scrollbar {
-    display: none;
+    width: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background: rgba(33, 122, 244, 0.1);
   }
 `;
 
@@ -77,7 +84,7 @@ const StyledGridWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 1.5rem;
+  padding: 1rem;
   background-color: #292e33;
   border-radius: 0.625rem;
   width: 27rem;
@@ -232,8 +239,16 @@ const StyledListRowText = styled.p`
 `;
 
 const StyledListRowStatus = styled.div`
+  display: flex;
+  justify-content: center;
   flex: 1;
+`;
+
+const StyledListRowStatusText = styled.p`
+  margin: 0;
   padding: 0.5rem 1rem;
+  font-family: roboto;
+  font-size: 1.25rem;
   border-radius: 50rem;
   background-color: ${function (props) {
     switch (props.status) {
@@ -247,13 +262,6 @@ const StyledListRowStatus = styled.div`
         return "#ffffff";
     }
   }};
-`;
-
-const StyledListRowStatusText = styled.p`
-  margin: 0;
-  padding: 0;
-  font-family: roboto;
-  font-size: 1.25rem;
   color: ${function (props) {
     switch (props.status) {
       case "In Progress":
@@ -638,7 +646,7 @@ function Studies() {
               <StyledListRowText flex={1.4}>duration</StyledListRowText>
               <StyledListRowText flex={1.4}>mission</StyledListRowText>
               <StyledListRowText flex={1}>participants</StyledListRowText>
-              <StyledListRowStatus status="In Progress">
+              <StyledListRowStatus flex={1}>
                 <StyledListRowStatusText status="In Progress">
                   In Progress
                 </StyledListRowStatusText>
