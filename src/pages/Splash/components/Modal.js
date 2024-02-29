@@ -77,6 +77,11 @@ const StyledBottomButton = styled.button`
 `;
 
 function Modal({ setSigninClicked, setSignupClicked, isSignin }) {
+  function requestGoogleLogin() {
+    window.location.href =
+      "http://13.124.72.126:8080/oauth2/authorization/google?redirect_uri=http://localhost:3000/callback";
+  }
+
   function requestGithubLogin() {
     window.location.href =
       "http://13.124.72.126:8080/oauth2/authorization/github?redirect_uri=http://localhost:3000/callback";
@@ -103,7 +108,12 @@ function Modal({ setSigninClicked, setSignupClicked, isSignin }) {
           <StyledModalTitle>
             {isSignin ? "로그인" : "회원가입"}
           </StyledModalTitle>
-          <StyledActionButton src={require("../../../assets/google.png")} />
+          <StyledActionButton
+            src={require("../../../assets/google.png")}
+            onClick={function () {
+              requestGoogleLogin();
+            }}
+          />
           <StyledActionButton
             src={require("../../../assets/github.png")}
             onClick={function () {
