@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useEffect } from "react";
+import { validateToken } from "../../../services/api";
 
 const StyledHeader = styled.header`
   display: flex;
@@ -36,14 +38,15 @@ const StyledButton = styled.button`
 
 function Header({ setSigninClicked, setSignupClicked }) {
   function logout() {
-    document.cookie =
-      "studitAccessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie =
-      "studitRefreshToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    localStorage.removeItem("studitAccessToken");
+    localStorage.removeItem("studitRefreshToken");
     window.location.href = "/";
   }
-
-  const isLoggedIn = document.cookie.includes("studitAccessToken");
+  let isAuthenticated = false;
+  // 컴포넌트가 렌더링 될 때마다 토큰이 유효한지 확인
+  useEffect(() => {
+    isAuthenticated = validateToken(localStorage.getItem("studitAccessToken"));
+  }, []);
 
   return (
     <StyledHeader>
@@ -51,7 +54,7 @@ function Header({ setSigninClicked, setSignupClicked }) {
         <StyledLogo src={require("../../../assets/logo.png")} alt="logo" />
       </Link>
       <StyledButtonRow>
-        {!isLoggedIn && (
+        {!isAuthenticated && (
           <StyledButton
             className="signin-btn"
             marginRight={true}
@@ -60,7 +63,7 @@ function Header({ setSigninClicked, setSignupClicked }) {
             Sign In
           </StyledButton>
         )}
-        {!isLoggedIn && (
+        {!isAuthenticated && (
           <StyledButton
             className="signup-btn"
             onClick={() => setSignupClicked(true)}
@@ -68,7 +71,7 @@ function Header({ setSigninClicked, setSignupClicked }) {
             Sign Up
           </StyledButton>
         )}
-        {isLoggedIn && (
+        {isAuthenticated && (
           <StyledButton className="logout-btn" onClick={() => logout()}>
             Log Out
           </StyledButton>
