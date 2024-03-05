@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledStudies = styled.div`
@@ -41,6 +42,7 @@ const StyledActionContainer = styled.div`
 `;
 
 const StyledActionButton = styled.div`
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -548,14 +550,18 @@ function Studies() {
           />
         </StyledSortContainer>
         <StyledActionContainer>
-          <StyledActionButton>
-            <StyledActionLogo src={require("../../../assets/create.png")} />
-            <StyledActionText>Create</StyledActionText>
-          </StyledActionButton>
-          <StyledActionButton>
-            <StyledActionLogo src={require("../../../assets/edit.png")} />
-            <StyledActionText>Edit</StyledActionText>
-          </StyledActionButton>
+          <Link to="/mystudies/create" style={{ textDecoration: "none" }}>
+            <StyledActionButton>
+              <StyledActionLogo src={require("../../../assets/create.png")} />
+              <StyledActionText>Create</StyledActionText>
+            </StyledActionButton>
+          </Link>
+          <Link to="/mystudies/edit" style={{ textDecoration: "none" }}>
+            <StyledActionButton>
+              <StyledActionLogo src={require("../../../assets/edit.png")} />
+              <StyledActionText>Edit</StyledActionText>
+            </StyledActionButton>
+          </Link>
         </StyledActionContainer>
       </StyledHeader>
       {isGridMode ? (
