@@ -47,8 +47,6 @@ function DateRangePicker() {
           isClearable={true}
           placeholderText="Select a date range"
           dateFormat="yyyy-MM-dd"
-          showIcon
-          icon
         />
       ) : (
         <DatePicker
@@ -62,7 +60,6 @@ function DateRangePicker() {
           isClearable={true}
           placeholderText="Select a date range"
           dateFormat="yyyy-MM-dd"
-          showIcon
           calendarClassName="rasta-stripes"
           excludeDates={[].concat(
             Array.from(
