@@ -7,7 +7,10 @@ import Callback from "./pages/Callback/Callback";
 import Splash from "./pages/Splash/Splash";
 import Calendar from "./pages/Calendar/Calendar";
 import Mystudies from "./pages/Mystudies/Mystudies";
+import CreateMystudy from "./pages/Mystudies/CreateMystudy";
+import EditMystudy from "./pages/Mystudies/EditMystudy";
 import Settings from "./pages/Settings/Settings";
+import DetailMystudy from "./pages/Mystudies/DetailMystudy";
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/calendar" element={<Calendar />} />
         <Route path="/mystudies" element={<Mystudies />} />
+        <Route path="/mystudies/create" element={<CreateMystudy />} />
+        <Route path="/mystudies/:id" element={<DetailMystudy />} />
+        <Route path="/mystudies/edit/:id" element={<EditMystudy />} />
         <Route path="/settings" element={<Settings />} />
       </Route>
     </Routes>

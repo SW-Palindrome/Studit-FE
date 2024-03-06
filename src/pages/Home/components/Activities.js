@@ -6,7 +6,7 @@ const StyledActivities = styled.div`
   background-color: #16191c;
   padding: 2rem;
   border-left: 1px solid #6b6d6f;
-  width: 40rem;
+  width: calc(25vw - 4rem - 1px);
 `;
 
 const StyledHeader = styled.div`
@@ -72,7 +72,7 @@ const StyledName = styled.p`
   padding: 0;
   color: #ffffff;
   font-family: roboto;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 `;
 
 const StyledTime = styled.p`
@@ -80,7 +80,7 @@ const StyledTime = styled.p`
   padding: 0;
   color: #ffffff;
   font-family: roboto;
-  font-size: 1rem;
+  font-size: 0.75rem;
 `;
 
 const StyledActivityTitle = styled.p`
@@ -88,13 +88,13 @@ const StyledActivityTitle = styled.p`
   padding: 0;
   color: #ffffff;
   font-family: roboto;
-  font-size: 1.25rem;
+  font-size: 1rem;
 `;
 
 const StyledActivityUrl = styled.a`
   color: #ffffff;
   font-family: roboto;
-  font-size: 1rem;
+  font-size: 0.75rem;
   text-decoration: underline;
   cursor: pointer;
 

@@ -4,10 +4,11 @@ import Dashboard from "./components/Dashboard";
 import Activities from "./components/Activities";
 
 const StyledHome = styled.div`
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 100vh;
   background-color: #16191c;
 `;
 

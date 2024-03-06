@@ -1,21 +1,21 @@
 import styled from "styled-components";
 import Nav from "../../components/Nav";
-import Studies from "./components/Studies";
+import EditStudyGroup from "./components/EditStudyGroup";
 
-const StyledMystudies = styled.div`
+const StyledEditMyStudy = styled.div`
   display: flex;
   flex-direction: row;
   height: 100vh;
   background-color: #16191c;
 `;
 
-function Mystudies() {
+function EditMyStudy() {
   return (
-    <StyledMystudies>
+    <StyledEditMyStudy>
       <Nav selectedMenu="mystudies" />
-      <Studies />
-    </StyledMystudies>
+      <EditStudyGroup />
+    </StyledEditMyStudy>
   );
 }
 
-export default Mystudies;
+export default EditMyStudy;
