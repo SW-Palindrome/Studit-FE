@@ -4,10 +4,16 @@ export async function getDashboard() {
   return data.dashboard;
 }
 
-export async function getActivities() {
+export async function getAllActivities() {
   const response = await fetch("http://localhost:3000/data/data.json");
   const data = await response.json();
   return data.activities;
+}
+
+export async function getCompletedActivities() {
+  const response = await fetch("http://localhost:3000/data/data.json");
+  const data = await response.json();
+  return data.activities.filter((activity) => activity.status === "Completed");
 }
 
 export async function getMystudies() {

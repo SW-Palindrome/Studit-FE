@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { getActivities } from "../../../services/mock";
+import { getCompletedActivities } from "../../../services/mock";
 import fetchData from "../../../utils/fetchData";
 
 const StyledActivities = styled.div`
@@ -110,7 +110,7 @@ function Activities() {
   const [activities, setActivities] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetchData(getActivities, [setActivities], [null], setLoading);
+    fetchData(getCompletedActivities, [setActivities], [null], setLoading);
   }, []);
 
   if (loading) return null;
