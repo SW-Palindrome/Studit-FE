@@ -24,13 +24,14 @@ const StyledDateRangePicker = styled.div`
   }
 `;
 
-function DateRangePicker() {
+function DateRangePicker({ setDate }) {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const onChange = (dates) => {
     const [start, end] = dates;
     setStartDate(start);
     setEndDate(end);
+    setDate([start, end]);
   };
 
   return (

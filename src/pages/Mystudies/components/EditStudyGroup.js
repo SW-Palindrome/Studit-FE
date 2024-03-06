@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import DateRangePicker from "./DateRangePicker";
 
-const StyledCreateStudyGroup = styled.div`
+const StyledEditStudyGroup = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -179,7 +179,7 @@ const StyledTextInput = styled.input`
   border: none;
 `;
 
-const StyledCreateButton = styled.button`
+const StyledEditButton = styled.button`
   width: 8rem;
   height: 3rem;
   border-radius: 1rem;
@@ -205,7 +205,7 @@ const StyledBottomRow2 = styled.div`
   justify-content: space-between;
 `;
 
-function CreateStudyGroup() {
+function EditStudyGroup() {
   const [image, setImage] = useState(null);
   const [date, setDate] = useState([null, null]);
   const [title, setTitle] = useState("");
@@ -251,7 +251,7 @@ function CreateStudyGroup() {
     setting,
   ]);
 
-  const fetchCreateStudyGroup = async () => {
+  const fetchEditStudyGroup = async () => {
     //1초 대기
     await new Promise((resolve) => setTimeout(resolve, 1000));
     //my studies 페이지로 이동
@@ -297,8 +297,8 @@ function CreateStudyGroup() {
   };
 
   return (
-    <StyledCreateStudyGroup>
-      <StyledTitle>Create Study Group</StyledTitle>
+    <StyledEditStudyGroup>
+      <StyledTitle>Edit Study Group</StyledTitle>
       <StyledBody>
         <StyledRow isCentered={true}>
           <StyledAttributeName>Duration</StyledAttributeName>
@@ -446,16 +446,16 @@ function CreateStudyGroup() {
             />
             <StyledRadioLabel htmlFor="Public">Public</StyledRadioLabel>
           </StyledBottomRow1>
-          <StyledCreateButton
-            onClick={fetchCreateStudyGroup}
+          <StyledEditButton
+            onClick={fetchEditStudyGroup}
             disabled={!isButtonClickabled}
           >
-            Create
-          </StyledCreateButton>
+            Edit
+          </StyledEditButton>
         </StyledBottomRow2>
       </StyledBody>
-    </StyledCreateStudyGroup>
+    </StyledEditStudyGroup>
   );
 }
 
-export default CreateStudyGroup;
+export default EditStudyGroup;

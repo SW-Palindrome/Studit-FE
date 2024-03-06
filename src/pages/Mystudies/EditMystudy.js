@@ -1,9 +1,21 @@
-function EditMystudy() {
+import styled from "styled-components";
+import Nav from "../../components/Nav";
+import EditStudyGroup from "./components/EditStudyGroup";
+
+const StyledEditMyStudy = styled.div`
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  background-color: #1f2327;
+`;
+
+function EditMyStudy() {
   return (
-    <div>
-      <h1>Edit My Study</h1>
-    </div>
+    <StyledEditMyStudy>
+      <Nav selectedMenu="mystudies" />
+      <EditStudyGroup />
+    </StyledEditMyStudy>
   );
 }
 
-export default EditMystudy;
+export default EditMyStudy;
