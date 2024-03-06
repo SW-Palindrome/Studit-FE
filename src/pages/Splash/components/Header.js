@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { validateToken } from "../../../services/api";
 
 const StyledHeader = styled.header`
@@ -37,15 +37,27 @@ const StyledButton = styled.button`
 `;
 
 function Header({ setSigninClicked, setSignupClicked }) {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   function logout() {
+    setIsAuthenticated(false);
     localStorage.removeItem("studitAccessToken");
     localStorage.removeItem("studitRefreshToken");
-    window.location.href = "/";
   }
-  let isAuthenticated = false;
+
   // 컴포넌트가 렌더링 될 때마다 토큰이 유효한지 확인
   useEffect(() => {
-    isAuthenticated = validateToken(localStorage.getItem("studitAccessToken"));
+    const checkAuthentication = async () => {
+      try {
+        const isAuthenticated = await validateToken(
+          localStorage.getItem("studitAccessToken"),
+        );
+        setIsAuthenticated(isAuthenticated);
+      } catch (error) {
+        setIsAuthenticated(false);
+      }
+    };
+
+    checkAuthentication();
   }, []);
 
   return (
