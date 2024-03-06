@@ -7,7 +7,7 @@ const StyledNav = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 15rem;
+  width: calc(13vw - 1px);
   height: 100vh;
   border-right: 1px solid #6b6d6f;
   background-color: #16191c;

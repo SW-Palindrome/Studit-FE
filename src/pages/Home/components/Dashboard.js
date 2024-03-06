@@ -4,8 +4,8 @@ const StyledDashboard = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #16191c;
+  width: calc(62vw - 4rem);
   padding: 2rem;
-  width: 75rem;
 `;
 
 const StyledTitle = styled.h1`
@@ -28,7 +28,7 @@ const StyledTotalMenu = styled.div`
   justify-content: flex-start;
   padding: 1rem;
   background-color: #1f2327;
-  width: 15rem;
+  width: 18vw;
   margin-right: ${(props) => (props.last == true ? "0rem" : "1rem")};
   border-radius: 0.75rem;
 `;
@@ -66,7 +66,7 @@ const StyledTaskHeader = styled.div`
 const StyledTaskTitle = styled.h1`
   color: white;
   font-family: roboto;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 400;
 `;
 
@@ -125,7 +125,7 @@ const StyledTaskAttribute = styled.div`
   flex: ${(props) => props.flex};
   color: #ffffff;
   font-family: roboto;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   text-align: center;
   padding-bottom: 0.5rem;
 `;
@@ -134,7 +134,7 @@ const StyledTaskContent = styled.div`
   flex: ${(props) => props.flex};
   color: #ffffff;
   font-family: roboto;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   text-align: center;
 `;
 

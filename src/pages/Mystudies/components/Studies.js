@@ -5,7 +5,7 @@ import styled from "styled-components";
 const StyledStudies = styled.div`
   display: flex;
   flex-direction: column;
-  width: 80vw;
+  width: calc(87vw - 4rem);
   padding: 2rem;
 `;
 
@@ -138,7 +138,6 @@ const StyledGridParti = styled.p`
 `;
 
 const StyledGridStatus = styled.div`
-  padding: 0.5rem 1rem;
   border-radius: 50rem;
   background-color: ${function (props) {
     switch (props.status) {
@@ -154,11 +153,12 @@ const StyledGridStatus = styled.div`
   }};
 `;
 
-const StyledGridStatusText = styled.p`
+const StyledGridStatusText = styled.div`
   margin: 0;
-  padding: 0;
+  padding: 0.5rem 1rem;
   font-family: roboto;
-  font-size: 1.25rem;
+  font-size: 1rem;
+  font-weight: 700;
   color: ${function (props) {
     switch (props.status) {
       case "In Progress":
@@ -209,7 +209,7 @@ const StyledListAttributeText = styled.p`
   margin-right: 0.625rem;
   padding: 0;
   font-family: roboto;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: #ffffff;
   text-align: center;
 `;
@@ -241,7 +241,7 @@ const StyledListRowText = styled.p`
   margin: 0;
   padding: 0;
   font-family: roboto;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: #ffffff;
   text-align: center;
 `;
@@ -256,7 +256,8 @@ const StyledListRowStatusText = styled.p`
   margin: 0;
   padding: 0.5rem 1rem;
   font-family: roboto;
-  font-size: 1.25rem;
+  font-size: 1rem;
+  font-weight: 700;
   border-radius: 50rem;
   background-color: ${function (props) {
     switch (props.status) {

@@ -6,14 +6,14 @@ const StyledCreateStudyGroup = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  width: 100vw;
+  width: calc(87vw - 4rem);
   margin: 2rem;
   &::-webkit-scrollbar {
     display: none;
   }
 `;
 
-const StyledTitle = styled.div`
+const StyledTitle = styled.h1`
   font-size: 2.5rem;
   color: #ffffff;
   font-family: roboto;
@@ -22,7 +22,6 @@ const StyledTitle = styled.div`
 const StyledBody = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 2rem;
   padding: 1.5rem;
   border-radius: 0.625rem;
   background-color: #292e33;
