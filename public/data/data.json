@@ -186,67 +186,83 @@
   "mystudies": [
     {
       "id": 1,
+      "thumbnail": "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
       "name": "치킨집 코테 탈출방",
       "duration": "2023.12.24 ~ 2024.02.22",
       "participants": 3,
       "mission": "GitHub 3문제 풀이 작성",
-      "status": "Completed"
+      "status": "In Progress",
+      "isAdmin": true
     },
     {
       "id": 2,
+      "thumbnail": "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
       "name": "코테 문제풀이 스터디",
       "duration": "2023.12.24 ~ 2024.02.22",
       "participants": 3,
       "mission": "GitHub 3문제 풀이 작성",
-      "status": "Incompleted"
+      "status": "Upcoming",
+      "isAdmin": false
     },
     {
       "id": 3,
+      "thumbnail": "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
       "name": "카카오 공체 스터디",
       "duration": "2023.12.24 ~ 2024.02.22",
       "participants": 3,
       "mission": "GitHub 3문제 풀이 작성",
-      "status": "Incompleted"
+      "status": "Upcoming",
+      "isAdmin": false
     },
     {
       "id": 4,
+      "thumbnail": "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
       "name": "3 velog 작성",
       "duration": "2023.12.24 ~ 2024.02.22",
       "participants": 3,
       "mission": "GitHub 3문제 풀이 작성",
-      "status": "Incompleted"
+      "status": "Upcoming",
+      "isAdmin": false
     },
     {
       "id": 5,
+      "thumbnail": "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
       "name": "백준 1문제 풀기",
       "duration": "2023.12.24 ~ 2024.02.22",
       "participants": 2,
       "mission": "GitHub 3문제 풀이 작성",
-      "status": "Incompleted"
+      "status": "In Progress",
+      "isAdmin": false
     },
     {
       "id": 6,
+      "thumbnail": "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
       "name": "백준 1문제 풀기",
       "duration": "2023.12.24 ~ 2024.02.22",
       "participants": 7,
       "mission": "GitHub 3문제 풀이 작성",
-      "status": "Incompleted"
+      "status": "Concluded",
+      "isAdmin": false
     },
     {
       "id": 7,
+      "thumbnail": "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
       "name": "백준 1문제 풀기",
       "duration": "2023.12.24 ~ 2024.02.22",
       "participants": 4,
       "mission": "GitHub 3문제 풀이 작성",
-      "status": "Incompleted"
+      "status": "Concluded",
+      "isAdmin": false
     },
     {
       "id": 8,
+      "thumbnail": "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
       "name": "백준 1문제 풀기",
       "duration": "2024.03.04 ~ 2024.04.28",
       "participants": 10,
       "mission": "GitHub 3문제 풀이 작성",
-      "status": "In Progress"
+      "status": "In Progress",
+      "isAdmin": false
     }
   ],
   "detailStudy": {
