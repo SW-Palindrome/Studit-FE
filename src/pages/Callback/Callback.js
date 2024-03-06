@@ -8,17 +8,11 @@ function Callback() {
       const refreshToken = params.get("refresh_token");
 
       if (accessToken) {
-        var currentDate = new Date();
-        var accessExpirationTime = new Date(currentDate.getTime() + 15 * 60000);
-        document.cookie = `studitAccessToken=${accessToken}; expires=${accessExpirationTime.toUTCString()}; path=/`;
+        localStorage.setItem("studitAccessToken", accessToken);
       }
 
       if (refreshToken) {
-        currentDate = new Date();
-        var refreshExpirationTime = new Date(
-          currentDate.getTime() + 7 * 24 * 60 * 60000,
-        );
-        document.cookie = `studitRefreshToken=${refreshToken}; expires=${refreshExpirationTime.toUTCString()}; path=/`;
+        localStorage.setItem("studitRefreshToken", refreshToken);
       }
       window.location.href = "http://localhost:3000/home";
     };
