@@ -5,7 +5,7 @@ const StyledSettings = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-color: #1f2327;
+  background-color: #16191c;
 `;
 
 function Mystudies() {

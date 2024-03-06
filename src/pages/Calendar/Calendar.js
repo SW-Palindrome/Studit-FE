@@ -5,10 +5,10 @@ const StyledCalendar = styled.div`
   display: flex;
   flex-direction: row;
   height: 100vh;
-  background-color: #1f2327;
+  background-color: #16191c;
 `;
 const StyledBox = styled.div`
-  background-color: #1f2327;
+  background-color: #16191c;
   width: calc(87vw);
 `;
 

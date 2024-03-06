@@ -1,21 +1,19 @@
 import styled from "styled-components";
 import Nav from "../../components/Nav";
-import Studies from "./components/Studies";
 
-const StyledMystudies = styled.div`
+const StyledDetailMystudy = styled.div`
   display: flex;
   flex-direction: row;
   height: 100vh;
   background-color: #16191c;
 `;
 
-function Mystudies() {
+function DetailMystudy() {
   return (
-    <StyledMystudies>
+    <StyledDetailMystudy>
       <Nav selectedMenu="mystudies" />
-      <Studies />
-    </StyledMystudies>
+    </StyledDetailMystudy>
   );
 }
 
-export default Mystudies;
+export default DetailMystudy;
