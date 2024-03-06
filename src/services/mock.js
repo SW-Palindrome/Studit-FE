@@ -22,10 +22,10 @@ export async function getProfile() {
   return data.profile;
 }
 
-export async function getEditstudy() {
+export async function getDetailStudy() {
   const response = await fetch("http://localhost:3000/data/data.json");
   const data = await response.json();
-  return data.editStudy;
+  return data.detailStudy;
 }
 
 export async function getStudentManagement() {

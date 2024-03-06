@@ -8,7 +8,7 @@
     "totalJoined": 3,
     "totalCompleted": 4,
     "totalIncompleted": 11,
-    "tasks": [
+    "contents": [
       {
         "id": 1,
         "name": "velog 글 작성하기(1)",
