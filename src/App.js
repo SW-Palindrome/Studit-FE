@@ -26,6 +26,7 @@ function App() {
         <Route path="/mystudies/edit/:id" element={<EditMystudy />} />
         <Route path="/settings" element={<Settings />} />
       </Route>
+      <Route elemnt={<PrivateRoute authentication={false} />}></Route>
     </Routes>
   );
 }
