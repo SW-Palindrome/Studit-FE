@@ -124,7 +124,7 @@ function Activities() {
         {activities.map((activity, index) => (
           <StyledActivityWrapper key={index}>
             <StyledAcitivityHeader>
-              <StyledProfile src={activity.profile} />
+              <StyledProfile src={activity.profileUrl} />
               <StyledNameTimeContainer>
                 <StyledName>{activity.name + " completed a task"}</StyledName>
                 <StyledTime>{activity.time}</StyledTime>
