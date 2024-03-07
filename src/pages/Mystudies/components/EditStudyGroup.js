@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
+import fetchData from "../../../utils/fetchData";
+import { getDetailStudy } from "../../../services/mock";
 import DateRangePicker from "./DateRangePicker";
 
 const StyledEditStudyGroup = styled.div`
@@ -207,6 +209,7 @@ const StyledBottomRow2 = styled.div`
 function EditStudyGroup() {
   const [image, setImage] = useState(null);
   const [date, setDate] = useState([null, null]);
+  const [stringDate, setStringDate] = useState("");
   const [title, setTitle] = useState("");
   const [memberLimit, setMemberLimit] = useState(0);
   const [purpose, setPurpose] = useState("CS");
@@ -217,6 +220,44 @@ function EditStudyGroup() {
   const [fine, setFine] = useState(0);
   const [setting, setSetting] = useState("Private");
   const [isButtonClickabled, setButtonClickabled] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchData(
+      getDetailStudy,
+      [
+        setImage,
+        setStringDate,
+        setTitle,
+        setMemberLimit,
+        setPurpose,
+        setDescription,
+        setMission,
+        setWeek,
+        setTag,
+        setFine,
+        setSetting,
+      ],
+      [
+        "thumbnail",
+        "duration",
+        "title",
+        "memberLimit",
+        "purpose",
+        "description",
+        "mission",
+        "week",
+        "tag",
+        "fine",
+        "setting",
+      ],
+      setLoading,
+    );
+    const dateArray = stringDate.split(" ~ ");
+    const startDate = new Date(dateArray[0]);
+    const endDate = new Date(dateArray[1]);
+    setDate([startDate, endDate]);
+  }, []);
 
   useEffect(() => {
     const isAllInputsFilled =
@@ -295,6 +336,8 @@ function EditStudyGroup() {
     setImage(null);
   };
 
+  if (loading) return null;
+
   return (
     <StyledEditStudyGroup>
       <StyledTitle>Edit Study Group</StyledTitle>
@@ -335,7 +378,12 @@ function EditStudyGroup() {
         </StyledRow>
         <StyledRow isCentered={true}>
           <StyledAttributeName>Title</StyledAttributeName>
-          <StyledTitleInput type="text" maxLength="20" onChange={setTitle} />
+          <StyledTitleInput
+            type="text"
+            maxLength="20"
+            value={title}
+            onChange={setTitle}
+          />
         </StyledRow>
         <StyledRow isCentered={true}>
           <StyledAttributeName>
