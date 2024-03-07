@@ -44,13 +44,23 @@ const StyledActionContainer = styled.div`
   flex-direction: row;
 `;
 
-const StyledActionButton = styled.div`
+const StyledCreateButton = styled.div`
   cursor: pointer;
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 0.5rem 1rem;
   background-color: #ffffff;
+  border-radius: 50rem;
+`;
+
+const StyledEditButton = styled.div`
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: ${(props) => (props.isEditable ? "#292e33" : "#ffffff")};
   border-radius: 50rem;
   margin-left: 1rem;
 `;
@@ -177,11 +187,11 @@ const StyledGridStatusText = styled.div`
 `;
 
 const StyledGridAction = styled.img`
-  width: ${(props) => (props.isAdmin ? "3rem" : "1.5rem")};
-  height: ${(props) => (props.isAdmin ? "3rem" : "1.5rem")};
+  cursor: pointer;
+  width: 1.5rem;
+  height: 1.5rem;
   margin-bottom: auto;
 `;
-
 const StyledListContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -296,6 +306,7 @@ function Studies() {
   const [isSortStudyParticipants, setSortStudyParticipants] = useState(false);
   const [isSortStudyStatus, setSortStudyStatus] = useState(false);
   const [studies, setStudies] = useState([]);
+  const [isEditable, setEditable] = useState(false);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     fetchData(getMystudies, [setStudies], [null], setLoading);
@@ -379,6 +390,11 @@ function Studies() {
       setSortStudyStatus(false);
     }
   }
+
+  function withdrawl() {
+    alert("스터디에서 탈퇴하였습니다.");
+  }
+
   if (loading) return <Loading />;
   return (
     <StyledStudies>
@@ -404,17 +420,22 @@ function Studies() {
         </StyledSortContainer>
         <StyledActionContainer>
           <Link to="/mystudies/create" style={{ textDecoration: "none" }}>
-            <StyledActionButton>
+            <StyledCreateButton>
               <StyledActionLogo src={require("../../../assets/create.png")} />
               <StyledActionText>Create</StyledActionText>
-            </StyledActionButton>
+            </StyledCreateButton>
           </Link>
-          <Link to="/mystudies/edit" style={{ textDecoration: "none" }}>
-            <StyledActionButton>
-              <StyledActionLogo src={require("../../../assets/edit.png")} />
-              <StyledActionText>Edit</StyledActionText>
-            </StyledActionButton>
-          </Link>
+          <StyledEditButton
+            isEditable={isEditable}
+            onClick={() => setEditable(!isEditable)}
+          >
+            <StyledActionLogo
+              src={require("../../../assets/edit-unselect.png")}
+            />
+            <StyledActionText>
+              {isEditable ? "Cancel" : "Edit"}
+            </StyledActionText>
+          </StyledEditButton>
         </StyledActionContainer>
       </StyledHeader>
       {isGridMode ? (
@@ -434,14 +455,28 @@ function Studies() {
                   </StyledGridStatusText>
                 </StyledGridStatus>
               </StyledGridInfoWrapper>
-              <StyledGridAction
-                isAdmin={study.isAdmin}
-                src={
-                  study.isAdmin
-                    ? require("../../../assets/admin.png")
-                    : require("../../../assets/cancle.png")
-                }
-              />
+              {!isEditable && study.isAdmin ? (
+                <StyledGridAction
+                  isAdmin={study.isAdmin}
+                  src={require("../../../assets/admin.png")}
+                />
+              ) : null}
+              {isEditable && study.isAdmin ? (
+                <Link
+                  to={`/mystudies/edit/${study.id}`}
+                  style={{ marginBottom: "auto" }}
+                >
+                  <StyledGridAction
+                    src={require("../../../assets/edit-select.png")}
+                  />
+                </Link>
+              ) : null}
+              {isEditable && !study.isAdmin ? (
+                <StyledGridAction
+                  src={require("../../../assets/cancel.png")}
+                  onClick={withdrawl}
+                />
+              ) : null}
             </StyledGridWrapper>
           ))}
         </StyledGridContainer>
