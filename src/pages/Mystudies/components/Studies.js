@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import fetchData from "../../../utils/fetchData";
+import { getMystudies } from "../../../services/mock";
+import Loading from "../../../components/Loading";
 
 const StyledStudies = styled.div`
   display: flex;
@@ -292,7 +295,11 @@ function Studies() {
   const [isSortStudyMission, setSortStudyMission] = useState(false);
   const [isSortStudyParticipants, setSortStudyParticipants] = useState(false);
   const [isSortStudyStatus, setSortStudyStatus] = useState(false);
-
+  const [studies, setStudies] = useState([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    fetchData(getMystudies, [setStudies], [null], setLoading);
+  }, []);
   function sortStudyName() {
     if (!isSortStudyName) {
       setSortStudyName(true);
@@ -372,162 +379,7 @@ function Studies() {
       setSortStudyStatus(false);
     }
   }
-
-  const studies = [
-    {
-      thumbnail:
-        "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
-      title: "title",
-      period: "123~123",
-      participants: 1,
-      status: "In Progress",
-      isAdmin: true,
-    },
-    {
-      thumbnail:
-        "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
-      title: "title",
-      period: "123~123",
-      participants: 1,
-      status: "Concluded",
-      isAdmin: false,
-    },
-    {
-      thumbnail:
-        "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
-      title: "title",
-      period: "123~123",
-      participants: 1,
-      status: "Upcoming",
-      isAdmin: false,
-    },
-    {
-      thumbnail:
-        "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
-      title: "title",
-      period: "123~123",
-      participants: 1,
-      status: "Concluded",
-      isAdmin: false,
-    },
-    {
-      thumbnail:
-        "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
-      title: "title",
-      period: "123~123",
-      participants: 1,
-      status: "Upcoming",
-      isAdmin: false,
-    },
-    {
-      thumbnail:
-        "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
-      title: "title",
-      period: "123~123",
-      participants: 1,
-      status: "Concluded",
-      isAdmin: false,
-    },
-    {
-      thumbnail:
-        "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
-      title: "title",
-      period: "123~123",
-      participants: 1,
-      status: "Upcoming",
-      isAdmin: false,
-    },
-    {
-      thumbnail:
-        "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
-      title: "title",
-      period: "123~123",
-      participants: 1,
-      status: "Concluded",
-      isAdmin: false,
-    },
-    {
-      thumbnail:
-        "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
-      title: "title",
-      period: "123~123",
-      participants: 1,
-      status: "Upcoming",
-      isAdmin: false,
-    },
-    {
-      thumbnail:
-        "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
-      title: "title",
-      period: "123~123",
-      participants: 1,
-      status: "Concluded",
-      isAdmin: false,
-    },
-    {
-      thumbnail:
-        "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
-      title: "title",
-      period: "123~123",
-      participants: 1,
-      status: "Upcoming",
-      isAdmin: false,
-    },
-    {
-      thumbnail:
-        "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
-      title: "title",
-      period: "123~123",
-      participants: 1,
-      status: "Concluded",
-      isAdmin: false,
-    },
-    {
-      thumbnail:
-        "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
-      title: "title",
-      period: "123~123",
-      participants: 1,
-      status: "Upcoming",
-      isAdmin: false,
-    },
-    {
-      thumbnail:
-        "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
-      title: "title",
-      period: "123~123",
-      participants: 1,
-      status: "Concluded",
-      isAdmin: false,
-    },
-    {
-      thumbnail:
-        "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
-      title: "title",
-      period: "123~123",
-      participants: 1,
-      status: "Upcoming",
-      isAdmin: false,
-    },
-    {
-      thumbnail:
-        "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
-      title: "title",
-      period: "123~123",
-      participants: 1,
-      status: "Concluded",
-      isAdmin: false,
-    },
-    {
-      thumbnail:
-        "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
-      title: "title",
-      period: "123~123",
-      participants: 1,
-      status: "Upcoming",
-      isAdmin: false,
-    },
-  ];
+  if (loading) return <Loading />;
   return (
     <StyledStudies>
       <StyledTitle>My Studies</StyledTitle>
@@ -571,8 +423,8 @@ function Studies() {
             <StyledGridWrapper key={index}>
               <StyledGridThumbnail src={study.thumbnail} />
               <StyledGridInfoWrapper>
-                <StyledGridTitle>{study.title}</StyledGridTitle>
-                <StyledGridPeriod>{study.period}</StyledGridPeriod>
+                <StyledGridTitle>{study.name}</StyledGridTitle>
+                <StyledGridPeriod>{study.duration}</StyledGridPeriod>
                 <StyledGridParti>
                   Participants: {study.participants}
                 </StyledGridParti>
@@ -654,11 +506,15 @@ function Studies() {
             </StyledListAttribute>
           </StyledListHeader>
           <StyledListBody>
-            {studies.map((study, index) => (
-              <StyledListRow key={index}>
-                <StyledListRowText flex={3}>{study.title}</StyledListRowText>
-                <StyledListRowText flex={1.4}>{study.period}</StyledListRowText>
-                <StyledListRowText flex={1.4}>mission</StyledListRowText>
+            {studies.map((study) => (
+              <StyledListRow key={study.id}>
+                <StyledListRowText flex={3}>{study.name}</StyledListRowText>
+                <StyledListRowText flex={1.4}>
+                  {study.duration}
+                </StyledListRowText>
+                <StyledListRowText flex={1.4}>
+                  {study.mission}
+                </StyledListRowText>
                 <StyledListRowText flex={1}>
                   {study.participants}
                 </StyledListRowText>
