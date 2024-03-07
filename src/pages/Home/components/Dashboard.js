@@ -1,5 +1,8 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getDashboard } from "../../../services/mock";
+import Loading from "../../../components/Loading";
+import fetchData from "../../../utils/fetchData";
 const StyledDashboard = styled.div`
   display: flex;
   flex-direction: column;
@@ -183,62 +186,20 @@ function Dashboard() {
   //false면 내림차순, true면 오름차순
   const [sortStudygroup, setSortStudygroup] = useState(false);
   const [sortStatus, setSortStatus] = useState(false);
-  const [contents, setContents] = useState([
-    {
-      name: "velog 글 작성하기(1)",
-      dueDate: "2023.12.24 Sun",
-      studyGroup: "3 velog 작성",
-      status: "Completed",
-    },
-    {
-      name: "velog 글 작성하기(2)",
-      dueDate: "2023.12.24 Sun",
-      studyGroup: "코테 문풀 스터디",
-      status: "Incomplete",
-    },
-    {
-      name: "velog 글 작성하기(2)",
-      dueDate: "2023.12.24 Sun",
-      studyGroup: "코테 문풀 스터디",
-      status: "Incomplete",
-    },
-    {
-      name: "velog 글 작성하기(2)",
-      dueDate: "2023.12.24 Sun",
-      studyGroup: "코테 문풀 스터디",
-      status: "Incomplete",
-    },
-    {
-      name: "velog 글 작성하기(2)",
-      dueDate: "2023.12.24 Sun",
-      studyGroup: "코테 문풀 스터디",
-      status: "Incomplete",
-    },
-    {
-      name: "velog 글 작성하기(2)",
-      dueDate: "2023.12.24 Sun",
-      studyGroup: "코테 문풀 스터디",
-      status: "Incomplete",
-    },
-    {
-      name: "velog 글 작성하기(3)",
-      dueDate: "2023.12.24 Sun",
-      studyGroup: "3 velog 작성",
-      status: "Incomplete",
-    },
-    {
-      name: "velog 글 작성하기(4)",
-      dueDate: "2023.12.24 Sun",
-      studyGroup: "3 velog 작성",
-      status: "Completed",
-    },
-    {
-      name: "velog 글 작성하기(5)",
-      dueDate: "2023.12.24 Sun",
-      studyGroup: "3 velog 작성",
-      status: "Completed",
-    },
-  ]);
+  const [totalJoined, setTotalJoined] = useState(0);
+  const [totalCompleted, setTotalCompleted] = useState(0);
+  const [totalIncompleted, setTotalIncompleted] = useState(0);
+  const [contents, setContents] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchData(
+      getDashboard,
+      [setTotalJoined, setTotalCompleted, setTotalIncompleted, setContents],
+      ["totalJoined", "totalCompleted", "totalIncompleted", "contents"],
+      setLoading,
+    );
+  }, []);
 
   // studyGroup 기준으로 오름차순 정렬
   const sortByStudyGroupAscending = () => {
@@ -272,21 +233,23 @@ function Dashboard() {
     );
   };
 
+  if (loading) return <Loading />;
+
   return (
     <StyledDashboard>
       <StyledTitle>Dashboard</StyledTitle>
       <StyledTotalContainer>
         <StyledTotalMenu>
           <StyledTotalTitle>Total Joined Studies</StyledTotalTitle>
-          <StyledTotailCount>0</StyledTotailCount>
+          <StyledTotailCount>{totalJoined}</StyledTotailCount>
         </StyledTotalMenu>
         <StyledTotalMenu>
           <StyledTotalTitle>Total Completed Tasks</StyledTotalTitle>
-          <StyledTotailCount>0</StyledTotailCount>
+          <StyledTotailCount>{totalCompleted}</StyledTotailCount>
         </StyledTotalMenu>
         <StyledTotalMenu last={true}>
           <StyledTotalTitle>Incomplete Tasks for this week</StyledTotalTitle>
-          <StyledTotailCount>0</StyledTotailCount>
+          <StyledTotailCount>{totalIncompleted}</StyledTotailCount>
         </StyledTotalMenu>
       </StyledTotalContainer>
       <StyledTaskContainer>
@@ -340,18 +303,20 @@ function Dashboard() {
           </StyledTaskTableContainer>
           <StyledTaskTableScrollContainer>
             {contents.length > 0 ? (
-              contents.map((task, index) => (
-                <StyledTaskTableContainer key={index}>
-                  <StyledTaskContent flex={2.5}>{task.name}</StyledTaskContent>
+              contents.map((content) => (
+                <StyledTaskTableContainer key={content.id}>
+                  <StyledTaskContent flex={2.5}>
+                    {content.name}
+                  </StyledTaskContent>
                   <StyledTaskContent flex={1.25}>
-                    {task.dueDate}
+                    {content.dueDate}
                   </StyledTaskContent>
                   <StyledTaskContent flex={1}>
-                    {task.studyGroup}
+                    {content.studyGroup}
                   </StyledTaskContent>
                   <StyledTaskStatusWrapper flex={1}>
-                    <StyledTaskStatus status={task.status}>
-                      {task.status}
+                    <StyledTaskStatus status={content.status}>
+                      {content.status}
                     </StyledTaskStatus>
                   </StyledTaskStatusWrapper>
                 </StyledTaskTableContainer>

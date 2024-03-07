@@ -1,0 +1,327 @@
+{
+  "profile": {
+    "name": "Byeongwoo Yu",
+    "email": "test123@gmail.com",
+    "profileUrl": "https://mblogthumb-phinf.pstatic.net/MjAyMDExMDFfMTgy/MDAxNjA0MjI4ODc1NDMw.Ex906Mv9nnPEZGCh4SREknadZvzMO8LyDzGOHMKPdwAg.ZAmE6pU5lhEdeOUsPdxg8-gOuZrq_ipJ5VhqaViubI4g.JPEG.gambasg/%EC%9C%A0%ED%8A%9C%EB%B8%8C_%EA%B8%B0%EB%B3%B8%ED%94%84%EB%A1%9C%ED%95%84_%ED%95%98%EB%8A%98%EC%83%89.jpg?type=w800"
+  },
+  "dashboard": {
+    "totalJoined": 3,
+    "totalCompleted": 4,
+    "totalIncompleted": 11,
+    "contents": [
+      {
+        "id": 1,
+        "name": "velog 글 작성하기(1)",
+        "dueDate": "2023.12.24 Sun",
+        "studyGroup": "3 velog 작성",
+        "status": "Completed"
+      },
+
+      {
+        "id": 2,
+        "name": "velog 글 작성하기(2)",
+        "dueDate": "2023.12.24 Sun",
+        "studyGroup": "3 velog 작성",
+        "status": "Completed"
+      },
+      {
+        "id": 3,
+        "name": "velog 글 작성하기(3)",
+        "dueDate": "2023.12.24 Sun",
+        "studyGroup": "3 velog 작성",
+        "status": "Completed"
+      },
+      {
+        "id": 4,
+        "name": "velog 글 작성하기(4)",
+        "dueDate": "2023.12.24 Sun",
+        "studyGroup": "3 velog 작성",
+        "status": "Completed"
+      },
+      {
+        "id": 5,
+        "name": "programmers 무지의 먹방 문제풀기",
+        "dueDate": "2023.12.31 Sun",
+        "studyGroup": "코테 문제풀이 스터디",
+        "status": "Incompleted"
+      },
+      {
+        "id": 6,
+        "name": "백준 1문제 풀기",
+        "dueDate": "2023.12.31 Sun",
+        "studyGroup": "코테 문제풀이 스터디",
+        "status": "Incompleted"
+      },
+      {
+        "id": 7,
+        "name": "백준 1문제 풀기",
+        "dueDate": "2023.12.31 Sun",
+        "studyGroup": "코테 문제풀이 스터디",
+        "status": "Incompleted"
+      },
+      {
+        "id": 8,
+        "name": "백준 1문제 풀기",
+        "dueDate": "2023.12.31 Sun",
+        "studyGroup": "코테 문제풀이 스터디",
+        "status": "Incompleted"
+      },
+      {
+        "id": 9,
+        "name": "백준 1문제 풀기",
+        "dueDate": "2023.12.31 Sun",
+        "studyGroup": "코테 문제풀이 스터디",
+        "status": "Incompleted"
+      },
+      {
+        "id": 10,
+        "name": "백준 1문제 풀기",
+        "dueDate": "2023.12.31 Sun",
+        "studyGroup": "코테 문제풀이 스터디",
+        "status": "Incompleted"
+      },
+      {
+        "id": 11,
+        "name": "백준 1문제 풀기",
+        "dueDate": "2023.12.31 Sun",
+        "studyGroup": "코테 문제풀이 스터디",
+        "status": "Incompleted"
+      },
+      {
+        "id": 12,
+        "name": "백준 1문제 풀기",
+        "dueDate": "2023.12.31 Sun",
+        "studyGroup": "코테 문제풀이 스터디",
+        "status": "Incompleted"
+      },
+      {
+        "id": 13,
+        "name": "백준 1문제 풀기",
+        "dueDate": "2023.12.31 Sun",
+        "studyGroup": "코테 문제풀이 스터디",
+        "status": "Incompleted"
+      },
+      {
+        "id": 14,
+        "name": "백준 1문제 풀기",
+        "dueDate": "2023.12.31 Sun",
+        "studyGroup": "코테 문제풀이 스터디",
+        "status": "Incompleted"
+      },
+      {
+        "id": 15,
+        "name": "백준 1문제 풀기",
+        "dueDate": "2023.12.31 Sun",
+        "studyGroup": "코테 문제풀이 스터디",
+        "status": "Incompleted"
+      }
+    ]
+  },
+  "activities": [
+    {
+      "profileUrl": "https://mblogthumb-phinf.pstatic.net/MjAyMDExMDFfMTgy/MDAxNjA0MjI4ODc1NDMw.Ex906Mv9nnPEZGCh4SREknadZvzMO8LyDzGOHMKPdwAg.ZAmE6pU5lhEdeOUsPdxg8-gOuZrq_ipJ5VhqaViubI4g.JPEG.gambasg/%EC%9C%A0%ED%8A%9C%EB%B8%8C_%EA%B8%B0%EB%B3%B8%ED%94%84%EB%A1%9C%ED%95%84_%ED%95%98%EB%8A%98%EC%83%89.jpg?type=w800",
+      "name": "Hooing",
+      "ago": "30 minutes",
+      "title": "velog 글 작성하기(1)",
+      "url": "https://velog.io/@milkbottle0305",
+      "status": "Completed"
+    },
+    {
+      "profileUrl": "https://mblogthumb-phinf.pstatic.net/MjAyMDExMDFfMTgy/MDAxNjA0MjI4ODc1NDMw.Ex906Mv9nnPEZGCh4SREknadZvzMO8LyDzGOHMKPdwAg.ZAmE6pU5lhEdeOUsPdxg8-gOuZrq_ipJ5VhqaViubI4g.JPEG.gambasg/%EC%9C%A0%ED%8A%9C%EB%B8%8C_%EA%B8%B0%EB%B3%B8%ED%94%84%EB%A1%9C%ED%95%84_%ED%95%98%EB%8A%98%EC%83%89.jpg?type=w800",
+      "name": "Milkyway",
+      "ago": "30 minutes",
+      "title": "velog 글 작성하기(1)",
+      "url": "https://velog.io/@milkbottle0305",
+      "status": "Completed"
+    },
+    {
+      "profileUrl": "https://mblogthumb-phinf.pstatic.net/MjAyMDExMDFfMTgy/MDAxNjA0MjI4ODc1NDMw.Ex906Mv9nnPEZGCh4SREknadZvzMO8LyDzGOHMKPdwAg.ZAmE6pU5lhEdeOUsPdxg8-gOuZrq_ipJ5VhqaViubI4g.JPEG.gambasg/%EC%9C%A0%ED%8A%9C%EB%B8%8C_%EA%B8%B0%EB%B3%B8%ED%94%84%EB%A1%9C%ED%95%84_%ED%95%98%EB%8A%98%EC%83%89.jpg?type=w800",
+      "name": "papa",
+      "ago": "30 days ago",
+      "title": "velog 글 작성하기(1)",
+      "url": "https://velog.io/@milkbottle0305",
+      "status": "Completed"
+    },
+    {
+      "profileUrl": "https://mblogthumb-phinf.pstatic.net/MjAyMDExMDFfMTgy/MDAxNjA0MjI4ODc1NDMw.Ex906Mv9nnPEZGCh4SREknadZvzMO8LyDzGOHMKPdwAg.ZAmE6pU5lhEdeOUsPdxg8-gOuZrq_ipJ5VhqaViubI4g.JPEG.gambasg/%EC%9C%A0%ED%8A%9C%EB%B8%8C_%EA%B8%B0%EB%B3%B8%ED%94%84%EB%A1%9C%ED%95%84_%ED%95%98%EB%8A%98%EC%83%89.jpg?type=w800",
+      "name": "Akro",
+      "ago": null,
+      "title": null,
+      "url": null,
+      "status": "Incompleted"
+    },
+    {
+      "profileUrl": "https://mblogthumb-phinf.pstatic.net/MjAyMDExMDFfMTgy/MDAxNjA0MjI4ODc1NDMw.Ex906Mv9nnPEZGCh4SREknadZvzMO8LyDzGOHMKPdwAg.ZAmE6pU5lhEdeOUsPdxg8-gOuZrq_ipJ5VhqaViubI4g.JPEG.gambasg/%EC%9C%A0%ED%8A%9C%EB%B8%8C_%EA%B8%B0%EB%B3%B8%ED%94%84%EB%A1%9C%ED%95%84_%ED%95%98%EB%8A%98%EC%83%89.jpg?type=w800",
+      "name": "Peppsi",
+      "ago": null,
+      "title": null,
+      "url": null,
+      "status": "Incompleted"
+    },
+    {
+      "profileUrl": "https://mblogthumb-phinf.pstatic.net/MjAyMDExMDFfMTgy/MDAxNjA0MjI4ODc1NDMw.Ex906Mv9nnPEZGCh4SREknadZvzMO8LyDzGOHMKPdwAg.ZAmE6pU5lhEdeOUsPdxg8-gOuZrq_ipJ5VhqaViubI4g.JPEG.gambasg/%EC%9C%A0%ED%8A%9C%EB%B8%8C_%EA%B8%B0%EB%B3%B8%ED%94%84%EB%A1%9C%ED%95%84_%ED%95%98%EB%8A%98%EC%83%89.jpg?type=w800",
+      "name": "Minnasang",
+      "ago": null,
+      "title": null,
+      "url": null,
+      "status": "Incompleted"
+    },
+    {
+      "profileUrl": "https://mblogthumb-phinf.pstatic.net/MjAyMDExMDFfMTgy/MDAxNjA0MjI4ODc1NDMw.Ex906Mv9nnPEZGCh4SREknadZvzMO8LyDzGOHMKPdwAg.ZAmE6pU5lhEdeOUsPdxg8-gOuZrq_ipJ5VhqaViubI4g.JPEG.gambasg/%EC%9C%A0%ED%8A%9C%EB%B8%8C_%EA%B8%B0%EB%B3%B8%ED%94%84%EB%A1%9C%ED%95%84_%ED%95%98%EB%8A%98%EC%83%89.jpg?type=w800",
+      "name": "KungfuPanda",
+      "ago": null,
+      "title": null,
+      "url": null,
+      "status": "Incompleted"
+    },
+    {
+      "profileUrl": "https://mblogthumb-phinf.pstatic.net/MjAyMDExMDFfMTgy/MDAxNjA0MjI4ODc1NDMw.Ex906Mv9nnPEZGCh4SREknadZvzMO8LyDzGOHMKPdwAg.ZAmE6pU5lhEdeOUsPdxg8-gOuZrq_ipJ5VhqaViubI4g.JPEG.gambasg/%EC%9C%A0%ED%8A%9C%EB%B8%8C_%EA%B8%B0%EB%B3%B8%ED%94%84%EB%A1%9C%ED%95%84_%ED%95%98%EB%8A%98%EC%83%89.jpg?type=w800",
+      "name": "Heyroo",
+      "ago": null,
+      "title": null,
+      "url": null,
+      "status": "Incompleted"
+    }
+  ],
+  "mystudies": [
+    {
+      "id": 1,
+      "thumbnail": "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
+      "name": "치킨집 코테 탈출방",
+      "duration": "2023.12.24 ~ 2024.02.22",
+      "participants": 3,
+      "mission": "GitHub 3문제 풀이 작성",
+      "status": "In Progress",
+      "isAdmin": true
+    },
+    {
+      "id": 2,
+      "thumbnail": "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
+      "name": "코테 문제풀이 스터디",
+      "duration": "2023.12.24 ~ 2024.02.22",
+      "participants": 3,
+      "mission": "GitHub 3문제 풀이 작성",
+      "status": "Upcoming",
+      "isAdmin": false
+    },
+    {
+      "id": 3,
+      "thumbnail": "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
+      "name": "카카오 공체 스터디",
+      "duration": "2023.12.24 ~ 2024.02.22",
+      "participants": 3,
+      "mission": "GitHub 3문제 풀이 작성",
+      "status": "Upcoming",
+      "isAdmin": false
+    },
+    {
+      "id": 4,
+      "thumbnail": "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
+      "name": "3 velog 작성",
+      "duration": "2023.12.24 ~ 2024.02.22",
+      "participants": 3,
+      "mission": "GitHub 3문제 풀이 작성",
+      "status": "Upcoming",
+      "isAdmin": false
+    },
+    {
+      "id": 5,
+      "thumbnail": "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
+      "name": "백준 1문제 풀기",
+      "duration": "2023.12.24 ~ 2024.02.22",
+      "participants": 2,
+      "mission": "GitHub 3문제 풀이 작성",
+      "status": "In Progress",
+      "isAdmin": false
+    },
+    {
+      "id": 6,
+      "thumbnail": "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
+      "name": "백준 1문제 풀기",
+      "duration": "2023.12.24 ~ 2024.02.22",
+      "participants": 7,
+      "mission": "GitHub 3문제 풀이 작성",
+      "status": "Concluded",
+      "isAdmin": false
+    },
+    {
+      "id": 7,
+      "thumbnail": "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
+      "name": "백준 1문제 풀기",
+      "duration": "2023.12.24 ~ 2024.02.22",
+      "participants": 4,
+      "mission": "GitHub 3문제 풀이 작성",
+      "status": "Concluded",
+      "isAdmin": false
+    },
+    {
+      "id": 8,
+      "thumbnail": "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
+      "name": "백준 1문제 풀기",
+      "duration": "2024.03.04 ~ 2024.04.28",
+      "participants": 10,
+      "mission": "GitHub 3문제 풀이 작성",
+      "status": "In Progress",
+      "isAdmin": false
+    }
+  ],
+  "detailStudy": {
+    "duration": "2023-12-26 ~ 2024-05-03",
+    "thumbnail": "https://images.klipfolio.com/website/public/11f3da89-351a-4ca1-a59d-b6806b0fcec1/algorithm.jpg",
+    "title": "코딩 테스트 준비방",
+    "memberLimit": 4,
+    "purpose": "Algorithm",
+    "description": "매주 월.목 오후에 미팅",
+    "mission": "github",
+    "week": 3,
+    "tag": "CTR",
+    "fine": 2000,
+    "setting": "Private"
+  },
+  "fineStatus": {
+    "weekDuration": [
+      "12.25 ~ 12.31",
+      "01.01 ~ 01.07",
+      "01.08 ~ 01.14",
+      "01.15 ~ 01.21",
+      "01.22 ~ 01.28"
+    ],
+    "student": [
+      {
+        "name": "Hooing",
+        "status": ["미션 성공", "벌급 납부", "미션 성공", "미션 성공"]
+      },
+      {
+        "name": "Milkyway",
+        "status": ["미션 성공", "미션 성공", "벌급 납부", "미션 성공"]
+      },
+      {
+        "name": "papa",
+        "status": ["미션 성공", "벌급 납부", "미션 성공", "미션 성공"]
+      }
+    ]
+  },
+  "studentManagement": [
+    {
+      "name": "Hooing",
+      "permission": "Member",
+      "missionIntergrate": true,
+      "totalFinePaid": 2000,
+      "isFinePaid": true
+    },
+    {
+      "name": "Milkyway",
+      "permission": "Sub-Leader",
+      "missionIntergrate": true,
+      "totalFinePaid": 2000,
+      "isFinePaid": true
+    },
+    {
+      "name": "papa",
+      "permission": "Leader",
+      "missionIntergrate": false,
+      "totalFinePaid": null,
+      "isFinePaid": null
+    }
+  ]
+}

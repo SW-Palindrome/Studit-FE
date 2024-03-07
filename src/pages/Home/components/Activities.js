@@ -1,4 +1,7 @@
+import { useState, useEffect } from "react";
 import styled from "styled-components";
+import { getCompletedActivities } from "../../../services/mock";
+import fetchData from "../../../utils/fetchData";
 
 const StyledActivities = styled.div`
   display: flex;
@@ -104,40 +107,13 @@ const StyledActivityUrl = styled.a`
 `;
 
 function Activities() {
-  const activities = [
-    {
-      profile:
-        "https://mblogthumb-phinf.pstatic.net/MjAyMDExMDFfMTgy/MDAxNjA0MjI4ODc1NDMw.Ex906Mv9nnPEZGCh4SREknadZvzMO8LyDzGOHMKPdwAg.ZAmE6pU5lhEdeOUsPdxg8-gOuZrq_ipJ5VhqaViubI4g.JPEG.gambasg/%EC%9C%A0%ED%8A%9C%EB%B8%8C_%EA%B8%B0%EB%B3%B8%ED%94%84%EB%A1%9C%ED%95%84_%ED%95%98%EB%8A%98%EC%83%89.jpg?type=w800",
-      name: "John Doe",
-      time: "30 minutes ago",
-      title: "velog 글 작성하기(1)",
-      url: "https://velog.io/@jshong0907/ansible",
-    },
-    {
-      profile:
-        "https://mblogthumb-phinf.pstatic.net/MjAyMDExMDFfMTgy/MDAxNjA0MjI4ODc1NDMw.Ex906Mv9nnPEZGCh4SREknadZvzMO8LyDzGOHMKPdwAg.ZAmE6pU5lhEdeOUsPdxg8-gOuZrq_ipJ5VhqaViubI4g.JPEG.gambasg/%EC%9C%A0%ED%8A%9C%EB%B8%8C_%EA%B8%B0%EB%B3%B8%ED%94%84%EB%A1%9C%ED%95%84_%ED%95%98%EB%8A%98%EC%83%89.jpg?type=w800",
-      name: "John Doe",
-      time: "30 minutes ago",
-      title: "velog 글 작성하기(1)",
-      url: "https://velog.io/@jshong0907/ansible",
-    },
-    {
-      profile:
-        "https://mblogthumb-phinf.pstatic.net/MjAyMDExMDFfMTgy/MDAxNjA0MjI4ODc1NDMw.Ex906Mv9nnPEZGCh4SREknadZvzMO8LyDzGOHMKPdwAg.ZAmE6pU5lhEdeOUsPdxg8-gOuZrq_ipJ5VhqaViubI4g.JPEG.gambasg/%EC%9C%A0%ED%8A%9C%EB%B8%8C_%EA%B8%B0%EB%B3%B8%ED%94%84%EB%A1%9C%ED%95%84_%ED%95%98%EB%8A%98%EC%83%89.jpg?type=w800",
-      name: "John Doe",
-      time: "30 minutes ago",
-      title: "velog 글 작성하기(1)",
-      url: "https://velog.io/@jshong0907/ansible",
-    },
-    {
-      profile:
-        "https://mblogthumb-phinf.pstatic.net/MjAyMDExMDFfMTgy/MDAxNjA0MjI4ODc1NDMw.Ex906Mv9nnPEZGCh4SREknadZvzMO8LyDzGOHMKPdwAg.ZAmE6pU5lhEdeOUsPdxg8-gOuZrq_ipJ5VhqaViubI4g.JPEG.gambasg/%EC%9C%A0%ED%8A%9C%EB%B8%8C_%EA%B8%B0%EB%B3%B8%ED%94%84%EB%A1%9C%ED%95%84_%ED%95%98%EB%8A%98%EC%83%89.jpg?type=w800",
-      name: "John Doe",
-      time: "30 minutes ago",
-      title: "velog 글 작성하기(1)",
-      url: "https://velog.io/@jshong0907/ansible",
-    },
-  ];
+  const [activities, setActivities] = useState([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    fetchData(getCompletedActivities, [setActivities], [null], setLoading);
+  }, []);
+
+  if (loading) return null;
   return (
     <StyledActivities>
       <StyledHeader>
@@ -148,7 +124,7 @@ function Activities() {
         {activities.map((activity, index) => (
           <StyledActivityWrapper key={index}>
             <StyledAcitivityHeader>
-              <StyledProfile src={activity.profile} />
+              <StyledProfile src={activity.profileUrl} />
               <StyledNameTimeContainer>
                 <StyledName>{activity.name + " completed a task"}</StyledName>
                 <StyledTime>{activity.time}</StyledTime>
