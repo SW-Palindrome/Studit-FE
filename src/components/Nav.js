@@ -1,7 +1,10 @@
 import styled from "styled-components";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { navData } from "../recoil/navData";
+import fetchData from "../utils/fetchData";
+import { getProfile } from "../services/mock";
 
 const StyledNav = styled.div`
   display: flex;
@@ -113,7 +116,20 @@ const StyledHelp = styled.img`
 `;
 
 function Nav({ selectedMenu }) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [profileUrl, setProfileUrl] = useState("");
   const [navState, setNavState] = useRecoilState(navData);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchData(
+      getProfile,
+      [setName, setEmail, setProfileUrl],
+      ["name", "email", "profileUrl"],
+      setLoading,
+    );
+  }, []);
 
   const changeDarkMode = () => {
     setNavState((prevState) => ({
@@ -129,13 +145,15 @@ function Nav({ selectedMenu }) {
     }));
   };
 
+  if (loading) return null;
+
   return (
     <StyledNav>
       <StyledLogo src={require("../assets/logo.png")} alt="logo" />
       <StyledProfile>
-        <StyledProfileImage src={navState.imageUrl} alt="profile" />
-        <StyledProfileName>{navState.name}</StyledProfileName>
-        <StlyedProfileEmail>{navState.email}</StlyedProfileEmail>
+        <StyledProfileImage src={profileUrl} alt="profile" />
+        <StyledProfileName>{name}</StyledProfileName>
+        <StlyedProfileEmail>{email}</StlyedProfileEmail>
       </StyledProfile>
       <StyledMenu>
         <Link to="/home" style={{ textDecoration: "none" }}>
