@@ -253,11 +253,16 @@ function EditStudyGroup() {
       ],
       setLoading,
     );
-    const dateArray = stringDate.split(" ~ ");
-    const startDate = new Date(dateArray[0]);
-    const endDate = new Date(dateArray[1]);
-    setDate([startDate, endDate]);
   }, []);
+
+  useEffect(() => {
+    if (stringDate) {
+      const dateArray = stringDate.split(" ~ ");
+      const startDate = new Date(dateArray[0]);
+      const endDate = new Date(dateArray[1]);
+      setDate([startDate, endDate]);
+    }
+  }, [stringDate]);
 
   useEffect(() => {
     const isAllInputsFilled =
@@ -273,9 +278,6 @@ function EditStudyGroup() {
       tag !== "" &&
       fine > 0 &&
       setting !== "";
-    console.log(
-      `image: ${image !== null}\n\ndate[0]: ${date[0] !== null}\n\ndate[1]: ${date[1] !== null}\n\npurpose: ${purpose !== ""}\n\nmission: ${mission !== ""}\n\ntitle: ${title !== ""}\n\nmemberLimit: ${memberLimit > 0}\n\ndescription: ${description !== ""}\n\nweek: ${week > 0}\n\ntag: ${tag !== ""}\n\nfine: ${fine > 0}\n\nsetting: ${setting !== ""}`,
-    );
     setButtonClickabled(isAllInputsFilled);
   }, [
     date,
@@ -344,7 +346,7 @@ function EditStudyGroup() {
       <StyledBody>
         <StyledRow isCentered={true}>
           <StyledAttributeName>Duration</StyledAttributeName>
-          <DateRangePicker setDate={setDate} />
+          <DateRangePicker value={date} />
           <StyledCalendarIcon src={require("../../../assets/calendar.png")} />
         </StyledRow>
         <StyledRow isCentered={false}>
@@ -393,6 +395,7 @@ function EditStudyGroup() {
           </StyledAttributeName>
           <StyledNumberInput
             type="number"
+            value={memberLimit}
             onChange={(e) => setMemberLimit(e.target.value)}
           />
         </StyledRow>
@@ -412,6 +415,7 @@ function EditStudyGroup() {
             name="purpose"
             id="Algorithm"
             value="Algorithm"
+            checked={purpose === "Algorithm"}
             onChange={(e) => setPurpose(e.target.value)}
           />
           <StyledRadioLabel htmlFor="Algorithm">
@@ -422,6 +426,7 @@ function EditStudyGroup() {
           <StyledAttributeName>Description</StyledAttributeName>
           <StyledDescriptionTextarea
             onChange={(e) => setDescription(e.target.value)}
+            value={description}
             type="text"
             maxLength={200}
           />
@@ -444,6 +449,7 @@ function EditStudyGroup() {
                 name="mission"
                 id="github"
                 value="github"
+                checked={mission === "github"}
                 onChange={(e) => setMission(e.target.value)}
               />
               <StyledRadioLabel htmlFor="github">
@@ -453,12 +459,14 @@ function EditStudyGroup() {
             <StyledRow isCentered={true}>
               <StyledNumberInput
                 type="number"
+                value={week}
                 onChange={(e) => setWeek(e.target.value)}
               />
               <StyledText>per week</StyledText>
               <StyledText>tags</StyledText>
               <StyledTextInput
                 type="text"
+                value={tag}
                 onChange={(e) => setTag(e.target.value)}
               />
             </StyledRow>
@@ -468,9 +476,10 @@ function EditStudyGroup() {
           <StyledAttributeName>Fine</StyledAttributeName>
           <StyledNumberInput
             type="number"
+            value={fine}
             onChange={(e) => setFine(e.target.value)}
           />
-          <StyledText>per non-completion</StyledText>
+          <StyledText>\per non-completion</StyledText>
         </StyledRow>
         <StyledBottomRow2>
           <StyledBottomRow1>
@@ -489,6 +498,7 @@ function EditStudyGroup() {
               name="setting"
               id="Public"
               value="Public"
+              checked={setting === "Public"}
               onChange={(e) => setSetting(e.target.value)}
             />
             <StyledRadioLabel htmlFor="Public">Public</StyledRadioLabel>
