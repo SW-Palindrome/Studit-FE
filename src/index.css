@@ -1,19 +1,19 @@
 /* 반응형 디자인을 위해 미디어 쿼리로 루트의 폰트 사이즈를 조정해줘*/
 @media screen and (max-width: 768px) {
   :root {
-    font-size: 10px;
+    font-size: 5px;
   }
 }
 
-@media  screen and (min-width: 768px) and( max-width: 1024px) { 
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+  :root {
+    font-size: 9px;
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1440px) {
   :root {
     font-size: 12px;
-  }
-}
-
-@media screen and (min-width: 1024px) and (max-width: 1440px) {
-  :root {
-    font-size: 14px;
   }
 }
 

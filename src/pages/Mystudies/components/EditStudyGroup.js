@@ -208,17 +208,27 @@ const StyledBottomRow2 = styled.div`
 
 function EditStudyGroup() {
   const [image, setImage] = useState(null);
+  const [prevImage, setPrevImage] = useState(null);
   const [date, setDate] = useState([null, null]);
   const [stringDate, setStringDate] = useState("");
   const [title, setTitle] = useState("");
+  const [prevTitle, setPrevTitle] = useState("");
   const [memberLimit, setMemberLimit] = useState(0);
+  const [prevMemberLimit, setPrevMemberLimit] = useState(0);
   const [purpose, setPurpose] = useState("CS");
+  const [prevPurpose, setPrevPurpose] = useState("CS");
   const [description, setDescription] = useState("");
+  const [prevDescription, setPrevDescription] = useState("");
   const [mission, setMission] = useState("velog");
+  const [prevMission, setPrevMission] = useState("velog");
   const [week, setWeek] = useState(0);
+  const [prevWeek, setPrevWeek] = useState(0);
   const [tag, setTag] = useState("");
+  const [prevTag, setPrevTag] = useState("");
   const [fine, setFine] = useState(0);
+  const [prevFine, setPrevFine] = useState(0);
   const [setting, setSetting] = useState("Private");
+  const [prevSetting, setPrevSetting] = useState("Private");
   const [isButtonClickabled, setButtonClickabled] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -253,29 +263,46 @@ function EditStudyGroup() {
       ],
       setLoading,
     );
-    const dateArray = stringDate.split(" ~ ");
-    const startDate = new Date(dateArray[0]);
-    const endDate = new Date(dateArray[1]);
-    setDate([startDate, endDate]);
   }, []);
 
   useEffect(() => {
+    if (stringDate) {
+      const dateArray = stringDate.split(" ~ ");
+      const startDate = new Date(dateArray[0]);
+      const endDate = new Date(dateArray[1]);
+      setDate([startDate, endDate]);
+      setPrevImage(image);
+      setPrevTitle(title);
+      setPrevMemberLimit(memberLimit);
+      setPrevPurpose(purpose);
+      setPrevDescription(description);
+      setPrevMission(mission);
+      setPrevWeek(week);
+      setPrevTag(tag);
+      setPrevFine(fine);
+      setPrevSetting(setting);
+    }
+  }, [stringDate]);
+
+  useEffect(() => {
     const isAllInputsFilled =
-      image !== null &&
-      date[0] !== null &&
-      date[1] !== null &&
-      purpose !== "" &&
-      mission !== "" &&
-      title !== "" &&
+      (image != prevImage ||
+        title != prevTitle ||
+        memberLimit != prevMemberLimit ||
+        purpose != prevPurpose ||
+        description != prevDescription ||
+        mission != prevMission ||
+        week != prevWeek ||
+        tag != prevTag ||
+        fine != prevFine ||
+        setting != prevSetting) &&
+      image != null &&
+      title != "" &&
       memberLimit > 0 &&
-      description !== "" &&
+      description != "" &&
       week > 0 &&
-      tag !== "" &&
-      fine > 0 &&
-      setting !== "";
-    console.log(
-      `image: ${image !== null}\n\ndate[0]: ${date[0] !== null}\n\ndate[1]: ${date[1] !== null}\n\npurpose: ${purpose !== ""}\n\nmission: ${mission !== ""}\n\ntitle: ${title !== ""}\n\nmemberLimit: ${memberLimit > 0}\n\ndescription: ${description !== ""}\n\nweek: ${week > 0}\n\ntag: ${tag !== ""}\n\nfine: ${fine > 0}\n\nsetting: ${setting !== ""}`,
-    );
+      tag != "" &&
+      fine > 0;
     setButtonClickabled(isAllInputsFilled);
   }, [
     date,
@@ -344,7 +371,7 @@ function EditStudyGroup() {
       <StyledBody>
         <StyledRow isCentered={true}>
           <StyledAttributeName>Duration</StyledAttributeName>
-          <DateRangePicker setDate={setDate} />
+          <DateRangePicker value={date} />
           <StyledCalendarIcon src={require("../../../assets/calendar.png")} />
         </StyledRow>
         <StyledRow isCentered={false}>
@@ -393,6 +420,7 @@ function EditStudyGroup() {
           </StyledAttributeName>
           <StyledNumberInput
             type="number"
+            value={memberLimit}
             onChange={(e) => setMemberLimit(e.target.value)}
           />
         </StyledRow>
@@ -412,6 +440,7 @@ function EditStudyGroup() {
             name="purpose"
             id="Algorithm"
             value="Algorithm"
+            checked={purpose === "Algorithm"}
             onChange={(e) => setPurpose(e.target.value)}
           />
           <StyledRadioLabel htmlFor="Algorithm">
@@ -422,6 +451,7 @@ function EditStudyGroup() {
           <StyledAttributeName>Description</StyledAttributeName>
           <StyledDescriptionTextarea
             onChange={(e) => setDescription(e.target.value)}
+            value={description}
             type="text"
             maxLength={200}
           />
@@ -444,6 +474,7 @@ function EditStudyGroup() {
                 name="mission"
                 id="github"
                 value="github"
+                checked={mission === "github"}
                 onChange={(e) => setMission(e.target.value)}
               />
               <StyledRadioLabel htmlFor="github">
@@ -453,12 +484,14 @@ function EditStudyGroup() {
             <StyledRow isCentered={true}>
               <StyledNumberInput
                 type="number"
+                value={week}
                 onChange={(e) => setWeek(e.target.value)}
               />
               <StyledText>per week</StyledText>
               <StyledText>tags</StyledText>
               <StyledTextInput
                 type="text"
+                value={tag}
                 onChange={(e) => setTag(e.target.value)}
               />
             </StyledRow>
@@ -468,9 +501,10 @@ function EditStudyGroup() {
           <StyledAttributeName>Fine</StyledAttributeName>
           <StyledNumberInput
             type="number"
+            value={fine}
             onChange={(e) => setFine(e.target.value)}
           />
-          <StyledText>per non-completion</StyledText>
+          <StyledText>\per non-completion</StyledText>
         </StyledRow>
         <StyledBottomRow2>
           <StyledBottomRow1>
@@ -489,6 +523,7 @@ function EditStudyGroup() {
               name="setting"
               id="Public"
               value="Public"
+              checked={setting === "Public"}
               onChange={(e) => setSetting(e.target.value)}
             />
             <StyledRadioLabel htmlFor="Public">Public</StyledRadioLabel>

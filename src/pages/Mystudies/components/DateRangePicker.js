@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -24,78 +24,27 @@ const StyledDateRangePicker = styled.div`
   }
 `;
 
-function DateRangePicker({ setDate }) {
+function DateRangePicker({ value }) {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
-  const onChange = (dates) => {
-    const [start, end] = dates;
-    setStartDate(start);
-    setEndDate(end);
-    setDate([start, end]);
-  };
+
+  useEffect(() => {
+    if (value) {
+      setStartDate(value[0]);
+      setEndDate(value[1]);
+    }
+  }, [value]);
 
   return (
     <StyledDateRangePicker>
-      {startDate == null ? (
-        <DatePicker
-          className="date-picker"
-          onChange={onChange}
-          minDate={new Date()}
-          maxDate={new Date(new Date().setMonth(new Date().getMonth() + 6))}
-          selectsRange
-          startDate={startDate}
-          endDate={endDate}
-          isClearable={true}
-          placeholderText="Select a date range"
-          dateFormat="yyyy-MM-dd"
-        />
-      ) : (
-        <DatePicker
-          className="date-picker"
-          onChange={onChange}
-          minDate={startDate}
-          maxDate={new Date(new Date().setMonth(new Date().getMonth() + 6))}
-          selectsRange
-          startDate={startDate}
-          endDate={endDate}
-          isClearable={true}
-          placeholderText="Select a date range"
-          dateFormat="yyyy-MM-dd"
-          calendarClassName="rasta-stripes"
-          excludeDates={[].concat(
-            Array.from(
-              { length: 30 },
-              (_, i) =>
-                new Date(new Date().setDate(startDate.getDate() + 7 + i * 7)),
-            ),
-            Array.from(
-              { length: 30 },
-              (_, i) =>
-                new Date(new Date().setDate(startDate.getDate() + i * 7 + 1)),
-            ),
-            Array.from(
-              { length: 30 },
-              (_, i) =>
-                new Date(new Date().setDate(startDate.getDate() + i * 7 + 2)),
-            ),
-            Array.from(
-              { length: 30 },
-              (_, i) =>
-                new Date(new Date().setDate(startDate.getDate() + i * 7 + 3)),
-            ),
-            Array.from(
-              { length: 30 },
-              (_, i) =>
-                new Date(new Date().setDate(startDate.getDate() + i * 7 + 4)),
-            ),
-            Array.from(
-              { length: 30 },
-              (_, i) =>
-                new Date(new Date().setDate(startDate.getDate() + i * 7 + 5)),
-            ),
-          )}
-        />
-      )}
+      <DatePicker
+        readOnly={true}
+        className="date-picker"
+        startDate={startDate}
+        endDate={endDate}
+        selectsRange
+        dateFormat="yyyy-MM-dd"
+      />
     </StyledDateRangePicker>
   );
 }

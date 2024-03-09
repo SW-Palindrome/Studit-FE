@@ -44,13 +44,23 @@ const StyledActionContainer = styled.div`
   flex-direction: row;
 `;
 
-const StyledActionButton = styled.div`
+const StyledCreateButton = styled.div`
   cursor: pointer;
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 0.5rem 1rem;
   background-color: #ffffff;
+  border-radius: 50rem;
+`;
+
+const StyledEditButton = styled.div`
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: ${(props) => (props.isEditable ? "#292e33" : "#ffffff")};
   border-radius: 50rem;
   margin-left: 1rem;
 `;
@@ -177,9 +187,22 @@ const StyledGridStatusText = styled.div`
 `;
 
 const StyledGridAction = styled.img`
-  width: ${(props) => (props.isAdmin ? "3rem" : "1.5rem")};
-  height: ${(props) => (props.isAdmin ? "3rem" : "1.5rem")};
+  cursor: pointer;
+  width: 1.5rem;
+  height: 1.5rem;
   margin-bottom: auto;
+`;
+
+const StyledListAction = styled.img`
+  cursor: pointer;
+  width: 1.5rem;
+  height: 1.5rem;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  display: flex;
+  align-items: center;
 `;
 
 const StyledListContainer = styled.div`
@@ -205,6 +228,10 @@ const StyledListAttribute = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
+`;
+
+const StyledListActionAttribute = styled.div`
+  width: 1.5rem;
 `;
 
 const StyledListAttributeText = styled.p`
@@ -252,6 +279,7 @@ const StyledListRowText = styled.p`
 const StyledListRowStatus = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   flex: 1;
 `;
 
@@ -296,6 +324,7 @@ function Studies() {
   const [isSortStudyParticipants, setSortStudyParticipants] = useState(false);
   const [isSortStudyStatus, setSortStudyStatus] = useState(false);
   const [studies, setStudies] = useState([]);
+  const [isEditable, setEditable] = useState(false);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     fetchData(getMystudies, [setStudies], [null], setLoading);
@@ -307,12 +336,14 @@ function Studies() {
       setSortStudyMission(false);
       setSortStudyParticipants(false);
       setSortStudyStatus(false);
+      setStudies(studies.sort((a, b) => a.name.localeCompare(b.name)));
     } else {
       setSortStudyName(false);
       setSortStudyDuration(false);
       setSortStudyMission(false);
       setSortStudyParticipants(false);
       setSortStudyStatus(false);
+      setStudies(studies.sort((a, b) => b.name.localeCompare(a.name)));
     }
   }
 
@@ -323,12 +354,14 @@ function Studies() {
       setSortStudyMission(false);
       setSortStudyParticipants(false);
       setSortStudyStatus(false);
+      setStudies(studies.sort((a, b) => a.duration.localeCompare(b.duration)));
     } else {
       setSortStudyName(false);
       setSortStudyDuration(false);
       setSortStudyMission(false);
       setSortStudyParticipants(false);
       setSortStudyStatus(false);
+      setStudies(studies.sort((a, b) => b.duration.localeCompare(a.duration)));
     }
   }
 
@@ -339,12 +372,14 @@ function Studies() {
       setSortStudyMission(true);
       setSortStudyParticipants(false);
       setSortStudyStatus(false);
+      setStudies(studies.sort((a, b) => a.mission.localeCompare(b.mission)));
     } else {
       setSortStudyName(false);
       setSortStudyDuration(false);
       setSortStudyMission(false);
       setSortStudyParticipants(false);
       setSortStudyStatus(false);
+      setStudies(studies.sort((a, b) => b.mission.localeCompare(a.mission)));
     }
   }
 
@@ -355,12 +390,14 @@ function Studies() {
       setSortStudyMission(false);
       setSortStudyParticipants(true);
       setSortStudyStatus(false);
+      setStudies(studies.sort((a, b) => a.participants - b.participants));
     } else {
       setSortStudyName(false);
       setSortStudyDuration(false);
       setSortStudyMission(false);
       setSortStudyParticipants(false);
       setSortStudyStatus(false);
+      setStudies(studies.sort((a, b) => b.participants - a.participants));
     }
   }
 
@@ -371,14 +408,21 @@ function Studies() {
       setSortStudyMission(false);
       setSortStudyParticipants(false);
       setSortStudyStatus(true);
+      setStudies(studies.sort((a, b) => a.status.localeCompare(b.status)));
     } else {
       setSortStudyName(false);
       setSortStudyDuration(false);
       setSortStudyMission(false);
       setSortStudyParticipants(false);
       setSortStudyStatus(false);
+      setStudies(studies.sort((a, b) => b.status.localeCompare(a.status)));
     }
   }
+
+  function withdrawl() {
+    alert("스터디에서 탈퇴하였습니다.");
+  }
+
   if (loading) return <Loading />;
   return (
     <StyledStudies>
@@ -404,17 +448,22 @@ function Studies() {
         </StyledSortContainer>
         <StyledActionContainer>
           <Link to="/mystudies/create" style={{ textDecoration: "none" }}>
-            <StyledActionButton>
+            <StyledCreateButton>
               <StyledActionLogo src={require("../../../assets/create.png")} />
               <StyledActionText>Create</StyledActionText>
-            </StyledActionButton>
+            </StyledCreateButton>
           </Link>
-          <Link to="/mystudies/edit" style={{ textDecoration: "none" }}>
-            <StyledActionButton>
-              <StyledActionLogo src={require("../../../assets/edit.png")} />
-              <StyledActionText>Edit</StyledActionText>
-            </StyledActionButton>
-          </Link>
+          <StyledEditButton
+            isEditable={isEditable}
+            onClick={() => setEditable(!isEditable)}
+          >
+            <StyledActionLogo
+              src={require("../../../assets/edit-unselect.png")}
+            />
+            <StyledActionText>
+              {isEditable ? "Cancel" : "Edit"}
+            </StyledActionText>
+          </StyledEditButton>
         </StyledActionContainer>
       </StyledHeader>
       {isGridMode ? (
@@ -434,14 +483,28 @@ function Studies() {
                   </StyledGridStatusText>
                 </StyledGridStatus>
               </StyledGridInfoWrapper>
-              <StyledGridAction
-                isAdmin={study.isAdmin}
-                src={
-                  study.isAdmin
-                    ? require("../../../assets/admin.png")
-                    : require("../../../assets/cancle.png")
-                }
-              />
+              {!isEditable && study.isAdmin ? (
+                <StyledGridAction
+                  isAdmin={study.isAdmin}
+                  src={require("../../../assets/admin.png")}
+                />
+              ) : null}
+              {isEditable && study.isAdmin ? (
+                <Link
+                  to={`/mystudies/edit/${study.id}`}
+                  style={{ marginBottom: "auto" }}
+                >
+                  <StyledGridAction
+                    src={require("../../../assets/edit-select.png")}
+                  />
+                </Link>
+              ) : null}
+              {isEditable && !study.isAdmin ? (
+                <StyledGridAction
+                  src={require("../../../assets/cancel.png")}
+                  onClick={withdrawl}
+                />
+              ) : null}
             </StyledGridWrapper>
           ))}
         </StyledGridContainer>
@@ -504,6 +567,7 @@ function Studies() {
                 }}
               />
             </StyledListAttribute>
+            <StyledListActionAttribute />
           </StyledListHeader>
           <StyledListBody>
             {studies.map((study) => (
@@ -523,6 +587,28 @@ function Studies() {
                     {study.status}
                   </StyledListRowStatusText>
                 </StyledListRowStatus>
+                {!isEditable && study.isAdmin ? (
+                  <StyledListAction
+                    isAdmin={study.isAdmin}
+                    src={require("../../../assets/admin.png")}
+                  />
+                ) : null}
+                {!isEditable && !study.isAdmin ? (
+                  <StyledListActionAttribute />
+                ) : null}
+                {isEditable && study.isAdmin ? (
+                  <StyledLink to={`/mystudies/edit/${study.id}`}>
+                    <StyledListAction
+                      src={require("../../../assets/edit-select.png")}
+                    />
+                  </StyledLink>
+                ) : null}
+                {isEditable && !study.isAdmin ? (
+                  <StyledListAction
+                    src={require("../../../assets/cancel.png")}
+                    onClick={withdrawl}
+                  />
+                ) : null}
               </StyledListRow>
             ))}
           </StyledListBody>

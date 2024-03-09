@@ -220,21 +220,18 @@ function CreateStudyGroup() {
 
   useEffect(() => {
     const isAllInputsFilled =
-      image !== null &&
-      date[0] !== null &&
-      date[1] !== null &&
-      purpose !== "" &&
-      mission !== "" &&
-      title !== "" &&
+      image != null &&
+      date[0] != null &&
+      date[1] != null &&
+      purpose != "" &&
+      mission != "" &&
+      title != "" &&
       memberLimit > 0 &&
-      description !== "" &&
+      description != "" &&
       week > 0 &&
-      tag !== "" &&
+      tag != "" &&
       fine > 0 &&
-      setting !== "";
-    console.log(
-      `image: ${image !== null}\n\ndate[0]: ${date[0] !== null}\n\ndate[1]: ${date[1] !== null}\n\npurpose: ${purpose !== ""}\n\nmission: ${mission !== ""}\n\ntitle: ${title !== ""}\n\nmemberLimit: ${memberLimit > 0}\n\ndescription: ${description !== ""}\n\nweek: ${week > 0}\n\ntag: ${tag !== ""}\n\nfine: ${fine > 0}\n\nsetting: ${setting !== ""}`,
-    );
+      setting != "";
     setButtonClickabled(isAllInputsFilled);
   }, [
     date,
