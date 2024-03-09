@@ -192,6 +192,19 @@ const StyledGridAction = styled.img`
   height: 1.5rem;
   margin-bottom: auto;
 `;
+
+const StyledListAction = styled.img`
+  cursor: pointer;
+  width: 1.5rem;
+  height: 1.5rem;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+`;
+
 const StyledListContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -215,6 +228,10 @@ const StyledListAttribute = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
+`;
+
+const StyledListActionAttribute = styled.div`
+  width: 1.5rem;
 `;
 
 const StyledListAttributeText = styled.p`
@@ -262,6 +279,7 @@ const StyledListRowText = styled.p`
 const StyledListRowStatus = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   flex: 1;
 `;
 
@@ -539,6 +557,7 @@ function Studies() {
                 }}
               />
             </StyledListAttribute>
+            <StyledListActionAttribute />
           </StyledListHeader>
           <StyledListBody>
             {studies.map((study) => (
@@ -558,6 +577,28 @@ function Studies() {
                     {study.status}
                   </StyledListRowStatusText>
                 </StyledListRowStatus>
+                {!isEditable && study.isAdmin ? (
+                  <StyledListAction
+                    isAdmin={study.isAdmin}
+                    src={require("../../../assets/admin.png")}
+                  />
+                ) : null}
+                {!isEditable && !study.isAdmin ? (
+                  <StyledListActionAttribute />
+                ) : null}
+                {isEditable && study.isAdmin ? (
+                  <StyledLink to={`/mystudies/edit/${study.id}`}>
+                    <StyledListAction
+                      src={require("../../../assets/edit-select.png")}
+                    />
+                  </StyledLink>
+                ) : null}
+                {isEditable && !study.isAdmin ? (
+                  <StyledListAction
+                    src={require("../../../assets/cancel.png")}
+                    onClick={withdrawl}
+                  />
+                ) : null}
               </StyledListRow>
             ))}
           </StyledListBody>
