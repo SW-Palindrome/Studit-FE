@@ -34,9 +34,9 @@ function DateRangePicker({ value }) {
       setEndDate(value[1]);
     }
   }, [value]);
+
   return (
     <StyledDateRangePicker>
-      (
       <DatePicker
         readOnly={true}
         className="date-picker"
@@ -45,7 +45,6 @@ function DateRangePicker({ value }) {
         selectsRange
         dateFormat="yyyy-MM-dd"
       />
-      )
     </StyledDateRangePicker>
   );
 }
