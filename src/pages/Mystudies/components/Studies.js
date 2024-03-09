@@ -336,12 +336,14 @@ function Studies() {
       setSortStudyMission(false);
       setSortStudyParticipants(false);
       setSortStudyStatus(false);
+      setStudies(studies.sort((a, b) => a.name.localeCompare(b.name)));
     } else {
       setSortStudyName(false);
       setSortStudyDuration(false);
       setSortStudyMission(false);
       setSortStudyParticipants(false);
       setSortStudyStatus(false);
+      setStudies(studies.sort((a, b) => b.name.localeCompare(a.name)));
     }
   }
 
@@ -352,12 +354,14 @@ function Studies() {
       setSortStudyMission(false);
       setSortStudyParticipants(false);
       setSortStudyStatus(false);
+      setStudies(studies.sort((a, b) => a.duration.localeCompare(b.duration)));
     } else {
       setSortStudyName(false);
       setSortStudyDuration(false);
       setSortStudyMission(false);
       setSortStudyParticipants(false);
       setSortStudyStatus(false);
+      setStudies(studies.sort((a, b) => b.duration.localeCompare(a.duration)));
     }
   }
 
@@ -368,12 +372,14 @@ function Studies() {
       setSortStudyMission(true);
       setSortStudyParticipants(false);
       setSortStudyStatus(false);
+      setStudies(studies.sort((a, b) => a.mission.localeCompare(b.mission)));
     } else {
       setSortStudyName(false);
       setSortStudyDuration(false);
       setSortStudyMission(false);
       setSortStudyParticipants(false);
       setSortStudyStatus(false);
+      setStudies(studies.sort((a, b) => b.mission.localeCompare(a.mission)));
     }
   }
 
@@ -384,12 +390,14 @@ function Studies() {
       setSortStudyMission(false);
       setSortStudyParticipants(true);
       setSortStudyStatus(false);
+      setStudies(studies.sort((a, b) => a.participants - b.participants));
     } else {
       setSortStudyName(false);
       setSortStudyDuration(false);
       setSortStudyMission(false);
       setSortStudyParticipants(false);
       setSortStudyStatus(false);
+      setStudies(studies.sort((a, b) => b.participants - a.participants));
     }
   }
 
@@ -400,12 +408,14 @@ function Studies() {
       setSortStudyMission(false);
       setSortStudyParticipants(false);
       setSortStudyStatus(true);
+      setStudies(studies.sort((a, b) => a.status.localeCompare(b.status)));
     } else {
       setSortStudyName(false);
       setSortStudyDuration(false);
       setSortStudyMission(false);
       setSortStudyParticipants(false);
       setSortStudyStatus(false);
+      setStudies(studies.sort((a, b) => b.status.localeCompare(a.status)));
     }
   }
 
