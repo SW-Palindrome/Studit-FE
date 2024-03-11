@@ -9,7 +9,7 @@ const StyledEditStudyGroup = styled.div`
   flex-direction: column;
   overflow-y: auto;
   width: calc(87vw - 4rem);
-  margin: 2rem;
+  padding: 2rem;
   &::-webkit-scrollbar {
     display: none;
   }
