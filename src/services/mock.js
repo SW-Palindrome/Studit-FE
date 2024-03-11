@@ -34,6 +34,12 @@ export async function getDetailStudy() {
   return data.detailStudy;
 }
 
+export async function getStudyActivities() {
+  const response = await fetch("http://localhost:3000/data/data.json");
+  const data = await response.json();
+  return data.studyActivities;
+}
+
 export async function getStudentManagement() {
   const response = await fetch("http://localhost:3000/data/data.json");
   const data = await response.json();

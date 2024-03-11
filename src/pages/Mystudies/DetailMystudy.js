@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Nav from "../../components/Nav";
+import DetailStudy from "./components/DetailStudy";
 
 const StyledDetailMystudy = styled.div`
   display: flex;
@@ -12,6 +13,7 @@ function DetailMystudy() {
   return (
     <StyledDetailMystudy>
       <Nav selectedMenu="mystudies" />
+      <DetailStudy />
     </StyledDetailMystudy>
   );
 }
