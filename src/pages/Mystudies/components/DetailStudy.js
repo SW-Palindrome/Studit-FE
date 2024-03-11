@@ -418,8 +418,8 @@ function DetailStudy() {
                 alt="study-mng"
               />
               <StyledAction
-                src={require("../../../assets/study-invite.png")}
-                alt="study-invite"
+                src={require("../../../assets/study-share.png")}
+                alt="study-share"
               />
             </StyledAdminButtonRow>
             <StyledFineStatusText>Fine Status</StyledFineStatusText>
