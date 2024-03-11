@@ -278,6 +278,43 @@
     "fine": 2000,
     "setting": "Private"
   },
+  "studyActivities": [
+    {
+      "student": "Hooing",
+      "title": null,
+      "date": "24.03.11 ~ 24.03.17",
+      "status": "Incompleted",
+      "url": null
+    },
+    {
+      "student": "Hooing",
+      "title": "React - 1주차 과제",
+      "date": "23.12.26 ~ 23.12.31",
+      "status": "Completed",
+      "url": "https://velog.io/@milkbottle0305"
+    },
+    {
+      "student": "Hooing",
+      "title": "딥러닝 - 1주차 과제",
+      "date": "23.12.26 ~ 23.12.31",
+      "status": "Completed",
+      "url": "https://velog.io/@milkbottle0305"
+    },
+    {
+      "student": "Milkyway",
+      "title": null,
+      "date": "23.12.26 ~ 23.12.31",
+      "status": "Incompleted",
+      "url": null
+    },
+    {
+      "student": "papa",
+      "title": null,
+      "date": "23.12.26 ~ 23.12.31",
+      "status": "Incompleted",
+      "url": null
+    }
+  ],
   "fineStatus": {
     "weekDuration": [
       "12.25 ~ 12.31",
