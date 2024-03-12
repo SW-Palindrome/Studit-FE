@@ -313,6 +313,48 @@
       "date": "23.12.26 ~ 23.12.31",
       "status": "Incompleted",
       "url": null
+    },
+    {
+      "student": "Hooing",
+      "title": "React - 2주차 과제",
+      "date": "23.12.26 ~ 23.12.31",
+      "status": "Completed",
+      "url": "https://velog.io/@milkbottle0305"
+    },
+    {
+      "student": "Milkyway",
+      "title": "React - 2주차 과제",
+      "date": "23.12.26 ~ 23.12.31",
+      "status": "Completed",
+      "url": "https://velog.io/@milkbottle0305"
+    },
+    {
+      "student": "papa",
+      "title": "React - 2주차 과제",
+      "date": "23.12.26 ~ 23.12.31",
+      "status": "Completed",
+      "url": "https://velog.io/@milkbottle0305"
+    },
+    {
+      "student": "Hooing",
+      "title": "React - 3주차 과제",
+      "date": "23.12.26 ~ 23.12.31",
+      "status": "Completed",
+      "url": "https://velog.io/@milkbottle0305"
+    },
+    {
+      "student": "Milkyway",
+      "title": "React - 3주차 과제",
+      "date": "23.12.26 ~ 23.12.31",
+      "status": "Completed",
+      "url": "https://velog.io/@milkbottle0305"
+    },
+    {
+      "student": "papa",
+      "title": "React - 3주차 과제",
+      "date": "23.12.26 ~ 23.12.31",
+      "status": "Completed",
+      "url": "https://velog.io/@milkbottle0305"
     }
   ],
   "fineStatus": {
@@ -321,20 +363,27 @@
       "01.01 ~ 01.07",
       "01.08 ~ 01.14",
       "01.15 ~ 01.21",
-      "01.22 ~ 01.28"
+      "01.22 ~ 01.28",
+      "01.29 ~ 02.04",
+      "02.05 ~ 02.11",
+      "02.12 ~ 02.18",
+      "02.19 ~ 02.25",
+      "02.26 ~ 03.04",
+      "03.05 ~ 03.11",
+      "03.12 ~ 03.18"
     ],
-    "student": [
+    "students": [
       {
         "name": "Hooing",
-        "status": ["미션 성공", "벌급 납부", "미션 성공", "미션 성공"]
+        "statuses": ["미션 성공", "벌급 납부", "미션 성공", "미션 성공","미션 성공", "벌급 납부", "미션 성공", "미션 성공","미션 성공", "벌급 납부", "미션 성공", "미션 성공" ]
       },
       {
         "name": "Milkyway",
-        "status": ["미션 성공", "미션 성공", "벌급 납부", "미션 성공"]
+        "statuses": ["미션 성공", "미션 성공", "벌급 납부", "미션 성공","미션 성공", "벌급 납부", "미션 성공", "미션 성공","미션 성공", "벌급 납부", "미션 성공", "미션 성공"]
       },
       {
         "name": "papa",
-        "status": ["미션 성공", "벌급 납부", "미션 성공", "미션 성공"]
+        "statuses": ["미션 성공", "벌급 납부", "미션 성공", "미션 성공","미션 성공", "벌급 납부", "미션 성공", "미션 성공","미션 성공", "벌급 납부", "미션 성공", "미션 성공"]
       }
     ]
   },
