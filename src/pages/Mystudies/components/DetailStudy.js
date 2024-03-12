@@ -133,7 +133,8 @@ const StyledAction = styled.img`
 const StyledFineStatusText = styled.div`
   cursor: pointer;
   font-size: 1.25rem;
-  color: #ffffff;
+  color: ${(props) =>
+    props.selectMenu === "fine-status" ? "#ffffff" : "#666666"};
   font-family: roboto;
   font-weight: 700;
   margin-top: 1rem;
@@ -309,8 +310,16 @@ function DetailStudy() {
                 />
               </Link>
               <StyledAction
-                src={require("../../../assets/study-mng.png")}
-                onClick={() => setSelectMenu("manage")}
+                src={
+                  selectMenu === "manage"
+                    ? require("../../../assets/study-mng-select.png")
+                    : require("../../../assets/study-mng-unselect.png")
+                }
+                onClick={() => {
+                  selectMenu === "manage"
+                    ? setSelectMenu("activities")
+                    : setSelectMenu("manage");
+                }}
                 alt="study-mng"
               />
               <StyledAction
@@ -318,7 +327,14 @@ function DetailStudy() {
                 alt="study-share"
               />
             </StyledAdminButtonRow>
-            <StyledFineStatusText onClick={() => setSelectMenu("fine-status")}>
+            <StyledFineStatusText
+              selectMenu={selectMenu}
+              onClick={() => {
+                selectMenu === "fine-status"
+                  ? setSelectMenu("activities")
+                  : setSelectMenu("fine-status");
+              }}
+            >
               Fine Status
             </StyledFineStatusText>
           </StyledAdminButtonColumn>
