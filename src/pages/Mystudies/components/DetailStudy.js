@@ -157,7 +157,7 @@ function DetailStudy() {
 
   const [activities, setActivities] = useState([]);
   const [fineStatus, setFineStatus] = useState([]);
-  const [management, setManagement] = useState([]);
+  const [managements, setManagement] = useState([]);
 
   const [loading, setLoading] = useState(true);
 
@@ -359,7 +359,7 @@ function DetailStudy() {
           activities={activities}
         />
       )}
-      {selectMenu === "manage" && <Management management={management} />}
+      {selectMenu === "manage" && <Management managements={managements} />}
       {selectMenu === "fine-status" && <FineStatus fineStatus={fineStatus} />}
     </StyledDetailStudy>
   );
