@@ -50,6 +50,7 @@ const StyledListAttributeText = styled.p`
 `;
 
 const StyledListAttributeSort = styled.img`
+  z-index: 1;
   width: 1.25rem;
   height: 0.625rem;
 `;
@@ -150,7 +151,7 @@ function Activities({
             <StyledListAttributeSort
               src={require("../../../assets/white-sort.png")}
               style={{
-                transform: isSortStudent ? "rotate(180deg)" : "rotate(0deg",
+                transform: isSortStudent ? "rotate(180deg)" : "rotate(0deg)",
               }}
             />
           </StyledListAttribute>
@@ -159,7 +160,7 @@ function Activities({
             <StyledListAttributeSort
               src={require("../../../assets/white-sort.png")}
               style={{
-                transform: isSortTitle ? "rotate(180deg)" : "rotate(0deg",
+                transform: isSortTitle ? "rotate(180deg)" : "rotate(0deg)",
               }}
             />
           </StyledListAttribute>
@@ -168,7 +169,7 @@ function Activities({
             <StyledListAttributeSort
               src={require("../../../assets/white-sort.png")}
               style={{
-                transform: isSortDate ? "rotate(180deg)" : "rotate(0deg",
+                transform: isSortDate ? "rotate(180deg)" : "rotate(0deg)",
               }}
             />
           </StyledListAttribute>
@@ -177,7 +178,7 @@ function Activities({
             <StyledListAttributeSort
               src={require("../../../assets/white-sort.png")}
               style={{
-                transform: isSortStatus ? "rotate(180deg)" : "rotate(0deg",
+                transform: isSortStatus ? "rotate(180deg)" : "rotate(0deg)",
               }}
             />
           </StyledListAttribute>

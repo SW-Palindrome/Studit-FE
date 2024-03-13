@@ -11,6 +11,7 @@ import fetchData from "../../../utils/fetchData";
 import Activities from "./Activities";
 import FineStatus from "./FineStatus";
 import Management from "./Management";
+import ShareModal from "./ShareModal";
 
 const StyledDetailStudy = styled.div`
   display: flex;
@@ -154,7 +155,7 @@ function DetailStudy() {
   const [isSortTitle, setSortTitle] = useState(false);
   const [isSortDate, setSortDate] = useState(false);
   const [isSortStatus, setSortStatus] = useState(false);
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [activities, setActivities] = useState([]);
   const [fineStatus, setFineStatus] = useState([]);
   const [managements, setManagement] = useState([]);
@@ -275,93 +276,97 @@ function DetailStudy() {
 
   if (loading) return null;
   return (
-    <StyledDetailStudy>
-      <StyledTitle>My Studies</StyledTitle>
-      <StyledDetailContainer>
-        <StyledRow>
-          <StyledThumbnail src={thumbnail} />
-          <StyledColumn>
-            <StyledStudyTitle>{title}</StyledStudyTitle>
-            <StyledDuration>{duration}</StyledDuration>
-          </StyledColumn>
-          <StyledColumn>
-            <StyledMission>Mission</StyledMission>
-            <StyledMissionText>
-              {mission === "velog" ? "Post velog article" : "Commit github"}
-            </StyledMissionText>
-            <StyledFine>{`${week} times/week ${fine}₩/non-completion`}</StyledFine>
-          </StyledColumn>
-          <StyledIntergrateButton>
-            <StyledIntergrateLogo
-              src={require("../../../assets/intergrate.png")}
-              alt="intergrate"
-            />
-            <StyledIntergrateText>Intergrate</StyledIntergrateText>
-          </StyledIntergrateButton>
-          <StyledAdminButtonColumn>
-            <StyledAdminButtonRow>
-              <Link
-                to={`/mystudies/edit/${window.location.pathname.split("/")[2]}`}
-                style={{ textDecoration: "none" }}
-              >
+    <>
+      {isModalOpen ? <ShareModal setIsModalOpen={setIsModalOpen} /> : null}
+      <StyledDetailStudy>
+        <StyledTitle>My Studies</StyledTitle>
+        <StyledDetailContainer>
+          <StyledRow>
+            <StyledThumbnail src={thumbnail} />
+            <StyledColumn>
+              <StyledStudyTitle>{title}</StyledStudyTitle>
+              <StyledDuration>{duration}</StyledDuration>
+            </StyledColumn>
+            <StyledColumn>
+              <StyledMission>Mission</StyledMission>
+              <StyledMissionText>
+                {mission === "velog" ? "Post velog article" : "Commit github"}
+              </StyledMissionText>
+              <StyledFine>{`${week} times/week ${fine}₩/non-completion`}</StyledFine>
+            </StyledColumn>
+            <StyledIntergrateButton>
+              <StyledIntergrateLogo
+                src={require("../../../assets/intergrate.png")}
+                alt="intergrate"
+              />
+              <StyledIntergrateText>Intergrate</StyledIntergrateText>
+            </StyledIntergrateButton>
+            <StyledAdminButtonColumn>
+              <StyledAdminButtonRow>
+                <Link
+                  to={`/mystudies/edit/${window.location.pathname.split("/")[2]}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <StyledAction
+                    src={require("../../../assets/study-setting.png")}
+                    alt="study-setting"
+                  />
+                </Link>
                 <StyledAction
-                  src={require("../../../assets/study-setting.png")}
-                  alt="study-setting"
+                  src={
+                    selectMenu === "manage"
+                      ? require("../../../assets/study-mng-select.png")
+                      : require("../../../assets/study-mng-unselect.png")
+                  }
+                  onClick={() => {
+                    selectMenu === "manage"
+                      ? setSelectMenu("activities")
+                      : setSelectMenu("manage");
+                  }}
+                  alt="study-mng"
                 />
-              </Link>
-              <StyledAction
-                src={
-                  selectMenu === "manage"
-                    ? require("../../../assets/study-mng-select.png")
-                    : require("../../../assets/study-mng-unselect.png")
-                }
+                <StyledAction
+                  src={require("../../../assets/study-share.png")}
+                  alt="study-share"
+                  onClick={() => setIsModalOpen(true)}
+                />
+              </StyledAdminButtonRow>
+              <StyledFineStatusText
+                selectMenu={selectMenu}
                 onClick={() => {
-                  selectMenu === "manage"
+                  selectMenu === "fine-status"
                     ? setSelectMenu("activities")
-                    : setSelectMenu("manage");
+                    : setSelectMenu("fine-status");
                 }}
-                alt="study-mng"
-              />
-              <StyledAction
-                src={require("../../../assets/study-share.png")}
-                alt="study-share"
-              />
-            </StyledAdminButtonRow>
-            <StyledFineStatusText
-              selectMenu={selectMenu}
-              onClick={() => {
-                selectMenu === "fine-status"
-                  ? setSelectMenu("activities")
-                  : setSelectMenu("fine-status");
-              }}
-            >
-              Fine Status
-            </StyledFineStatusText>
-          </StyledAdminButtonColumn>
-        </StyledRow>
-        <StyledRow>
-          <StyledColumn>
-            <StyledMission>Description</StyledMission>
-            <StyledDescription>{description}</StyledDescription>
-          </StyledColumn>
-        </StyledRow>
-      </StyledDetailContainer>
-      {selectMenu === "activities" && (
-        <Activities
-          sortStudnet={sortStudent}
-          isSortStudent={isSortStudent}
-          sortTitle={sortTitle}
-          isSortTitle={isSortTitle}
-          sortDate={sortDate}
-          isSortDate={isSortDate}
-          sortStatus={sortStatus}
-          isSortStatus={isSortStatus}
-          activities={activities}
-        />
-      )}
-      {selectMenu === "manage" && <Management managements={managements} />}
-      {selectMenu === "fine-status" && <FineStatus fineStatus={fineStatus} />}
-    </StyledDetailStudy>
+              >
+                Fine Status
+              </StyledFineStatusText>
+            </StyledAdminButtonColumn>
+          </StyledRow>
+          <StyledRow>
+            <StyledColumn>
+              <StyledMission>Description</StyledMission>
+              <StyledDescription>{description}</StyledDescription>
+            </StyledColumn>
+          </StyledRow>
+        </StyledDetailContainer>
+        {selectMenu === "activities" && (
+          <Activities
+            sortStudnet={sortStudent}
+            isSortStudent={isSortStudent}
+            sortTitle={sortTitle}
+            isSortTitle={isSortTitle}
+            sortDate={sortDate}
+            isSortDate={isSortDate}
+            sortStatus={sortStatus}
+            isSortStatus={isSortStatus}
+            activities={activities}
+          />
+        )}
+        {selectMenu === "manage" && <Management managements={managements} />}
+        {selectMenu === "fine-status" && <FineStatus fineStatus={fineStatus} />}
+      </StyledDetailStudy>
+    </>
   );
 }
 
