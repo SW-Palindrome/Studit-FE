@@ -87,6 +87,9 @@ const StyledFineData = styled.div`
   font-size: 1rem;
   color: #ffffff;
   font-family: roboto;
+  text-decoration-line: ${(props) => {
+    return props.isPaid ? "line-through" : "none";
+  }};
   min-width: 7rem;
   text-align: center;
 `;
@@ -109,7 +112,9 @@ function FineStatus({ fineStatus }) {
             <StyledDataRow key={index}>
               <StyledNameData>{student.name}</StyledNameData>
               {student.statuses.map((status, index) => (
-                <StyledFineData key={index}>{status}</StyledFineData>
+                <StyledFineData isPaid={status[1]} key={index}>
+                  {status[0]}
+                </StyledFineData>
               ))}
             </StyledDataRow>
           ))}

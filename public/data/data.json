@@ -375,35 +375,139 @@
     "students": [
       {
         "name": "Hooing",
-        "statuses": ["미션 성공", "벌급 납부", "미션 성공", "미션 성공","미션 성공", "벌급 납부", "미션 성공", "미션 성공","미션 성공", "벌급 납부", "미션 성공", "미션 성공" ]
+        "statuses": [
+          ["0 ₩", false],
+          ["0 ₩", false],
+          ["0 ₩", false],
+          ["0 ₩", false],
+          ["10000 ₩", true],
+          ["10000 ₩", true],
+          ["0 ₩", false],
+          ["0 ₩", false],
+          ["3000 ₩", false],
+          ["10000 ₩", true],
+          ["0 ₩", false],
+          ["0 ₩", false]
+        ]
       },
       {
         "name": "Milkyway",
-        "statuses": ["미션 성공", "미션 성공", "벌급 납부", "미션 성공","미션 성공", "벌급 납부", "미션 성공", "미션 성공","미션 성공", "벌급 납부", "미션 성공", "미션 성공"]
+        "statuses": [
+          ["0 ₩", false],
+          ["0 ₩", false],
+          ["0 ₩", false],
+          ["0 ₩", false],
+          ["10000 ₩", true],
+          ["10000 ₩", true],
+          ["0 ₩", false],
+          ["0 ₩", false],
+          ["3000 ₩", false],
+          ["10000 ₩", true],
+          ["0 ₩", false],
+          ["0 ₩", false]
+        ]
       },
       {
         "name": "papa",
-        "statuses": ["미션 성공", "벌급 납부", "미션 성공", "미션 성공","미션 성공", "벌급 납부", "미션 성공", "미션 성공","미션 성공", "벌급 납부", "미션 성공", "미션 성공"]
+        "statuses": [
+          ["0 ₩", false],
+          ["0 ₩", false],
+          ["0 ₩", false],
+          ["0 ₩", false],
+          ["10000 ₩", true],
+          ["10000 ₩", true],
+          ["0 ₩", false],
+          ["0 ₩", false],
+          ["3000 ₩", false],
+          ["10000 ₩", true],
+          ["0 ₩", false],
+          ["0 ₩", false]
+        ]
       },
       {
         "name": "papa",
-        "statuses": ["미션 성공", "벌급 납부", "미션 성공", "미션 성공","미션 성공", "벌급 납부", "미션 성공", "미션 성공","미션 성공", "벌급 납부", "미션 성공", "미션 성공"]
+        "statuses": [
+          ["0 ₩", false],
+          ["0 ₩", false],
+          ["0 ₩", false],
+          ["0 ₩", false],
+          ["10000 ₩", true],
+          ["10000 ₩", true],
+          ["0 ₩", false],
+          ["0 ₩", false],
+          ["3000 ₩", false],
+          ["10000 ₩", true],
+          ["0 ₩", false],
+          ["0 ₩", false]
+        ]
       },
       {
         "name": "papa",
-        "statuses": ["미션 성공", "벌급 납부", "미션 성공", "미션 성공","미션 성공", "벌급 납부", "미션 성공", "미션 성공","미션 성공", "벌급 납부", "미션 성공", "미션 성공"]
+        "statuses": [
+          ["0 ₩", false],
+          ["0 ₩", false],
+          ["0 ₩", false],
+          ["0 ₩", false],
+          ["10000 ₩", true],
+          ["10000 ₩", true],
+          ["0 ₩", false],
+          ["0 ₩", false],
+          ["3000 ₩", false],
+          ["10000 ₩", true],
+          ["0 ₩", false],
+          ["0 ₩", false]
+        ]
       },
       {
         "name": "papa",
-        "statuses": ["미션 성공", "벌급 납부", "미션 성공", "미션 성공","미션 성공", "벌급 납부", "미션 성공", "미션 성공","미션 성공", "벌급 납부", "미션 성공", "미션 성공"]
+        "statuses": [
+          ["0 ₩", false],
+          ["0 ₩", false],
+          ["0 ₩", false],
+          ["0 ₩", false],
+          ["0 ₩", false],
+          ["0 ₩", false],
+          ["0 ₩", false],
+          ["0 ₩", false],
+          ["0 ₩", false],
+          ["0 ₩", false],
+          ["0 ₩", false],
+          ["0 ₩", false]
+        ]
       },
       {
         "name": "papa",
-        "statuses": ["미션 성공", "벌급 납부", "미션 성공", "미션 성공","미션 성공", "벌급 납부", "미션 성공", "미션 성공","미션 성공", "벌급 납부", "미션 성공", "미션 성공"]
+        "statuses": [
+          ["0 ₩", false],
+          ["3000 ₩", true],
+          ["0 ₩", false],
+          ["3000 ₩", false],
+          ["0 ₩", false],
+          ["3000 ₩", true],
+          ["0 ₩", false],
+          ["3000 ₩", false],
+          ["0 ₩", false],
+          ["3000 ₩", true],
+          ["0 ₩", false],
+          ["3000 ₩", false]
+        ]
       },
       {
         "name": "papa",
-        "statuses": ["미션 성공", "벌급 납부", "미션 성공", "미션 성공","미션 성공", "벌급 납부", "미션 성공", "미션 성공","미션 성공", "벌급 납부", "미션 성공", "미션 성공"]
+        "statuses": [
+          ["0 ₩", false],
+          ["3000 ₩", true],
+          ["0 ₩", false],
+          ["3000 ₩", false],
+          ["0 ₩", false],
+          ["3000 ₩", true],
+          ["0 ₩", false],
+          ["3000 ₩", false],
+          ["0 ₩", false],
+          ["3000 ₩", true],
+          ["0 ₩", false],
+          ["3000 ₩", false]
+        ]
       }
     ]
   },
@@ -411,23 +515,27 @@
     {
       "name": "Hooing",
       "permission": "Member",
-      "missionIntergrate": true,
-      "totalFinePaid": 2000,
-      "isFinePaid": true
+      "missionIntergrate": true
     },
     {
       "name": "Milkyway",
       "permission": "Sub-Leader",
-      "missionIntergrate": true,
-      "totalFinePaid": 2000,
-      "isFinePaid": true
+      "missionIntergrate": true
     },
     {
       "name": "papa",
       "permission": "Leader",
-      "missionIntergrate": false,
-      "totalFinePaid": null,
-      "isFinePaid": null
+      "missionIntergrate": false
+    },
+    {
+      "name": "Akro",
+      "permission": "Member",
+      "missionIntergrate": false
+    },
+    {
+      "name": "Heyroo",
+      "permission": "Member",
+      "missionIntergrate": true
     }
   ]
 }
