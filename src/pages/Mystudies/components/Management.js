@@ -83,7 +83,7 @@ const StyledBan = styled.div`
 
 function Management({ managements }) {
   function ban() {
-    if (confirm("추방하시겠습니까?")) {
+    if (confirm("스터디에서 추방하시겠습니까?")) {
       alert("추방되었습니다.");
     } else {
       alert("취소되었습니다.");

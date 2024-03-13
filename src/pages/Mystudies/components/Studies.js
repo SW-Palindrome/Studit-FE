@@ -420,7 +420,11 @@ function Studies() {
   }
 
   function withdrawl() {
-    alert("스터디에서 탈퇴하였습니다.");
+    if (confirm("스터디에서 탈퇴하시겠습니까?")) {
+      alert("탈퇴되었습니다.");
+    } else {
+      alert("취소되었습니다.");
+    }
   }
 
   if (loading) return <Loading />;
@@ -507,7 +511,10 @@ function Studies() {
                 {isEditable && !study.isAdmin ? (
                   <StyledGridAction
                     src={require("../../../assets/cancel.png")}
-                    onClick={withdrawl}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      withdrawl();
+                    }}
                   />
                 ) : null}
               </StyledGridWrapper>
@@ -617,7 +624,10 @@ function Studies() {
                   {isEditable && !study.isAdmin ? (
                     <StyledListAction
                       src={require("../../../assets/cancel.png")}
-                      onClick={withdrawl}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        withdrawl();
+                      }}
                     />
                   ) : null}
                 </StyledListRow>
