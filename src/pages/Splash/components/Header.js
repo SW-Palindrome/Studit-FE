@@ -39,9 +39,14 @@ const StyledButton = styled.button`
 function Header({ setSigninClicked, setSignupClicked, setIsLoading }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   function logout() {
-    setIsAuthenticated(false);
-    localStorage.removeItem("studitAccessToken");
-    localStorage.removeItem("studitRefreshToken");
+    if (confirm("로그아웃 하시겠습니까?")) {
+      setIsAuthenticated(false);
+      localStorage.removeItem("studitAccessToken");
+      localStorage.removeItem("studitRefreshToken");
+      alert("로그아웃 되었습니다.");
+    } else {
+      alert("로그아웃이 취소되었습니다.");
+    }
   }
 
   // 컴포넌트가 렌더링 될 때마다 토큰이 유효한지 확인
