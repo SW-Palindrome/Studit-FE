@@ -80,23 +80,23 @@ function Modal({ setSigninClicked, setSignupClicked, isSignin }) {
   function requestGoogleLogin() {
     const url =
       process.env.NODE_ENV === "development"
-        ? process.env.REACT_APP_API_URL_DEV
-        : process.env.REACT_APP_API_URL_PROD;
+        ? process.env.REACT_APP_FE_URL_DEV
+        : process.env.REACT_APP_FE_URL_PROD;
 
-    const api = process.env.API_URL_DEV;
+    const api = process.env.REACT_APP_API_URL_DEV;
 
-    window.location.href = `${api}/oauth2/authorization/google?redirect_uri=${url}/callback`;
+    window.location.href = `${api}/oauth2/authorization/google?redirect_uri=${url}`;
   }
 
   function requestGithubLogin() {
     const url =
       process.env.NODE_ENV === "development"
-        ? process.env.REACT_APP_API_URL_DEV
-        : process.env.REACT_APP_API_URL_PROD;
+        ? process.env.REACT_APP_FE_URL_DEV
+        : process.env.REACT_APP_FE_URL_PROD;
 
-    const api = process.env.API_URL_DEV;
+    const api = process.env.REACT_APP_API_URL_DEV;
 
-    window.location.href = `${api}/oauth2/authorization/github?redirect_uri=${url}/callback`;
+    window.location.href = `${api}/oauth2/authorization/github?redirect_uri=${url}`;
   }
 
   return (
