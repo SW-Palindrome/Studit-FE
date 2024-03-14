@@ -420,7 +420,11 @@ function Studies() {
   }
 
   function withdrawl() {
-    alert("스터디에서 탈퇴하였습니다.");
+    if (confirm("스터디에서 탈퇴하시겠습니까?")) {
+      alert("탈퇴되었습니다.");
+    } else {
+      alert("취소되었습니다.");
+    }
   }
 
   if (loading) return <Loading />;
@@ -469,43 +473,52 @@ function Studies() {
       {isGridMode ? (
         <StyledGridContainer>
           {studies.map((study, index) => (
-            <StyledGridWrapper key={index}>
-              <StyledGridThumbnail src={study.thumbnail} />
-              <StyledGridInfoWrapper>
-                <StyledGridTitle>{study.name}</StyledGridTitle>
-                <StyledGridPeriod>{study.duration}</StyledGridPeriod>
-                <StyledGridParti>
-                  Participants: {study.participants}
-                </StyledGridParti>
-                <StyledGridStatus status={study.status}>
-                  <StyledGridStatusText status={study.status}>
-                    {study.status}
-                  </StyledGridStatusText>
-                </StyledGridStatus>
-              </StyledGridInfoWrapper>
-              {!isEditable && study.isAdmin ? (
-                <StyledGridAction
-                  isAdmin={study.isAdmin}
-                  src={require("../../../assets/admin.png")}
-                />
-              ) : null}
-              {isEditable && study.isAdmin ? (
-                <Link
-                  to={`/mystudies/edit/${study.id}`}
-                  style={{ marginBottom: "auto" }}
-                >
+            <Link
+              key={index}
+              to={`/mystudies/${study.id}`}
+              style={{ textDecoration: "none" }}
+            >
+              <StyledGridWrapper>
+                <StyledGridThumbnail src={study.thumbnail} />
+                <StyledGridInfoWrapper>
+                  <StyledGridTitle>{study.name}</StyledGridTitle>
+                  <StyledGridPeriod>{study.duration}</StyledGridPeriod>
+                  <StyledGridParti>
+                    Participants: {study.participants}
+                  </StyledGridParti>
+                  <StyledGridStatus status={study.status}>
+                    <StyledGridStatusText status={study.status}>
+                      {study.status}
+                    </StyledGridStatusText>
+                  </StyledGridStatus>
+                </StyledGridInfoWrapper>
+                {!isEditable && study.isAdmin ? (
                   <StyledGridAction
-                    src={require("../../../assets/edit-select.png")}
+                    isAdmin={study.isAdmin}
+                    src={require("../../../assets/admin.png")}
                   />
-                </Link>
-              ) : null}
-              {isEditable && !study.isAdmin ? (
-                <StyledGridAction
-                  src={require("../../../assets/cancel.png")}
-                  onClick={withdrawl}
-                />
-              ) : null}
-            </StyledGridWrapper>
+                ) : null}
+                {isEditable && study.isAdmin ? (
+                  <Link
+                    to={`/mystudies/edit/${study.id}`}
+                    style={{ marginBottom: "auto" }}
+                  >
+                    <StyledGridAction
+                      src={require("../../../assets/edit-select.png")}
+                    />
+                  </Link>
+                ) : null}
+                {isEditable && !study.isAdmin ? (
+                  <StyledGridAction
+                    src={require("../../../assets/cancel.png")}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      withdrawl();
+                    }}
+                  />
+                ) : null}
+              </StyledGridWrapper>
+            </Link>
           ))}
         </StyledGridContainer>
       ) : (
@@ -571,45 +584,54 @@ function Studies() {
           </StyledListHeader>
           <StyledListBody>
             {studies.map((study) => (
-              <StyledListRow key={study.id}>
-                <StyledListRowText flex={3}>{study.name}</StyledListRowText>
-                <StyledListRowText flex={1.4}>
-                  {study.duration}
-                </StyledListRowText>
-                <StyledListRowText flex={1.4}>
-                  {study.mission}
-                </StyledListRowText>
-                <StyledListRowText flex={1}>
-                  {study.participants}
-                </StyledListRowText>
-                <StyledListRowStatus flex={1}>
-                  <StyledListRowStatusText status={study.status}>
-                    {study.status}
-                  </StyledListRowStatusText>
-                </StyledListRowStatus>
-                {!isEditable && study.isAdmin ? (
-                  <StyledListAction
-                    isAdmin={study.isAdmin}
-                    src={require("../../../assets/admin.png")}
-                  />
-                ) : null}
-                {!isEditable && !study.isAdmin ? (
-                  <StyledListActionAttribute />
-                ) : null}
-                {isEditable && study.isAdmin ? (
-                  <StyledLink to={`/mystudies/edit/${study.id}`}>
+              <Link
+                key={study.id}
+                to={`/mystudies/${study.id}`}
+                style={{ textDecoration: "none" }}
+              >
+                <StyledListRow>
+                  <StyledListRowText flex={3}>{study.name}</StyledListRowText>
+                  <StyledListRowText flex={1.4}>
+                    {study.duration}
+                  </StyledListRowText>
+                  <StyledListRowText flex={1.4}>
+                    {study.mission}
+                  </StyledListRowText>
+                  <StyledListRowText flex={1}>
+                    {study.participants}
+                  </StyledListRowText>
+                  <StyledListRowStatus flex={1}>
+                    <StyledListRowStatusText status={study.status}>
+                      {study.status}
+                    </StyledListRowStatusText>
+                  </StyledListRowStatus>
+                  {!isEditable && study.isAdmin ? (
                     <StyledListAction
-                      src={require("../../../assets/edit-select.png")}
+                      isAdmin={study.isAdmin}
+                      src={require("../../../assets/admin.png")}
                     />
-                  </StyledLink>
-                ) : null}
-                {isEditable && !study.isAdmin ? (
-                  <StyledListAction
-                    src={require("../../../assets/cancel.png")}
-                    onClick={withdrawl}
-                  />
-                ) : null}
-              </StyledListRow>
+                  ) : null}
+                  {!isEditable && !study.isAdmin ? (
+                    <StyledListActionAttribute />
+                  ) : null}
+                  {isEditable && study.isAdmin ? (
+                    <StyledLink to={`/mystudies/edit/${study.id}`}>
+                      <StyledListAction
+                        src={require("../../../assets/edit-select.png")}
+                      />
+                    </StyledLink>
+                  ) : null}
+                  {isEditable && !study.isAdmin ? (
+                    <StyledListAction
+                      src={require("../../../assets/cancel.png")}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        withdrawl();
+                      }}
+                    />
+                  ) : null}
+                </StyledListRow>
+              </Link>
             ))}
           </StyledListBody>
         </StyledListContainer>

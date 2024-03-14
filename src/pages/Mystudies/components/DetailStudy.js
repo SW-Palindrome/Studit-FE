@@ -1,7 +1,17 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { getDetailStudy, getStudyActivities } from "../../../services/mock";
+import {
+  getDetailStudy,
+  getFineStatus,
+  getStudentManagement,
+  getStudyActivities,
+} from "../../../services/mock";
 import fetchData from "../../../utils/fetchData";
+import Activities from "./Activities";
+import FineStatus from "./FineStatus";
+import Management from "./Management";
+import ShareModal from "./ShareModal";
 
 const StyledDetailStudy = styled.div`
   display: flex;
@@ -115,6 +125,7 @@ const StyledDescription = styled.div`
 `;
 
 const StyledAction = styled.img`
+  cursor: pointer;
   width: 2rem;
   height: 2rem;
   margin-left: 0.5rem;
@@ -123,135 +134,12 @@ const StyledAction = styled.img`
 const StyledFineStatusText = styled.div`
   cursor: pointer;
   font-size: 1.25rem;
-  color: #ffffff;
+  color: ${(props) =>
+    props.selectMenu === "fine-status" ? "#ffffff" : "#666666"};
   font-family: roboto;
   font-weight: 700;
   margin-top: 1rem;
   text-align: end;
-`;
-
-const StyledActivitiesText = styled.div`
-  font-size: 2.5rem;
-  color: #ffffff;
-  font-family: roboto;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  font-weight: 700;
-`;
-
-const StyledActivitiesContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  background-color: #292e33;
-  border-radius: 0.625rem;
-  padding: 1rem 2rem;
-`;
-
-const StyledListHeader = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid #000000;
-`;
-
-const StyledListAttribute = styled.div`
-  cursor: pointer;
-  display: flex;
-  flex: ${(props) => props.flex};
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-`;
-
-const StyledListAttributeText = styled.p`
-  margin: 0;
-  margin-right: 0.625rem;
-  padding: 0;
-  font-family: roboto;
-  font-size: 1.25rem;
-  color: #ffffff;
-  text-align: center;
-`;
-
-const StyledListAttributeSort = styled.img`
-  width: 1.25rem;
-  height: 0.625rem;
-`;
-
-const StyledListBody = styled.div`
-  height: 40vh;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-`;
-
-const StyledListRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 0.5rem 0;
-`;
-
-const StyledListRowText = styled.p`
-  flex: ${(props) => props.flex};
-  margin: 0;
-  padding: 0;
-  font-family: roboto;
-  font-size: 1.25rem;
-  color: #ffffff;
-  text-align: center;
-  overflow: hidden;
-`;
-
-const StyledListRowUrl = styled.a`
-  flex: ${(props) => props.flex};
-  margin: 0;
-  padding: 0;
-  font-family: roboto;
-  font-size: 1.25rem;
-  color: #ffffff;
-  text-align: center;
-  overflow: hidden;
-`;
-
-const StyledListRowStatus = styled.div`
-  display: flex;
-  justify-content: center;
-  flex: 1.4;
-`;
-
-const StyledListRowStatusText = styled.p`
-  margin: 0;
-  padding: 0.5rem 1rem;
-  font-family: roboto;
-  font-size: 1rem;
-  font-weight: 700;
-  border-radius: 50rem;
-  overflow: hidden;
-  background-color: ${function (props) {
-    switch (props.status) {
-      case "Completed":
-        return "#CBDAC4";
-      case "Incompleted":
-        return "#F0D1C4";
-      default:
-        return "#EFE0C5";
-    }
-  }};
-  color: ${function (props) {
-    switch (props.status) {
-      case "Completed":
-        return "#339D43";
-      case "Incompleted":
-        return "#E66633";
-      default:
-        return "#000000";
-    }
-  }};
 `;
 
 function DetailStudy() {
@@ -262,12 +150,16 @@ function DetailStudy() {
   const [mission, setMission] = useState("");
   const [week, setWeek] = useState(0);
   const [fine, setFine] = useState(0);
-  const [selectMenu, setSelectMenu] = useState("default");
+  const [selectMenu, setSelectMenu] = useState("activities");
   const [isSortStudent, setSortStudent] = useState(false);
   const [isSortTitle, setSortTitle] = useState(false);
   const [isSortDate, setSortDate] = useState(false);
   const [isSortStatus, setSortStatus] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [activities, setActivities] = useState([]);
+  const [fineStatus, setFineStatus] = useState([]);
+  const [managements, setManagement] = useState([]);
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -291,9 +183,11 @@ function DetailStudy() {
         "week",
         "fine",
       ],
-      setLoading,
+      null,
     );
-    fetchData(getStudyActivities, [setActivities], [null], setLoading);
+    fetchData(getStudyActivities, [setActivities], [null], null);
+    fetchData(getFineStatus, [setFineStatus], [null], null);
+    fetchData(getStudentManagement, [setManagement], [null], setLoading);
   }, []);
 
   function sortStudent() {
@@ -382,128 +276,97 @@ function DetailStudy() {
 
   if (loading) return null;
   return (
-    <StyledDetailStudy>
-      <StyledTitle>My Studies</StyledTitle>
-      <StyledDetailContainer>
-        <StyledRow>
-          <StyledThumbnail src={thumbnail} />
-          <StyledColumn>
-            <StyledStudyTitle>{title}</StyledStudyTitle>
-            <StyledDuration>{duration}</StyledDuration>
-          </StyledColumn>
-          <StyledColumn>
-            <StyledMission>Mission</StyledMission>
-            <StyledMissionText>
-              {mission === "velog" ? "Post velog article" : "Commit github"}
-            </StyledMissionText>
-            <StyledFine>{`${week} times/week ${fine}₩/non-completion`}</StyledFine>
-          </StyledColumn>
-          <StyledIntergrateButton>
-            <StyledIntergrateLogo
-              src={require("../../../assets/intergrate.png")}
-              alt="intergrate"
-            />
-            <StyledIntergrateText>Intergrate</StyledIntergrateText>
-          </StyledIntergrateButton>
-          <StyledAdminButtonColumn>
-            <StyledAdminButtonRow>
-              <StyledAction
-                src={require("../../../assets/study-setting.png")}
-                onClick={() => setSelectMenu("setting")}
-                alt="study-setting"
+    <>
+      {isModalOpen ? <ShareModal setIsModalOpen={setIsModalOpen} /> : null}
+      <StyledDetailStudy>
+        <StyledTitle>My Studies</StyledTitle>
+        <StyledDetailContainer>
+          <StyledRow>
+            <StyledThumbnail src={thumbnail} />
+            <StyledColumn>
+              <StyledStudyTitle>{title}</StyledStudyTitle>
+              <StyledDuration>{duration}</StyledDuration>
+            </StyledColumn>
+            <StyledColumn>
+              <StyledMission>Mission</StyledMission>
+              <StyledMissionText>
+                {mission === "velog" ? "Post velog article" : "Commit github"}
+              </StyledMissionText>
+              <StyledFine>{`${week} times/week ${fine}₩/non-completion`}</StyledFine>
+            </StyledColumn>
+            <StyledIntergrateButton>
+              <StyledIntergrateLogo
+                src={require("../../../assets/intergrate.png")}
+                alt="intergrate"
               />
-              <StyledAction
-                src={require("../../../assets/study-mng.png")}
-                onClick={() => setSelectMenu("manage")}
-                alt="study-mng"
-              />
-              <StyledAction
-                src={require("../../../assets/study-invite.png")}
-                alt="study-invite"
-              />
-            </StyledAdminButtonRow>
-            <StyledFineStatusText>Fine Status</StyledFineStatusText>
-          </StyledAdminButtonColumn>
-        </StyledRow>
-        <StyledRow>
-          <StyledColumn>
-            <StyledMission>Description</StyledMission>
-            <StyledDescription>{description}</StyledDescription>
-          </StyledColumn>
-        </StyledRow>
-      </StyledDetailContainer>
-      <StyledActivitiesText>Activities</StyledActivitiesText>
-      {selectMenu === "default" ? (
-        <StyledActivitiesContainer>
-          <StyledListHeader>
-            <StyledListAttribute flex={1} onClick={() => sortStudent()}>
-              <StyledListAttributeText>Student</StyledListAttributeText>
-              <StyledListAttributeSort
-                src={require("../../../assets/white-sort.png")}
-                style={{
-                  transform: isSortStudent ? "rotate(180deg)" : "rotate(0deg",
+              <StyledIntergrateText>Intergrate</StyledIntergrateText>
+            </StyledIntergrateButton>
+            <StyledAdminButtonColumn>
+              <StyledAdminButtonRow>
+                <Link
+                  to={`/mystudies/edit/${window.location.pathname.split("/")[2]}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <StyledAction
+                    src={require("../../../assets/study-setting.png")}
+                    alt="study-setting"
+                  />
+                </Link>
+                <StyledAction
+                  src={
+                    selectMenu === "manage"
+                      ? require("../../../assets/study-mng-select.png")
+                      : require("../../../assets/study-mng-unselect.png")
+                  }
+                  onClick={() => {
+                    selectMenu === "manage"
+                      ? setSelectMenu("activities")
+                      : setSelectMenu("manage");
+                  }}
+                  alt="study-mng"
+                />
+                <StyledAction
+                  src={require("../../../assets/study-share.png")}
+                  alt="study-share"
+                  onClick={() => setIsModalOpen(true)}
+                />
+              </StyledAdminButtonRow>
+              <StyledFineStatusText
+                selectMenu={selectMenu}
+                onClick={() => {
+                  selectMenu === "fine-status"
+                    ? setSelectMenu("activities")
+                    : setSelectMenu("fine-status");
                 }}
-              />
-            </StyledListAttribute>
-            <StyledListAttribute flex={2} onClick={() => sortTitle()}>
-              <StyledListAttributeText>Title</StyledListAttributeText>
-              <StyledListAttributeSort
-                src={require("../../../assets/white-sort.png")}
-                style={{
-                  transform: isSortTitle ? "rotate(180deg)" : "rotate(0deg",
-                }}
-              />
-            </StyledListAttribute>
-            <StyledListAttribute flex={1.4} onClick={() => sortDate()}>
-              <StyledListAttributeText>Date</StyledListAttributeText>
-              <StyledListAttributeSort
-                src={require("../../../assets/white-sort.png")}
-                style={{
-                  transform: isSortDate ? "rotate(180deg)" : "rotate(0deg",
-                }}
-              />
-            </StyledListAttribute>
-            <StyledListAttribute flex={1.4} onClick={() => sortStatus()}>
-              <StyledListAttributeText>Status</StyledListAttributeText>
-              <StyledListAttributeSort
-                src={require("../../../assets/white-sort.png")}
-                style={{
-                  transform: isSortStatus ? "rotate(180deg)" : "rotate(0deg",
-                }}
-              />
-            </StyledListAttribute>
-            <StyledListAttribute flex={2}>
-              <StyledListAttributeText>Url</StyledListAttributeText>
-            </StyledListAttribute>
-          </StyledListHeader>
-          <StyledListBody>
-            {activities.map((activity) => (
-              <StyledListRow key={activity.id}>
-                <StyledListRowText flex={1}>
-                  {activity.student}
-                </StyledListRowText>
-                <StyledListRowText flex={2}>{activity.title}</StyledListRowText>
-                <StyledListRowText flex={1.4}>
-                  {activity.date}
-                </StyledListRowText>
-                <StyledListRowStatus flex={1.4}>
-                  <StyledListRowStatusText status={activity.status}>
-                    {activity.status}
-                  </StyledListRowStatusText>
-                </StyledListRowStatus>
-                <StyledListRowUrl href={activity.url} flex={2}>
-                  {activity.url}
-                </StyledListRowUrl>
-              </StyledListRow>
-            ))}
-          </StyledListBody>
-        </StyledActivitiesContainer>
-      ) : selectMenu === "setting" ? (
-        <div>setting</div>
-      ) : (
-        <div>manage</div>
-      )}
-    </StyledDetailStudy>
+              >
+                Fine Status
+              </StyledFineStatusText>
+            </StyledAdminButtonColumn>
+          </StyledRow>
+          <StyledRow>
+            <StyledColumn>
+              <StyledMission>Description</StyledMission>
+              <StyledDescription>{description}</StyledDescription>
+            </StyledColumn>
+          </StyledRow>
+        </StyledDetailContainer>
+        {selectMenu === "activities" && (
+          <Activities
+            sortStudnet={sortStudent}
+            isSortStudent={isSortStudent}
+            sortTitle={sortTitle}
+            isSortTitle={isSortTitle}
+            sortDate={sortDate}
+            isSortDate={isSortDate}
+            sortStatus={sortStatus}
+            isSortStatus={isSortStatus}
+            activities={activities}
+          />
+        )}
+        {selectMenu === "manage" && <Management managements={managements} />}
+        {selectMenu === "fine-status" && <FineStatus fineStatus={fineStatus} />}
+      </StyledDetailStudy>
+    </>
   );
 }
 

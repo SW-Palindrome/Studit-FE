@@ -14,7 +14,12 @@ function Callback() {
       if (refreshToken) {
         localStorage.setItem("studitRefreshToken", refreshToken);
       }
-      window.location.href = "http://localhost:3000/home";
+      const homeUrl =
+        process.env.NODE_ENV === "development"
+          ? process.env.REACT_APP_FE_URL_DEV
+          : process.env.REACT_APP_FE_URL_PROD;
+
+      window.location.href = `${homeUrl}/home`;
     };
 
     handleOAuthCallback();

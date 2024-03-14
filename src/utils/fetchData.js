@@ -13,6 +13,6 @@ export default async function fetchData(
   } catch (error) {
     console.log("서버 오류입니다. 다시 시도해주세요.");
   } finally {
-    setLoading(false);
+    if (setLoading !== null) setLoading(false);
   }
 }

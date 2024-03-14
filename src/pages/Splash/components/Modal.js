@@ -78,13 +78,25 @@ const StyledBottomButton = styled.button`
 
 function Modal({ setSigninClicked, setSignupClicked, isSignin }) {
   function requestGoogleLogin() {
-    window.location.href =
-      "http://13.124.72.126:8080/oauth2/authorization/google?redirect_uri=http://localhost:3000/callback";
+    const url =
+      process.env.NODE_ENV === "development"
+        ? process.env.REACT_APP_FE_URL_DEV
+        : process.env.REACT_APP_FE_URL_PROD;
+
+    const api = process.env.REACT_APP_API_URL_DEV;
+
+    window.location.href = `${api}/oauth2/authorization/google?redirect_uri=${url}/callback`;
   }
 
   function requestGithubLogin() {
-    window.location.href =
-      "http://13.124.72.126:8080/oauth2/authorization/github?redirect_uri=http://localhost:3000/callback";
+    const url =
+      process.env.NODE_ENV === "development"
+        ? process.env.REACT_APP_FE_URL_DEV
+        : process.env.REACT_APP_FE_URL_PROD;
+
+    const api = process.env.REACT_APP_API_URL_DEV;
+
+    window.location.href = `${api}/oauth2/authorization/github?redirect_uri=${url}/callback`;
   }
 
   return (

@@ -1,4 +1,4 @@
-const BASE_URL = "http://13.124.72.126:8080";
+const BASE_URL = process.env.REACT_APP_API_URL_DEV;
 
 export const validateToken = async (token) => {
   try {

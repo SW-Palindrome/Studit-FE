@@ -11,10 +11,12 @@ const StyledMystudies = styled.div`
 
 function Mystudies() {
   return (
-    <StyledMystudies>
-      <Nav selectedMenu="mystudies" />
-      <Studies />
-    </StyledMystudies>
+    <>
+      <StyledMystudies>
+        <Nav selectedMenu="mystudies" />
+        <Studies />
+      </StyledMystudies>
+    </>
   );
 }
 
