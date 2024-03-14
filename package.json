@@ -16,8 +16,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "local": "cross-env REACT_APP_URL=localhost react-scripts start",
-    "build": "cross-env REACT_APP_URL=d3qsaqakmywz7y.cloudfront.net react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
