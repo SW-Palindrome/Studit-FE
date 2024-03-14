@@ -85,7 +85,7 @@ function Modal({ setSigninClicked, setSignupClicked, isSignin }) {
 
     const api = process.env.REACT_APP_API_URL_DEV;
 
-    window.location.href = `${api}/oauth2/authorization/google?redirect_uri=${url}`;
+    window.location.href = `${api}/oauth2/authorization/google?redirect_uri=${url}/callback`;
   }
 
   function requestGithubLogin() {
@@ -96,7 +96,7 @@ function Modal({ setSigninClicked, setSignupClicked, isSignin }) {
 
     const api = process.env.REACT_APP_API_URL_DEV;
 
-    window.location.href = `${api}/oauth2/authorization/github?redirect_uri=${url}`;
+    window.location.href = `${api}/oauth2/authorization/github?redirect_uri=${url}/callback`;
   }
 
   return (

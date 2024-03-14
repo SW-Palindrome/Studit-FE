@@ -36,7 +36,7 @@ const StyledButton = styled.button`
   background-color: #000000;
 `;
 
-function Header({ setSigninClicked, setSignupClicked }) {
+function Header({ setSigninClicked, setSignupClicked, setIsLoading }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   function logout() {
     setIsAuthenticated(false);
@@ -54,6 +54,8 @@ function Header({ setSigninClicked, setSignupClicked }) {
         setIsAuthenticated(isAuthenticated);
       } catch (error) {
         setIsAuthenticated(false);
+      } finally {
+        setIsLoading(false);
       }
     };
 

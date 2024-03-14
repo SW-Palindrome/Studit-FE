@@ -15,9 +15,9 @@ function Callback() {
         localStorage.setItem("studitRefreshToken", refreshToken);
       }
       const homeUrl =
-        process.env.NODE_ENV === "production"
-          ? process.env.REACT_APP_HOME_URL_PROD
-          : process.env.REACT_APP_HOME_URL_DEV;
+        process.env.NODE_ENV === "development"
+          ? process.env.REACT_APP_FE_URL_DEV
+          : process.env.REACT_APP_FE_URL_PROD;
 
       window.location.href = `${homeUrl}/home`;
     };
