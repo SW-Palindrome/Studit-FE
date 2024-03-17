@@ -12,20 +12,22 @@ function PrivateRoute({ authentication }) {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    const checkAuthentication = async () => {
-      try {
-        const isAuthenticated = await validateToken(
-          localStorage.getItem("studitAccessToken"),
-        );
-        setIsAuthenticated(isAuthenticated);
-      } catch (error) {
-        setIsAuthenticated(false);
-      } finally {
-        setLoading(false); // 비동기 작업 완료 후 로딩 상태 변경
-      }
-    };
+    setIsAuthenticated(true);
+    setLoading(false);
+    // const checkAuthentication = async () => {
+    //   try {
+    //     const isAuthenticated = await validateToken(
+    //       localStorage.getItem("studitAccessToken"),
+    //     );
+    //     setIsAuthenticated(isAuthenticated);
+    //   } catch (error) {
+    //     setIsAuthenticated(false);
+    //   } finally {
+    //     setLoading(false); // 비동기 작업 완료 후 로딩 상태 변경
+    //   }
+    // };
 
-    checkAuthentication();
+    // checkAuthentication();
   }, []);
 
   if (loading) {
