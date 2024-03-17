@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import { validateToken } from "../../services/api";
+// import { validateToken } from "../../services/api";
 import Loading from "../../components/Loading";
 
 function PrivateRoute({ authentication }) {
