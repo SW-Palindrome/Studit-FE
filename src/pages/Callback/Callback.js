@@ -23,7 +23,7 @@ function Callback() {
     };
 
     handleOAuthCallback();
-  }, [history]);
+  }, []);
 
   return null;
 }

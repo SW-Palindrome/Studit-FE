@@ -11,12 +11,14 @@ import CreateMystudy from "./pages/Mystudies/CreateMystudy";
 import EditMystudy from "./pages/Mystudies/EditMystudy";
 import Settings from "./pages/Settings/Settings";
 import DetailMystudy from "./pages/Mystudies/DetailMystudy";
+import Notfound from "./pages/Notfound/Notfound";
 
 function App() {
   return (
     <Routes>
       <Route path="/callback" element={<Callback />} />
       <Route path="/" element={<Splash />} />
+      <Route path="*" element={<Notfound />} />
       <Route element={<PrivateRoute authentication={true} />}>
         <Route path="/home" element={<Home />} />
         <Route path="/calendar" element={<Calendar />} />

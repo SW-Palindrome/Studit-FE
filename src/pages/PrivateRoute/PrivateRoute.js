@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
-// import { validateToken } from "../../services/api";
+import { validateToken } from "../../services/api";
 import Loading from "../../components/Loading";
 
 function PrivateRoute({ authentication }) {
@@ -14,20 +14,20 @@ function PrivateRoute({ authentication }) {
   useEffect(() => {
     setIsAuthenticated(true);
     setLoading(false);
-    // const checkAuthentication = async () => {
-    //   try {
-    //     const isAuthenticated = await validateToken(
-    //       localStorage.getItem("studitAccessToken"),
-    //     );
-    //     setIsAuthenticated(isAuthenticated);
-    //   } catch (error) {
-    //     setIsAuthenticated(false);
-    //   } finally {
-    //     setLoading(false); // 비동기 작업 완료 후 로딩 상태 변경
-    //   }
-    // };
+    const checkAuthentication = async () => {
+      try {
+        const isAuthenticated = await validateToken(
+          localStorage.getItem("studitAccessToken"),
+        );
+        setIsAuthenticated(isAuthenticated);
+      } catch (error) {
+        setIsAuthenticated(false);
+      } finally {
+        setLoading(false); // 비동기 작업 완료 후 로딩 상태 변경
+      }
+    };
 
-    // checkAuthentication();
+    checkAuthentication();
   }, []);
 
   if (loading) {
