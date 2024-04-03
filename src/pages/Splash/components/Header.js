@@ -36,8 +36,10 @@ const StyledButton = styled.button`
   background-color: #000000;
 `;
 
-function Header({ setSigninClicked, setSignupClicked, setIsLoading }) {
+function Header({ setSigninClicked, setSignupClicked }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
   function logout() {
     if (confirm("로그아웃 하시겠습니까?")) {
       setIsAuthenticated(false);
@@ -53,8 +55,10 @@ function Header({ setSigninClicked, setSignupClicked, setIsLoading }) {
   useEffect(() => {
     const checkAuthentication = async () => {
       try {
-        await validateToken(localStorage.getItem("studitAccessToken"));
-        setIsAuthenticated(true);
+        const isAuthenticated = await validateToken(
+          localStorage.getItem("studitAccessToken"),
+        );
+        setIsAuthenticated(isAuthenticated);
       } catch (error) {
         setIsAuthenticated(false);
       } finally {
@@ -64,6 +68,10 @@ function Header({ setSigninClicked, setSignupClicked, setIsLoading }) {
 
     checkAuthentication();
   }, []);
+
+  if (isLoading) {
+    return null;
+  }
 
   return (
     <StyledHeader>
