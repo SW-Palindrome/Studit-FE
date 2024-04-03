@@ -53,10 +53,8 @@ function Header({ setSigninClicked, setSignupClicked, setIsLoading }) {
   useEffect(() => {
     const checkAuthentication = async () => {
       try {
-        const isAuthenticated = await validateToken(
-          localStorage.getItem("studitAccessToken"),
-        );
-        setIsAuthenticated(isAuthenticated);
+        await validateToken(localStorage.getItem("studitAccessToken"));
+        setIsAuthenticated(true);
       } catch (error) {
         setIsAuthenticated(false);
       } finally {
