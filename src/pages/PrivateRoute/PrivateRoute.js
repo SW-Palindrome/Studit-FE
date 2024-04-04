@@ -15,6 +15,9 @@ function PrivateRoute({ authentication }) {
         );
         setIsAuthenticated(isAuthenticated);
       } catch (error) {
+        alert("토큰이 만료되어 로그인이 필요합니다.");
+        localStorage.removeItem("studitAccessToken");
+        localStorage.removeItem("studitRefreshToken");
         setIsAuthenticated(false);
       } finally {
         setLoading(false);
@@ -30,7 +33,6 @@ function PrivateRoute({ authentication }) {
 
   if (authentication) {
     if (isAuthenticated === false) {
-      alert("토큰이 만려되어 로그인이 필요합니다.");
       return <Navigate to="/" />;
     } else {
       return <Outlet />;
@@ -39,7 +41,6 @@ function PrivateRoute({ authentication }) {
     if (isAuthenticated === false) {
       return <Outlet />;
     } else {
-      alert("이미 로그인되어 있습니다.");
       return <Navigate to="/home" />;
     }
   }
