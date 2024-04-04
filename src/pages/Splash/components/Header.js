@@ -36,8 +36,10 @@ const StyledButton = styled.button`
   background-color: #000000;
 `;
 
-function Header({ setSigninClicked, setSignupClicked, setIsLoading }) {
+function Header({ setSigninClicked, setSignupClicked }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
   function logout() {
     if (confirm("로그아웃 하시겠습니까?")) {
       setIsAuthenticated(false);
@@ -58,6 +60,9 @@ function Header({ setSigninClicked, setSignupClicked, setIsLoading }) {
         );
         setIsAuthenticated(isAuthenticated);
       } catch (error) {
+        alert("토큰이 만료되어 로그인이 필요합니다.");
+        localStorage.removeItem("studitAccessToken");
+        localStorage.removeItem("studitRefreshToken");
         setIsAuthenticated(false);
       } finally {
         setIsLoading(false);
@@ -66,6 +71,10 @@ function Header({ setSigninClicked, setSignupClicked, setIsLoading }) {
 
     checkAuthentication();
   }, []);
+
+  if (isLoading) {
+    return null;
+  }
 
   return (
     <StyledHeader>

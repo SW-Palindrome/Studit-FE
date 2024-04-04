@@ -1,23 +1,52 @@
 const BASE_URL = process.env.REACT_APP_API_URL_DEV;
 
-export const validateToken = async (token) => {
+export const validateToken = async (accessToken) => {
   try {
-    const response = await fetch(`${BASE_URL}/auth/token-info/${token}`);
-
+    if (!accessToken) {
+      throw Error("Error: No access token");
+    }
+    const response = await fetch(`${BASE_URL}/auth/token-info/${accessToken}`);
     if (!response.ok) {
-      // 상태 코드가 200 OK가 아니면 오류 발생
-      throw new Error("Failed to validate token");
+      // 상태 코드가 200 OK가 아니면 액세스 토큰이 유효하지 않은 것이므로 갱신시도
+      return await refreshToken(accessToken);
     }
-
-    const data = await response.json();
-
-    if (data.sub !== null && !isNaN(data.sub)) {
-      return true; // 토큰이 유효한 경우
-    } else {
-      return false; // 토큰이 유효하지 않은 경우
-    }
+    return true;
   } catch (error) {
-    console.error("Error validating token:", error);
-    throw error; // 오류 처리
+    throw Error(error);
+  }
+};
+
+const refreshToken = async (accessToken) => {
+  try {
+    var base64Url = accessToken.split(".")[1];
+    var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    var jsonPayload = decodeURIComponent(
+      atob(base64)
+        .split("")
+        .map(function (c) {
+          return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+        })
+        .join(""),
+    );
+    const id = JSON.parse(jsonPayload)["sub"];
+    const refreshToken = localStorage.getItem("studitRefreshToken");
+    const response = await fetch(`${BASE_URL}/auth/token-refresh`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user_id: id,
+        refresh_token: refreshToken,
+      }),
+    });
+    if (!response.ok) {
+      throw new Error("Error: Failed to refresh token");
+    }
+    const data = await response.text();
+    localStorage.setItem("studitAccessToken", data);
+    return true;
+  } catch (error) {
+    throw Error(error);
   }
 };
