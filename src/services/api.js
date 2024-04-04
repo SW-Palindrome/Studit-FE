@@ -2,21 +2,23 @@ const BASE_URL = process.env.REACT_APP_API_URL_DEV;
 
 export const validateToken = async (accessToken) => {
   try {
+    if (!accessToken) {
+      throw Error("Error: No access token");
+    }
     const response = await fetch(`${BASE_URL}/auth/token-info/${accessToken}`);
     if (!response.ok) {
-      // 상태 코드가 200 OK가 아니면 오류 발생
-      throw new Error("Failed to validate token");
+      // 상태 코드가 200 OK가 아니면 액세스 토큰이 유효하지 않은 것이므로 갱신시도
+      return await refreshToken(accessToken);
     }
     return true;
   } catch (error) {
-    return await refreshToken(accessToken); // 토큰이 만료된 경우 토큰 갱신
+    throw Error(error);
   }
 };
 
-export const refreshToken = async (accessToken) => {
+const refreshToken = async (accessToken) => {
   try {
-    const refreshToken = localStorage.getItem("studitRefreshToken");
-    var base64Url = refreshToken.split(".")[1];
+    var base64Url = accessToken.split(".")[1];
     var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
     var jsonPayload = decodeURIComponent(
       atob(base64)
@@ -27,23 +29,24 @@ export const refreshToken = async (accessToken) => {
         .join(""),
     );
     const id = JSON.parse(jsonPayload)["sub"];
-
-    const response = await fetch(`${BASE_URL}/auth/token-refresh/`, {
+    const refreshToken = localStorage.getItem("studitRefreshToken");
+    const response = await fetch(`${BASE_URL}/auth/token-refresh`, {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         user_id: id,
-        refresh_token: accessToken,
+        refresh_token: refreshToken,
       }),
     });
     if (!response.ok) {
-      throw new Error("Failed to refresh token");
+      throw new Error("Error: Failed to refresh token");
     }
-    const data = await response.json();
+    const data = await response.text();
     localStorage.setItem("studitAccessToken", data);
     return true;
   } catch (error) {
-    localStorage.removeItem("studitAccessToken");
-    localStorage.removeItem("studitRefreshToken");
-    throw error;
+    throw Error(error);
   }
 };
