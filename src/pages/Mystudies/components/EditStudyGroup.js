@@ -371,7 +371,7 @@ function EditStudyGroup() {
       <StyledBody>
         <StyledRow isCentered={true}>
           <StyledAttributeName>Duration</StyledAttributeName>
-          <DateRangePicker isEditable={false} value={date} />
+          <DateRangePicker isEditable={false} date={date} />
           <StyledCalendarIcon src={require("../../../assets/calendar.png")} />
         </StyledRow>
         <StyledRow isCentered={false}>
@@ -409,7 +409,7 @@ function EditStudyGroup() {
             type="text"
             maxLength="20"
             value={title}
-            onChange={setTitle}
+            onChange={(e) => setTitle(e.target.value)}
           />
         </StyledRow>
         <StyledRow isCentered={true}>

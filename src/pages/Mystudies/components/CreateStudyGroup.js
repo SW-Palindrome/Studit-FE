@@ -232,7 +232,7 @@ function CreateStudyGroup() {
       week > 0 &&
       tag != "" &&
       fine > 0 &&
-      isPublic != false;
+      isPublic != null;
     setButtonClickabled(isAllInputsFilled);
   }, [
     date,
