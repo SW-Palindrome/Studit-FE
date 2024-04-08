@@ -24,7 +24,7 @@ const StyledDateRangePicker = styled.div`
   }
 `;
 
-function DateRangePicker({ value }) {
+function DateRangePicker({ isEditable, value }) {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
@@ -38,11 +38,11 @@ function DateRangePicker({ value }) {
   return (
     <StyledDateRangePicker>
       <DatePicker
-        readOnly={true}
+        readOnly={!isEditable}
+        selectsRange={true}
         className="date-picker"
         startDate={startDate}
         endDate={endDate}
-        selectsRange
         dateFormat="yyyy-MM-dd"
       />
     </StyledDateRangePicker>
