@@ -276,7 +276,7 @@
     "week": 3,
     "tag": "CTR",
     "fine": 2000,
-    "setting": "Private"
+    "isPublic": false
   },
   "studyMissions": [
     {

@@ -227,8 +227,8 @@ function EditStudyGroup() {
   const [prevTag, setPrevTag] = useState("");
   const [fine, setFine] = useState(0);
   const [prevFine, setPrevFine] = useState(0);
-  const [setting, setSetting] = useState("Private");
-  const [prevSetting, setPrevSetting] = useState("Private");
+  const [isPublic, setIsPublic] = useState(false);
+  const [prevIsPublic, setPrevIsPublic] = useState(false);
   const [isButtonClickabled, setButtonClickabled] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -246,7 +246,7 @@ function EditStudyGroup() {
         setWeek,
         setTag,
         setFine,
-        setSetting,
+        setIsPublic,
       ],
       [
         "thumbnail",
@@ -259,7 +259,7 @@ function EditStudyGroup() {
         "week",
         "tag",
         "fine",
-        "setting",
+        "isPublic",
       ],
       setLoading,
     );
@@ -280,7 +280,7 @@ function EditStudyGroup() {
       setPrevWeek(week);
       setPrevTag(tag);
       setPrevFine(fine);
-      setPrevSetting(setting);
+      setPrevIsPublic(isPublic);
     }
   }, [stringDate]);
 
@@ -295,7 +295,7 @@ function EditStudyGroup() {
         week != prevWeek ||
         tag != prevTag ||
         fine != prevFine ||
-        setting != prevSetting) &&
+        isPublic != prevIsPublic) &&
       image != null &&
       title != "" &&
       memberLimit > 0 &&
@@ -315,7 +315,7 @@ function EditStudyGroup() {
     week,
     tag,
     fine,
-    setting,
+    isPublic,
   ]);
 
   const fetchEditStudyGroup = async () => {
@@ -339,7 +339,7 @@ function EditStudyGroup() {
     //     week,
     //     tag,
     //     fine,
-    //     setting,
+    //     isPublic,
     //   }),
     // });
 
@@ -508,23 +508,21 @@ function EditStudyGroup() {
         </StyledRow>
         <StyledBottomRow2>
           <StyledBottomRow1>
-            <StyledAttributeName>Setting</StyledAttributeName>
+            <StyledAttributeName>IsPublic</StyledAttributeName>
             <StyledRadio
               type="radio"
-              name="setting"
+              name="isPublic"
               id="Private"
-              value="Private"
-              checked={setting === "Private"}
-              onChange={(e) => setSetting(e.target.value)}
+              checked={isPublic === false}
+              onChange={() => setIsPublic(false)}
             />
             <StyledRadioLabel htmlFor="Private">Private</StyledRadioLabel>
             <StyledRadio
               type="radio"
-              name="setting"
+              name="isPublic"
               id="Public"
-              value="Public"
-              checked={setting === "Public"}
-              onChange={(e) => setSetting(e.target.value)}
+              checked={isPublic === true}
+              onChange={() => setIsPublic(true)}
             />
             <StyledRadioLabel htmlFor="Public">Public</StyledRadioLabel>
           </StyledBottomRow1>
