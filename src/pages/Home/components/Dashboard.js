@@ -148,9 +148,9 @@ const StyledMissionStatusWrapper = styled.div`
 `;
 
 const StyledMissionStatus = styled.div`
-  color: ${(props) => (props.status === "Completed" ? "#249636" : "#E66633")};
+  color: ${(props) => (props.status === "COMPLETED" ? "#249636" : "#E66633")};
   background-color: ${(props) =>
-    props.status === "Completed" ? "#CBDAC4" : "#F0D1C4"};
+    props.status === "COMPLETED" ? "#CBDAC4" : "#F0D1C4"};
   font-family: roboto;
   font-size: 1rem;
   font-weight: 700;
@@ -188,15 +188,15 @@ function Dashboard() {
   const [sortStatus, setSortStatus] = useState(false);
   const [totalJoined, setTotalJoined] = useState(0);
   const [totalCompleted, setTotalCompleted] = useState(0);
-  const [totalIncompleted, setTotalIncompleted] = useState(0);
+  const [totalIncomplete, setTotalIncomplete] = useState(0);
   const [contents, setContents] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchData(
       getDashboard,
-      [setTotalJoined, setTotalCompleted, setTotalIncompleted, setContents],
-      ["totalJoined", "totalCompleted", "totalIncompleted", "contents"],
+      [setTotalJoined, setTotalCompleted, setTotalIncomplete, setContents],
+      ["totalJoined", "totalCompleted", "totalIncomplete", "contents"],
       setLoading,
     );
   }, []);
@@ -249,7 +249,7 @@ function Dashboard() {
         </StyledTotalMenu>
         <StyledTotalMenu last={true}>
           <StyledTotalTitle>Incomplete Missions for this week</StyledTotalTitle>
-          <StyledTotailCount>{totalIncompleted}</StyledTotailCount>
+          <StyledTotailCount>{totalIncomplete}</StyledTotailCount>
         </StyledTotalMenu>
       </StyledTotalContainer>
       <StyledMissionContainer>

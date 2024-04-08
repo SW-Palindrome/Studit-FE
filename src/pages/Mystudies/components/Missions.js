@@ -110,9 +110,9 @@ const StyledListRowStatusText = styled.p`
   overflow: hidden;
   background-color: ${function (props) {
     switch (props.status) {
-      case "Completed":
+      case "COMPLETED":
         return "#CBDAC4";
-      case "Incompleted":
+      case "INCOMPLETE":
         return "#F0D1C4";
       default:
         return "#EFE0C5";
@@ -120,9 +120,9 @@ const StyledListRowStatusText = styled.p`
   }};
   color: ${function (props) {
     switch (props.status) {
-      case "Completed":
+      case "COMPLETED":
         return "#339D43";
-      case "Incompleted":
+      case "INCOMPLETE":
         return "#E66633";
       default:
         return "#000000";
