@@ -39,10 +39,10 @@ export async function getDetailStudy() {
   return data.detailStudy;
 }
 
-export async function getStudyActivities() {
+export async function getStudyMissions() {
   const response = await fetch(`${url}/data/data.json`);
   const data = await response.json();
-  return data.studyActivities;
+  return data.studyMissions;
 }
 
 export async function getStudentManagement() {

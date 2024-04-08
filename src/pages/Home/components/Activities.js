@@ -126,7 +126,9 @@ function Activities() {
             <StyledAcitivityHeader>
               <StyledProfile src={activity.profileUrl} />
               <StyledNameTimeContainer>
-                <StyledName>{activity.name + " completed a task"}</StyledName>
+                <StyledName>
+                  {activity.name + " completed a mission"}
+                </StyledName>
                 <StyledTime>{activity.time}</StyledTime>
               </StyledNameTimeContainer>
             </StyledAcitivityHeader>
