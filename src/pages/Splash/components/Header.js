@@ -60,7 +60,6 @@ function Header({ setSigninClicked, setSignupClicked }) {
         );
         setIsAuthenticated(isAuthenticated);
       } catch (error) {
-        alert("토큰이 만료되어 로그인이 필요합니다.");
         localStorage.removeItem("studitAccessToken");
         localStorage.removeItem("studitRefreshToken");
         setIsAuthenticated(false);

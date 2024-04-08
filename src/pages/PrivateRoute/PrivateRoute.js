@@ -15,7 +15,7 @@ function PrivateRoute({ authentication }) {
         );
         setIsAuthenticated(isAuthenticated);
       } catch (error) {
-        alert("토큰이 만료되어 로그인이 필요합니다.");
+        alert("로그인을 하시고 다시 시도해주세요.");
         localStorage.removeItem("studitAccessToken");
         localStorage.removeItem("studitRefreshToken");
         setIsAuthenticated(false);
