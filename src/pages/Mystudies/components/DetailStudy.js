@@ -5,10 +5,10 @@ import {
   getDetailStudy,
   getFineStatus,
   getStudentManagement,
-  getStudyActivities,
+  getStudyMissions,
 } from "../../../services/mock";
 import fetchData from "../../../utils/fetchData";
-import Activities from "./Activities";
+import Missions from "./Missions";
 import FineStatus from "./FineStatus";
 import Management from "./Management";
 import ShareModal from "./ShareModal";
@@ -150,13 +150,13 @@ function DetailStudy() {
   const [mission, setMission] = useState("");
   const [week, setWeek] = useState(0);
   const [fine, setFine] = useState(0);
-  const [selectMenu, setSelectMenu] = useState("activities");
+  const [selectMenu, setSelectMenu] = useState("missions");
   const [isSortStudent, setSortStudent] = useState(false);
   const [isSortTitle, setSortTitle] = useState(false);
   const [isSortDate, setSortDate] = useState(false);
   const [isSortStatus, setSortStatus] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activities, setActivities] = useState([]);
+  const [missions, setMissions] = useState([]);
   const [fineStatus, setFineStatus] = useState([]);
   const [managements, setManagement] = useState([]);
 
@@ -185,7 +185,7 @@ function DetailStudy() {
       ],
       null,
     );
-    fetchData(getStudyActivities, [setActivities], [null], null);
+    fetchData(getStudyMissions, [setMissions], [null], null);
     fetchData(getFineStatus, [setFineStatus], [null], null);
     fetchData(getStudentManagement, [setManagement], [null], setLoading);
   }, []);
@@ -196,17 +196,13 @@ function DetailStudy() {
       setSortTitle(false);
       setSortDate(false);
       setSortStatus(false);
-      setActivities(
-        activities.sort((a, b) => a.student.localeCompare(b.student)),
-      );
+      setMissions(missions.sort((a, b) => a.student.localeCompare(b.student)));
     } else {
       setSortStudent(false);
       setSortTitle(false);
       setSortDate(false);
       setSortStatus(false);
-      setActivities(
-        activities.sort((a, b) => b.student.localeCompare(a.student)),
-      );
+      setMissions(missions.sort((a, b) => b.student.localeCompare(a.student)));
     }
   }
 
@@ -216,8 +212,8 @@ function DetailStudy() {
       setSortTitle(true);
       setSortDate(false);
       setSortStatus(false);
-      setActivities(
-        activities.sort((a, b) => {
+      setMissions(
+        missions.sort((a, b) => {
           if (a.title === null) return -1;
           if (b.title === null) return 1;
           return a.title.localeCompare(b.title);
@@ -228,8 +224,8 @@ function DetailStudy() {
       setSortTitle(false);
       setSortDate(false);
       setSortStatus(false);
-      setActivities(
-        activities.sort((a, b) => {
+      setMissions(
+        missions.sort((a, b) => {
           if (a.title === null) return 1;
           if (b.title === null) return -1;
           return b.title.localeCompare(a.title);
@@ -244,13 +240,13 @@ function DetailStudy() {
       setSortTitle(false);
       setSortDate(true);
       setSortStatus(false);
-      setActivities(activities.sort((a, b) => a.date.localeCompare(b.date)));
+      setMissions(missions.sort((a, b) => a.date.localeCompare(b.date)));
     } else {
       setSortStudent(false);
       setSortTitle(false);
       setSortDate(false);
       setSortStatus(false);
-      setActivities(activities.sort((a, b) => b.date.localeCompare(a.date)));
+      setMissions(missions.sort((a, b) => b.date.localeCompare(a.date)));
     }
   }
 
@@ -260,17 +256,13 @@ function DetailStudy() {
       setSortTitle(false);
       setSortDate(false);
       setSortStatus(true);
-      setActivities(
-        activities.sort((a, b) => a.status.localeCompare(b.status)),
-      );
+      setMissions(missions.sort((a, b) => a.status.localeCompare(b.status)));
     } else {
       setSortStudent(false);
       setSortTitle(false);
       setSortDate(false);
       setSortStatus(false);
-      setActivities(
-        activities.sort((a, b) => b.status.localeCompare(a.status)),
-      );
+      setMissions(missions.sort((a, b) => b.status.localeCompare(a.status)));
     }
   }
 
@@ -288,7 +280,7 @@ function DetailStudy() {
               <StyledDuration>{duration}</StyledDuration>
             </StyledColumn>
             <StyledColumn>
-              <StyledMission>Mission</StyledMission>
+              <StyledMission>Mission Type</StyledMission>
               <StyledMissionText>
                 {mission === "velog" ? "Post velog article" : "Commit github"}
               </StyledMissionText>
@@ -320,7 +312,7 @@ function DetailStudy() {
                   }
                   onClick={() => {
                     selectMenu === "manage"
-                      ? setSelectMenu("activities")
+                      ? setSelectMenu("missions")
                       : setSelectMenu("manage");
                   }}
                   alt="study-mng"
@@ -335,7 +327,7 @@ function DetailStudy() {
                 selectMenu={selectMenu}
                 onClick={() => {
                   selectMenu === "fine-status"
-                    ? setSelectMenu("activities")
+                    ? setSelectMenu("missions")
                     : setSelectMenu("fine-status");
                 }}
               >
@@ -350,8 +342,8 @@ function DetailStudy() {
             </StyledColumn>
           </StyledRow>
         </StyledDetailContainer>
-        {selectMenu === "activities" && (
-          <Activities
+        {selectMenu === "missions" && (
+          <Missions
             sortStudnet={sortStudent}
             isSortStudent={isSortStudent}
             sortTitle={sortTitle}
@@ -360,7 +352,7 @@ function DetailStudy() {
             isSortDate={isSortDate}
             sortStatus={sortStatus}
             isSortStatus={isSortStatus}
-            activities={activities}
+            missions={missions}
           />
         )}
         {selectMenu === "manage" && <Management managements={managements} />}

@@ -49,7 +49,7 @@ const StyledTotailCount = styled.div`
   font-size: 4rem;
 `;
 
-const StyledTaskContainer = styled.div`
+const StyledMissionContainer = styled.div`
   background-color: #1f2327;
   border-radius: 0.75rem;
   display: flex;
@@ -57,7 +57,7 @@ const StyledTaskContainer = styled.div`
   padding: 1rem 2rem;
 `;
 
-const StyledTaskHeader = styled.div`
+const StyledMissionHeader = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -66,21 +66,21 @@ const StyledTaskHeader = styled.div`
   border-bottom: 1px solid #000000;
 `;
 
-const StyledTaskTitle = styled.h1`
+const StyledMissionTitle = styled.h1`
   color: white;
   font-family: roboto;
   font-size: 1.5rem;
   font-weight: 400;
 `;
 
-const StyledTaskSortContainer = styled.div`
+const StyledMissionSortContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   height: 2.5rem;
 `;
 
-const StyledTaskSortWrapper = styled.div`
+const StyledMissionSortWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -92,31 +92,31 @@ const StyledTaskSortWrapper = styled.div`
   cursor: pointer;
 `;
 
-const StyledTaskSortText = styled.div`
+const StyledMissionSortText = styled.div`
   font-family: roboto;
   font-size: 1.25rem;
   margin-right: 0.625rem;
   color: #000000;
 `;
 
-const StyledTaskSortLogo = styled.img`
+const StyledMissionSortLogo = styled.img`
   width: 1.5rem;
   height: 1.5rem;
 `;
 
-const StyledTaskBody = styled.div`
+const StyledMissionBody = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-const StyledTaskTableContainer = styled.div`
+const StyledMissionTableContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-top: 1.25rem;
 `;
 
-const StyledTaskTableScrollContainer = styled.div`
+const StyledMissionTableScrollContainer = styled.div`
   height: 37vh;
   overflow-y: auto;
   &::-webkit-scrollbar {
@@ -124,7 +124,7 @@ const StyledTaskTableScrollContainer = styled.div`
   }
 `;
 
-const StyledTaskAttribute = styled.div`
+const StyledMissionAttribute = styled.div`
   flex: ${(props) => props.flex};
   color: #ffffff;
   font-family: roboto;
@@ -133,7 +133,7 @@ const StyledTaskAttribute = styled.div`
   padding-bottom: 0.5rem;
 `;
 
-const StyledTaskContent = styled.div`
+const StyledMissionContent = styled.div`
   flex: ${(props) => props.flex};
   color: #ffffff;
   font-family: roboto;
@@ -141,16 +141,16 @@ const StyledTaskContent = styled.div`
   text-align: center;
 `;
 
-const StyledTaskStatusWrapper = styled.div`
+const StyledMissionStatusWrapper = styled.div`
   display: flex;
   flex: ${(props) => props.flex};
   justify-content: center;
 `;
 
-const StyledTaskStatus = styled.div`
-  color: ${(props) => (props.status === "Completed" ? "#249636" : "#E66633")};
+const StyledMissionStatus = styled.div`
+  color: ${(props) => (props.status === "COMPLETED" ? "#249636" : "#E66633")};
   background-color: ${(props) =>
-    props.status === "Completed" ? "#CBDAC4" : "#F0D1C4"};
+    props.status === "COMPLETED" ? "#CBDAC4" : "#F0D1C4"};
   font-family: roboto;
   font-size: 1rem;
   font-weight: 700;
@@ -159,7 +159,7 @@ const StyledTaskStatus = styled.div`
   padding: 0.5rem 1rem;
 `;
 
-const StyledNotaskContainer = styled.div`
+const StyledNomissionContainer = styled.div`
   height: 37vh;
   display: flex;
   flex-direction: column;
@@ -167,7 +167,7 @@ const StyledNotaskContainer = styled.div`
   align-items: center;
 `;
 
-const StyledNotask1 = styled.div`
+const StyledNomission1 = styled.div`
   color: white;
   font-family: roboto;
   font-size: 2.5rem;
@@ -175,7 +175,7 @@ const StyledNotask1 = styled.div`
   margin-bottom: 1.5rem;
 `;
 
-const StyledNotask2 = styled.div`
+const StyledNomission2 = styled.div`
   color: #e66330;
   font-family: roboto;
   font-size: 2.5rem;
@@ -188,15 +188,15 @@ function Dashboard() {
   const [sortStatus, setSortStatus] = useState(false);
   const [totalJoined, setTotalJoined] = useState(0);
   const [totalCompleted, setTotalCompleted] = useState(0);
-  const [totalIncompleted, setTotalIncompleted] = useState(0);
+  const [totalIncomplete, setTotalIncomplete] = useState(0);
   const [contents, setContents] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchData(
       getDashboard,
-      [setTotalJoined, setTotalCompleted, setTotalIncompleted, setContents],
-      ["totalJoined", "totalCompleted", "totalIncompleted", "contents"],
+      [setTotalJoined, setTotalCompleted, setTotalIncomplete, setContents],
+      ["totalJoined", "totalCompleted", "totalIncomplete", "contents"],
       setLoading,
     );
   }, []);
@@ -244,19 +244,19 @@ function Dashboard() {
           <StyledTotailCount>{totalJoined}</StyledTotailCount>
         </StyledTotalMenu>
         <StyledTotalMenu>
-          <StyledTotalTitle>Total Completed Tasks</StyledTotalTitle>
+          <StyledTotalTitle>Total Completed Missions</StyledTotalTitle>
           <StyledTotailCount>{totalCompleted}</StyledTotailCount>
         </StyledTotalMenu>
         <StyledTotalMenu last={true}>
-          <StyledTotalTitle>Incomplete Tasks for this week</StyledTotalTitle>
-          <StyledTotailCount>{totalIncompleted}</StyledTotailCount>
+          <StyledTotalTitle>Incomplete Missions for this week</StyledTotalTitle>
+          <StyledTotailCount>{totalIncomplete}</StyledTotailCount>
         </StyledTotalMenu>
       </StyledTotalContainer>
-      <StyledTaskContainer>
-        <StyledTaskHeader>
-          <StyledTaskTitle>Tasks for this week</StyledTaskTitle>
-          <StyledTaskSortContainer>
-            <StyledTaskSortWrapper
+      <StyledMissionContainer>
+        <StyledMissionHeader>
+          <StyledMissionTitle>Missions for this week</StyledMissionTitle>
+          <StyledMissionSortContainer>
+            <StyledMissionSortWrapper
               onClick={function () {
                 setSortStudygroup(!sortStudygroup);
                 if (sortStudygroup) {
@@ -266,15 +266,15 @@ function Dashboard() {
                 }
               }}
             >
-              <StyledTaskSortText>Study Group</StyledTaskSortText>
-              <StyledTaskSortLogo
+              <StyledMissionSortText>Study Group</StyledMissionSortText>
+              <StyledMissionSortLogo
                 src={require("../../../assets/down.png")}
                 style={{
                   transform: sortStudygroup ? "rotate(180deg)" : "rotate(0deg)",
                 }}
               />
-            </StyledTaskSortWrapper>
-            <StyledTaskSortWrapper
+            </StyledMissionSortWrapper>
+            <StyledMissionSortWrapper
               onClick={function () {
                 setSortStatus(!sortStatus);
                 if (sortStatus) {
@@ -284,52 +284,57 @@ function Dashboard() {
                 }
               }}
             >
-              <StyledTaskSortText>Status</StyledTaskSortText>
-              <StyledTaskSortLogo
+              <StyledMissionSortText>Status</StyledMissionSortText>
+              <StyledMissionSortLogo
                 src={require("../../../assets/down.png")}
                 style={{
                   transform: sortStatus ? "rotate(180deg)" : "rotate(0deg)",
                 }}
               />
-            </StyledTaskSortWrapper>
-          </StyledTaskSortContainer>
-        </StyledTaskHeader>
-        <StyledTaskBody>
-          <StyledTaskTableContainer>
-            <StyledTaskAttribute flex={2.5}>Name</StyledTaskAttribute>
-            <StyledTaskAttribute flex={1.25}> Due Date</StyledTaskAttribute>
-            <StyledTaskAttribute flex={1}>Study Group</StyledTaskAttribute>
-            <StyledTaskAttribute flex={1}>Status</StyledTaskAttribute>
-          </StyledTaskTableContainer>
-          <StyledTaskTableScrollContainer>
+            </StyledMissionSortWrapper>
+          </StyledMissionSortContainer>
+        </StyledMissionHeader>
+        <StyledMissionBody>
+          <StyledMissionTableContainer>
+            <StyledMissionAttribute flex={2.5}>Name</StyledMissionAttribute>
+            <StyledMissionAttribute flex={1.25}>
+              {" "}
+              Due Date
+            </StyledMissionAttribute>
+            <StyledMissionAttribute flex={1}>
+              Study Group
+            </StyledMissionAttribute>
+            <StyledMissionAttribute flex={1}>Status</StyledMissionAttribute>
+          </StyledMissionTableContainer>
+          <StyledMissionTableScrollContainer>
             {contents.length > 0 ? (
               contents.map((content) => (
-                <StyledTaskTableContainer key={content.id}>
-                  <StyledTaskContent flex={2.5}>
+                <StyledMissionTableContainer key={content.id}>
+                  <StyledMissionContent flex={2.5}>
                     {content.name}
-                  </StyledTaskContent>
-                  <StyledTaskContent flex={1.25}>
+                  </StyledMissionContent>
+                  <StyledMissionContent flex={1.25}>
                     {content.dueDate}
-                  </StyledTaskContent>
-                  <StyledTaskContent flex={1}>
+                  </StyledMissionContent>
+                  <StyledMissionContent flex={1}>
                     {content.studyGroup}
-                  </StyledTaskContent>
-                  <StyledTaskStatusWrapper flex={1}>
-                    <StyledTaskStatus status={content.status}>
+                  </StyledMissionContent>
+                  <StyledMissionStatusWrapper flex={1}>
+                    <StyledMissionStatus status={content.status}>
                       {content.status}
-                    </StyledTaskStatus>
-                  </StyledTaskStatusWrapper>
-                </StyledTaskTableContainer>
+                    </StyledMissionStatus>
+                  </StyledMissionStatusWrapper>
+                </StyledMissionTableContainer>
               ))
             ) : (
-              <StyledNotaskContainer>
-                <StyledNotask1>No tasks this week</StyledNotask1>
-                <StyledNotask2>Explore Studies</StyledNotask2>
-              </StyledNotaskContainer>
+              <StyledNomissionContainer>
+                <StyledNomission1>No missions this week</StyledNomission1>
+                <StyledNomission2>Explore Studies</StyledNomission2>
+              </StyledNomissionContainer>
             )}
-          </StyledTaskTableScrollContainer>
-        </StyledTaskBody>
-      </StyledTaskContainer>
+          </StyledMissionTableScrollContainer>
+        </StyledMissionBody>
+      </StyledMissionContainer>
     </StyledDashboard>
   );
 }

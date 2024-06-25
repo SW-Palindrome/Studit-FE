@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import DateRangePicker from "./DateRangePicker";
+import { createStudy } from "../../../services/api";
 
 const StyledCreateStudyGroup = styled.div`
   display: flex;
@@ -209,13 +210,13 @@ function CreateStudyGroup() {
   const [date, setDate] = useState([null, null]);
   const [title, setTitle] = useState("");
   const [memberLimit, setMemberLimit] = useState(0);
-  const [purpose, setPurpose] = useState("CS");
+  const [purpose, setPurpose] = useState("COMPUTER_SCIENCE");
   const [description, setDescription] = useState("");
-  const [mission, setMission] = useState("velog");
+  const [mission, setMission] = useState("VELOG");
   const [week, setWeek] = useState(0);
   const [tag, setTag] = useState("");
   const [fine, setFine] = useState(0);
-  const [setting, setSetting] = useState("Private");
+  const [isPublic, setIsPublic] = useState(false);
   const [isButtonClickabled, setButtonClickabled] = useState(false);
 
   useEffect(() => {
@@ -231,7 +232,7 @@ function CreateStudyGroup() {
       week > 0 &&
       tag != "" &&
       fine > 0 &&
-      setting != "";
+      isPublic != null;
     setButtonClickabled(isAllInputsFilled);
   }, [
     date,
@@ -244,37 +245,29 @@ function CreateStudyGroup() {
     week,
     tag,
     fine,
-    setting,
+    isPublic,
   ]);
 
   const fetchCreateStudyGroup = async () => {
-    //1초 대기
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    //my studies 페이지로 이동
-    window.location.href = "/mystudies";
-    // const response = await fetch("http://localhost:3001/studygroup", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     image,
-    //     date,
-    //     title,
-    //     memberLimit,
-    //     purpose,
-    //     description,
-    //     mission,
-    //     week,
-    //     tag,
-    //     fine,
-    //     setting,
-    //   }),
-    // });
-
-    // if (response.ok) {
-    //   alert("Study group created successfully");
-    // }
+    try {
+      const paylaod = {
+        name: title,
+        description: description,
+        max_members: memberLimit,
+        purpose: purpose,
+        mission_type: mission,
+        mission_count_per_week: week,
+        tag: tag,
+        fine_per_mission: fine,
+        is_public: isPublic,
+        start_at: date[0],
+        end_at: date[1],
+      };
+      await createStudy(paylaod);
+      window.location.href = "/mystudies";
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleImageChange = (e) => {
@@ -298,7 +291,7 @@ function CreateStudyGroup() {
       <StyledBody>
         <StyledRow isCentered={true}>
           <StyledAttributeName>Duration</StyledAttributeName>
-          <DateRangePicker setDate={setDate} />
+          <DateRangePicker isEditable={true} setDate={setDate} />
           <StyledCalendarIcon src={require("../../../assets/calendar.png")} />
         </StyledRow>
         <StyledRow isCentered={false}>
@@ -350,20 +343,22 @@ function CreateStudyGroup() {
           <StyledRadio
             type="radio"
             name="purpose"
-            id="CS"
-            value="CS"
-            checked={purpose === "CS"}
+            id="COMPUTER_SCIENCE"
+            value="COMPUTER_SCIENCE"
+            checked={purpose === "COMPUTER_SCIENCE"}
             onChange={(e) => setPurpose(e.target.value)}
           />
-          <StyledRadioLabel htmlFor="CS">CS Study</StyledRadioLabel>
+          <StyledRadioLabel htmlFor="COMPUTER_SCIENCE">
+            CS Study
+          </StyledRadioLabel>
           <StyledRadio
             type="radio"
             name="purpose"
-            id="Algorithm"
-            value="Algorithm"
+            id="ALGORITHM"
+            value="ALGORITHM"
             onChange={(e) => setPurpose(e.target.value)}
           />
-          <StyledRadioLabel htmlFor="Algorithm">
+          <StyledRadioLabel htmlFor="ALGORITHM">
             Algorithm Study
           </StyledRadioLabel>
         </StyledRow>
@@ -382,20 +377,20 @@ function CreateStudyGroup() {
               <StyledRadio
                 type="radio"
                 name="mission"
-                id="velog"
-                value="velog"
-                checked={mission === "velog"}
+                id="VELOG"
+                value="VELOG"
+                checked={mission === "VELOG"}
                 onChange={(e) => setMission(e.target.value)}
               />
-              <StyledRadioLabel htmlFor="velog">Post Velog</StyledRadioLabel>
+              <StyledRadioLabel htmlFor="VELOG">Post Velog</StyledRadioLabel>
               <StyledRadio
                 type="radio"
                 name="mission"
-                id="github"
-                value="github"
+                id="GITHUB"
+                value="GITHUB"
                 onChange={(e) => setMission(e.target.value)}
               />
-              <StyledRadioLabel htmlFor="github">
+              <StyledRadioLabel htmlFor="GITHUB">
                 Commit Github
               </StyledRadioLabel>
             </StyledRow>
@@ -426,19 +421,18 @@ function CreateStudyGroup() {
             <StyledAttributeName>Setting</StyledAttributeName>
             <StyledRadio
               type="radio"
-              name="setting"
+              name="isPublic"
               id="Private"
-              value="Private"
-              checked={setting === "Private"}
-              onChange={(e) => setSetting(e.target.value)}
+              checked={isPublic === false}
+              onChange={() => setIsPublic(false)}
             />
             <StyledRadioLabel htmlFor="Private">Private</StyledRadioLabel>
             <StyledRadio
               type="radio"
-              name="setting"
+              name="isPublic"
               id="Public"
-              value="Public"
-              onChange={(e) => setSetting(e.target.value)}
+              checked={isPublic === true}
+              onChange={() => setIsPublic(true)}
             />
             <StyledRadioLabel htmlFor="Public">Public</StyledRadioLabel>
           </StyledBottomRow1>

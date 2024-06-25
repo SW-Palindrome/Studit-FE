@@ -14,7 +14,7 @@
         "name": "velog 글 작성하기(1)",
         "dueDate": "2023.12.24 Sun",
         "studyGroup": "3 velog 작성",
-        "status": "Completed"
+        "status": "COMPLETED"
       },
 
       {
@@ -22,98 +22,98 @@
         "name": "velog 글 작성하기(2)",
         "dueDate": "2023.12.24 Sun",
         "studyGroup": "3 velog 작성",
-        "status": "Completed"
+        "status": "COMPLETED"
       },
       {
         "id": 3,
         "name": "velog 글 작성하기(3)",
         "dueDate": "2023.12.24 Sun",
         "studyGroup": "3 velog 작성",
-        "status": "Completed"
+        "status": "COMPLETED"
       },
       {
         "id": 4,
         "name": "velog 글 작성하기(4)",
         "dueDate": "2023.12.24 Sun",
         "studyGroup": "3 velog 작성",
-        "status": "Completed"
+        "status": "COMPLETED"
       },
       {
         "id": 5,
         "name": "programmers 무지의 먹방 문제풀기",
         "dueDate": "2023.12.31 Sun",
         "studyGroup": "코테 문제풀이 스터디",
-        "status": "Incompleted"
+        "status": "INCOMPLETE"
       },
       {
         "id": 6,
         "name": "백준 1문제 풀기",
         "dueDate": "2023.12.31 Sun",
         "studyGroup": "코테 문제풀이 스터디",
-        "status": "Incompleted"
+        "status": "INCOMPLETE"
       },
       {
         "id": 7,
         "name": "백준 1문제 풀기",
         "dueDate": "2023.12.31 Sun",
         "studyGroup": "코테 문제풀이 스터디",
-        "status": "Incompleted"
+        "status": "INCOMPLETE"
       },
       {
         "id": 8,
         "name": "백준 1문제 풀기",
         "dueDate": "2023.12.31 Sun",
         "studyGroup": "코테 문제풀이 스터디",
-        "status": "Incompleted"
+        "status": "INCOMPLETE"
       },
       {
         "id": 9,
         "name": "백준 1문제 풀기",
         "dueDate": "2023.12.31 Sun",
         "studyGroup": "코테 문제풀이 스터디",
-        "status": "Incompleted"
+        "status": "INCOMPLETE"
       },
       {
         "id": 10,
         "name": "백준 1문제 풀기",
         "dueDate": "2023.12.31 Sun",
         "studyGroup": "코테 문제풀이 스터디",
-        "status": "Incompleted"
+        "status": "INCOMPLETE"
       },
       {
         "id": 11,
         "name": "백준 1문제 풀기",
         "dueDate": "2023.12.31 Sun",
         "studyGroup": "코테 문제풀이 스터디",
-        "status": "Incompleted"
+        "status": "INCOMPLETE"
       },
       {
         "id": 12,
         "name": "백준 1문제 풀기",
         "dueDate": "2023.12.31 Sun",
         "studyGroup": "코테 문제풀이 스터디",
-        "status": "Incompleted"
+        "status": "INCOMPLETE"
       },
       {
         "id": 13,
         "name": "백준 1문제 풀기",
         "dueDate": "2023.12.31 Sun",
         "studyGroup": "코테 문제풀이 스터디",
-        "status": "Incompleted"
+        "status": "INCOMPLETE"
       },
       {
         "id": 14,
         "name": "백준 1문제 풀기",
         "dueDate": "2023.12.31 Sun",
         "studyGroup": "코테 문제풀이 스터디",
-        "status": "Incompleted"
+        "status": "INCOMPLETE"
       },
       {
         "id": 15,
         "name": "백준 1문제 풀기",
         "dueDate": "2023.12.31 Sun",
         "studyGroup": "코테 문제풀이 스터디",
-        "status": "Incompleted"
+        "status": "INCOMPLETE"
       }
     ]
   },
@@ -274,86 +274,86 @@
     "description": "매주 월.목 오후에 미팅",
     "mission": "github",
     "week": 3,
-    "tag": "CTR",
+    "Wg": "CTR",
     "fine": 2000,
-    "setting": "Private"
+    "isPublic": false
   },
-  "studyActivities": [
+  "studyMissions": [
     {
       "student": "Hooing",
       "title": null,
       "date": "24.03.11 ~ 24.03.17",
-      "status": "Incompleted",
+      "status": "INCOMPLETE",
       "url": null
     },
     {
       "student": "Hooing",
       "title": "React - 1주차 과제",
       "date": "23.12.26 ~ 23.12.31",
-      "status": "Completed",
+      "status": "COMPLETED",
       "url": "https://velog.io/@milkbottle0305"
     },
     {
       "student": "Hooing",
       "title": "딥러닝 - 1주차 과제",
       "date": "23.12.26 ~ 23.12.31",
-      "status": "Completed",
+      "status": "COMPLETED",
       "url": "https://velog.io/@milkbottle0305"
     },
     {
       "student": "Milkyway",
       "title": null,
       "date": "23.12.26 ~ 23.12.31",
-      "status": "Incompleted",
+      "status": "INCOMPLETE",
       "url": null
     },
     {
       "student": "papa",
       "title": null,
       "date": "23.12.26 ~ 23.12.31",
-      "status": "Incompleted",
+      "status": "INCOMPLETE",
       "url": null
     },
     {
       "student": "Hooing",
       "title": "React - 2주차 과제",
       "date": "23.12.26 ~ 23.12.31",
-      "status": "Completed",
+      "status": "COMPLETED",
       "url": "https://velog.io/@milkbottle0305"
     },
     {
       "student": "Milkyway",
       "title": "React - 2주차 과제",
       "date": "23.12.26 ~ 23.12.31",
-      "status": "Completed",
+      "status": "COMPLETED",
       "url": "https://velog.io/@milkbottle0305"
     },
     {
       "student": "papa",
       "title": "React - 2주차 과제",
       "date": "23.12.26 ~ 23.12.31",
-      "status": "Completed",
+      "status": "COMPLETED",
       "url": "https://velog.io/@milkbottle0305"
     },
     {
       "student": "Hooing",
       "title": "React - 3주차 과제",
       "date": "23.12.26 ~ 23.12.31",
-      "status": "Completed",
+      "status": "COMPLETED",
       "url": "https://velog.io/@milkbottle0305"
     },
     {
       "student": "Milkyway",
       "title": "React - 3주차 과제",
       "date": "23.12.26 ~ 23.12.31",
-      "status": "Completed",
+      "status": "COMPLETED",
       "url": "https://velog.io/@milkbottle0305"
     },
     {
       "student": "papa",
       "title": "React - 3주차 과제",
       "date": "23.12.26 ~ 23.12.31",
-      "status": "Completed",
+      "status": "COMPLETED",
       "url": "https://velog.io/@milkbottle0305"
     }
   ],

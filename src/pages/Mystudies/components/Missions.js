@@ -1,11 +1,11 @@
 import { styled } from "styled-components";
 
-const StyledActiviteis = styled.div`
+const StyledMissions = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-const StyledActivitiesText = styled.div`
+const StyledMissionsText = styled.div`
   font-size: 2.5rem;
   color: #ffffff;
   font-family: roboto;
@@ -14,7 +14,7 @@ const StyledActivitiesText = styled.div`
   font-weight: 700;
 `;
 
-const StyledActivitiesContainer = styled.div`
+const StyledMissionsContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #292e33;
@@ -110,9 +110,9 @@ const StyledListRowStatusText = styled.p`
   overflow: hidden;
   background-color: ${function (props) {
     switch (props.status) {
-      case "Completed":
+      case "COMPLETED":
         return "#CBDAC4";
-      case "Incompleted":
+      case "INCOMPLETE":
         return "#F0D1C4";
       default:
         return "#EFE0C5";
@@ -120,9 +120,9 @@ const StyledListRowStatusText = styled.p`
   }};
   color: ${function (props) {
     switch (props.status) {
-      case "Completed":
+      case "COMPLETED":
         return "#339D43";
-      case "Incompleted":
+      case "INCOMPLETE":
         return "#E66633";
       default:
         return "#000000";
@@ -130,7 +130,7 @@ const StyledListRowStatusText = styled.p`
   }};
 `;
 
-function Activities({
+function Missions({
   sortStudent,
   isSortStudent,
   sortTitle,
@@ -139,12 +139,12 @@ function Activities({
   isSortDate,
   sortStatus,
   isSortStatus,
-  activities,
+  missions,
 }) {
   return (
-    <StyledActiviteis>
-      <StyledActivitiesText>Activities</StyledActivitiesText>
-      <StyledActivitiesContainer>
+    <StyledMissions>
+      <StyledMissionsText>Missions</StyledMissionsText>
+      <StyledMissionsContainer>
         <StyledListHeader>
           <StyledListAttribute flex={1} onClick={() => sortStudent()}>
             <StyledListAttributeText>Student</StyledListAttributeText>
@@ -187,25 +187,25 @@ function Activities({
           </StyledListAttribute>
         </StyledListHeader>
         <StyledListBody>
-          {activities.map((activity) => (
-            <StyledListRow key={activity.id}>
-              <StyledListRowText flex={1}>{activity.student}</StyledListRowText>
-              <StyledListRowText flex={2}>{activity.title}</StyledListRowText>
-              <StyledListRowText flex={1.4}>{activity.date}</StyledListRowText>
+          {missions.map((mission) => (
+            <StyledListRow key={mission.id}>
+              <StyledListRowText flex={1}>{mission.student}</StyledListRowText>
+              <StyledListRowText flex={2}>{mission.title}</StyledListRowText>
+              <StyledListRowText flex={1.4}>{mission.date}</StyledListRowText>
               <StyledListRowStatus flex={1.4}>
-                <StyledListRowStatusText status={activity.status}>
-                  {activity.status}
+                <StyledListRowStatusText status={mission.status}>
+                  {mission.status}
                 </StyledListRowStatusText>
               </StyledListRowStatus>
-              <StyledListRowUrl href={activity.url} flex={2}>
-                {activity.url}
+              <StyledListRowUrl href={mission.url} flex={2}>
+                {mission.url}
               </StyledListRowUrl>
             </StyledListRow>
           ))}
         </StyledListBody>
-      </StyledActivitiesContainer>
-    </StyledActiviteis>
+      </StyledMissionsContainer>
+    </StyledMissions>
   );
 }
 
-export default Activities;
+export default Missions;
